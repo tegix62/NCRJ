@@ -1,0 +1,32 @@
+---
+// Verification status shown by shape as well as colour: filled, half, or open circle.
+import { VERIFICATION, type VerificationStatus } from '../lib/archivist';
+
+interface Props {
+  status: VerificationStatus;
+}
+
+const { status } = Astro.props;
+const { label } = VERIFICATION[status];
+---
+
+<span class={`badge ${status}`}>
+  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+    <circle cx="6" cy="6" r="5" fill="none" stroke="currentColor" stroke-width="1.5" />
+    {status === 'documented' && <circle cx="6" cy="6" r="5" fill="currentColor" />}
+    {status === 'partially-documented' && <path d="M6 1 A5 5 0 0 0 6 11 Z" fill="currentColor" />}
+  </svg>
+  {label}
+</span>
+
+<style>
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.4em;
+    padding: 0.2em 0.65em; border-radius: 999px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; white-space: nowrap;
+    border: 1px solid currentColor;
+  }
+  .documented { color: var(--color-green); background: #e7efe9; }
+  .partially-documented { color: #8a5a12; background: #f6ecd9; }
+  .unverified { color: var(--color-muted); background: var(--color-cream); }
+</style>

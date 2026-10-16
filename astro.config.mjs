@@ -2,6 +2,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  // Set to the real domain once there is one.
-  site: 'https://example.org',
+  // Live URL. Change when a custom domain is added.
+  site: 'https://ncrj.rumeaudesign.workers.dev',
 });

@@ -1,18 +1,159 @@
 ---
+// The Archivist landing page. Copy is a first draft adapted from the project lead's
+// description of the project; it needs her review before launch.
 import Default from '../../layouts/Default.astro';
-import PageIntro from '../../components/PageIntro.astro';
-import { PILLARS } from '../../site';
+import EntryCard from '../../components/EntryCard.astro';
+import VerificationBadge from '../../components/VerificationBadge.astro';
+import PlaceholderNotice from '../../components/PlaceholderNotice.astro';
+import Icon from '../../components/Icon.astro';
+import { getEntries, LAYERS, RECORD, VERIFICATION, type VerificationStatus } from '../../lib/archivist';
 
-const section = PILLARS[0];
+const entries = await getEntries();
+const hasPlaceholders = entries.some((e) => e.isPlaceholder);
+const layers = [...LAYERS, RECORD];
 ---
 
-<Default title={section.title} description={section.description}>
-  <PageIntro eyebrow={section.subtitle} title={section.title} lede={section.description} />
-  <div class="content placeholder">
-    <p><em>Placeholder: the Archivist landing page, story entries, and the story submission form go here.</em></p>
-  </div>
+<Default title="The Archivist" description="A living, citable archive of reproductive justice stories, built with our community.">
+  <section class="intro">
+    <div class="container intro-grid">
+      <div>
+        <p class="eyebrow">Beyond the Single Story</p>
+        <h1>The Archivist</h1>
+        <p class="lede">
+          Whose stories become visible, whose disappear, and who has the power to tell them? The Archivist is a living,
+          citable archive of reproductive justice stories, built with our community.
+        </p>
+        <div class="actions">
+          <a class="button" href="#stories">Explore the stories <Icon name="arrow-right" size={16} /></a>
+          <a class="text-link" href="/archivist/submit/">Submit a story <Icon name="arrow-right" size={16} /></a>
+        </div>
+      </div>
+      <blockquote class="pullquote">
+        <p>Help us archive the stories that should not be forgotten.</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <section class="container why">
+    <div class="prose">
+      <h2>Why narrative power matters</h2>
+      <p>
+        Chimamanda Ngozi Adichie warns of “the danger of a single story”: what happens when one narrative becomes the
+        defining story of a person, a community, or an experience. When complex reproductive lives are reduced to a
+        single story, the people living them are flattened, and other stories disappear.
+      </p>
+      <p>
+        Archiving is not simply saying <em>this happened</em>. It preserves the record so that stories cannot so easily
+        be erased, distorted, or separated from the people to whom they belong.
+      </p>
+    </div>
+
+    <div class="layers">
+      <h2>How each story is told</h2>
+      <p class="layers-intro">Every entry moves through the same layers, so visitors can see past the familiar version.</p>
+      <ol>
+        {layers.map((l) => (
+          <li>
+            <strong>{l.heading}</strong>
+            <span>{l.prompt}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="record-band">
+    <div class="container record-grid">
+      <div>
+        <h2>A citable archive</h2>
+        <p>
+          We don’t reproduce stories because they circulate on social media or because we remember hearing them
+          somewhere. Each entry is accompanied, wherever possible, by sources others can trace: original reporting,
+          scholarship, oral history, public testimony, court and policy records, and organizational archives.
+        </p>
+        <p>When something can’t yet be fully verified, we say so. That is part of the record too.</p>
+      </div>
+      <dl class="statuses">
+        {(Object.keys(VERIFICATION) as VerificationStatus[]).map((s) => (
+          <div>
+            <dt><VerificationBadge status={s} /></dt>
+            <dd>{VERIFICATION[s].description}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="container stories" id="stories">
+    <h2>Stories in the archive</h2>
+    {hasPlaceholders && <PlaceholderNotice />}
+    <div class="entry-grid">
+      {entries.map((entry) => <EntryCard entry={entry} />)}
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta-inner">
+      <div>
+        <h2>Know a story that belongs here?</h2>
+        <p>
+          A person erased from the historical record, a local struggle, an organizing campaign, a piece of art, an act
+          of care or joy. Tell us about it, and how we can learn more.
+        </p>
+      </div>
+      <a class="button" href="/archivist/submit/">Submit a story <Icon name="arrow-right" size={16} /></a>
+    </div>
+  </section>
 </Default>
 
 <style>
-  .placeholder { padding-block: var(--space-5); color: var(--color-muted); }
+  h2 { font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem); margin: 0 0 var(--space-3); }
+
+  .intro { background: var(--color-cream); border-bottom: 1px solid var(--color-border); padding-block: var(--space-5) var(--space-6); }
+  .intro-grid { display: grid; gap: var(--space-5); align-items: center; }
+  @media (min-width: 64rem) { .intro-grid { grid-template-columns: 3fr 2fr; } }
+  .intro .eyebrow { margin: 0; }
+  .intro h1 { margin: var(--space-2) 0 var(--space-3); font-weight: 700; font-size: clamp(2.5rem, 6vw, 4rem); }
+  .lede { max-width: 36rem; margin: 0 0 var(--space-4); font-size: 1.2rem; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-4); }
+  .pullquote {
+    margin: 0; padding: var(--space-5) var(--space-4);
+    background: var(--color-brush); color: #fff; border-radius: var(--radius);
+    transform: rotate(-2deg);
+  }
+  .pullquote p { margin: 0; font-family: var(--font-script); font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.35; text-align: center; }
+
+  .why { display: grid; gap: var(--space-5); padding-block: var(--space-6); }
+  @media (min-width: 64rem) { .why { grid-template-columns: 1fr 1fr; gap: var(--space-6); } }
+  .prose p { max-width: 36rem; }
+  .layers-intro { color: var(--color-muted); margin-top: 0; }
+  .layers ol { margin: 0; padding: 0; list-style: none; counter-reset: layer; display: grid; gap: var(--space-3); }
+  .layers li {
+    counter-increment: layer; display: grid; grid-template-columns: 2.25rem 1fr; column-gap: var(--space-3);
+    padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border);
+  }
+  .layers li::before {
+    content: counter(layer); grid-row: span 2;
+    width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--color-icon-bg); font-family: var(--font-display); font-weight: 700;
+  }
+  .layers li strong { font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; }
+  .layers li span { color: var(--color-muted); font-size: 0.95rem; line-height: 1.45; }
+
+  .record-band { background: var(--color-sand); padding-block: var(--space-6); }
+  .record-grid { display: grid; gap: var(--space-5); align-items: start; }
+  @media (min-width: 64rem) { .record-grid { grid-template-columns: 3fr 2fr; gap: var(--space-6); } }
+  .record-grid p { max-width: 38rem; }
+  .statuses { margin: 0; display: grid; gap: var(--space-3); padding: var(--space-4); background: var(--color-bg); border-radius: var(--radius); }
+  .statuses div { display: grid; gap: var(--space-1); }
+  .statuses dd { margin: 0; color: var(--color-muted); font-size: 0.95rem; }
+
+  .stories { display: grid; gap: var(--space-4); padding-block: var(--space-6); }
+  .stories h2 { margin: 0; }
+  .entry-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
+
+  .cta { background: var(--color-green); color: #fff; padding-block: var(--space-5); }
+  .cta-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-4); }
+  .cta h2 { margin-bottom: var(--space-2); }
+  .cta p { margin: 0; max-width: 40rem; color: #e8e4dc; }
 </style>

@@ -1,0 +1,173 @@
+---
+// Story submission form. Fields follow the `submission` record in docs/archivist-schema.md.
+// NOT CONNECTED: there is deliberately no action and the submit button is disabled,
+// so nothing a visitor types is sent anywhere until a storage decision is made.
+import Default from '../../layouts/Default.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import PlaceholderNotice from '../../components/PlaceholderNotice.astro';
+---
+
+<Default title="Submit a Story" description="Recommend a story for The Archivist.">
+  <PageIntro
+    eyebrow="The Archivist"
+    title="Submit a Story"
+    lede="Help us archive the stories that should not be forgotten. Tell us what story belongs here, and how we can learn more about it."
+  />
+
+  <div class="container notice-wrap">
+    <PlaceholderNotice message="This form is not connected yet and does not send anything. Please don’t enter real stories or personal details." />
+  </div>
+
+  <div class="container submit-layout">
+    <aside class="how">
+      <h2>What happens next</h2>
+      <ol>
+        <li>The Collaborative’s editorial team reads every submission.</li>
+        <li>We research and verify the story, and contextualize it with care.</li>
+        <li>If it becomes an entry, we may contact you first, if you’ve allowed it.</li>
+      </ol>
+      <p>Nothing you submit appears on the site automatically.</p>
+      <h2>Your information</h2>
+      <p>
+        Only the story questions are required. Your name and email are optional and are seen only by the editorial
+        team. We delete contact details once your submission is resolved.
+      </p>
+      <p class="small">Draft policy wording; to be confirmed by the Collaborative.</p>
+    </aside>
+
+    <form class="story-form" id="story-form" novalidate>
+      <fieldset>
+        <legend>The story</legend>
+
+        <div class="field">
+          <label for="recommendation">What person, event, history, movement, or story are you recommending? <span class="req">Required</span></label>
+          <textarea id="recommendation" name="recommendation" rows="3" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="whyItBelongs">Why does it belong in The Archivist? <span class="req">Required</span></label>
+          <textarea id="whyItBelongs" name="whyItBelongs" rows="4" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="rjConnection">How does it connect to reproductive justice? <span class="req">Required</span></label>
+          <textarea id="rjConnection" name="rjConnection" rows="4" required></textarea>
+        </div>
+
+        <div class="field">
+          <label for="missingPerspective">Whose perspective is often missing or misrepresented?</label>
+          <textarea id="missingPerspective" name="missingPerspective" rows="3"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="placeAndTime">Where and when did it happen?</label>
+          <input id="placeAndTime" name="placeAndTime" type="text" />
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>How we can learn more</legend>
+        <div class="field">
+          <label for="sources">Sources</label>
+          <p class="hint" id="sources-hint">How do we know this story? Who has already documented it? Share links, citations, recordings, documents, or anything else that helps us trace it.</p>
+          <textarea id="sources" name="sources" rows="5" aria-describedby="sources-hint"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Care and consent</legend>
+
+        <div class="field">
+          <span class="label" id="connection-label">Are you personally connected to this story?</span>
+          <div class="choices" role="radiogroup" aria-labelledby="connection-label">
+            <label><input type="radio" id="connection-yes" name="contributorConnection" value="yes" /> Yes</label>
+            <label><input type="radio" id="connection-no" name="contributorConnection" value="no" /> No</label>
+            <label><input type="radio" id="connection-na" name="contributorConnection" value="prefer-not-to-say" /> Prefer not to say</label>
+          </div>
+          <label for="connectionDetail" class="sublabel">Anything you’d like to tell us about your connection (optional)</label>
+          <input id="connectionDetail" name="connectionDetail" type="text" />
+        </div>
+
+        <div class="field">
+          <label for="ethicalConcerns">Are there ethical, privacy, or consent considerations we should know about?</label>
+          <textarea id="ethicalConcerns" name="ethicalConcerns" rows="3"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>About you (optional)</legend>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="contactName">Your name</label>
+            <input id="contactName" name="contactName" type="text" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="contactEmail">Your email</label>
+            <input id="contactEmail" name="contactEmail" type="email" autocomplete="email" aria-describedby="email-hint" />
+            <p class="hint" id="email-hint">Only if you’re willing to be contacted for follow-up.</p>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="label" id="credit-label">If we publish an entry, may we credit you?</span>
+          <div class="choices" role="radiogroup" aria-labelledby="credit-label">
+            <label><input type="radio" id="credit-name" name="creditPreference" value="by-name" /> By name</label>
+            <label><input type="radio" id="credit-anon" name="creditPreference" value="anonymously" /> As “a community member”</label>
+            <label><input type="radio" id="credit-none" name="creditPreference" value="none" /> Don’t credit me</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="submit-row">
+        <button type="submit" class="button" disabled>Submit story</button>
+        <span class="hint">Submissions open soon.</span>
+      </div>
+    </form>
+  </div>
+</Default>
+
+<script>
+  // Belt and braces: even if the button is re-enabled, never send anything yet.
+  document.getElementById('story-form')?.addEventListener('submit', (e) => e.preventDefault());
+</script>
+
+<style>
+  .notice-wrap { padding-top: var(--space-4); }
+  .submit-layout { display: grid; gap: var(--space-5); padding-block: var(--space-4) var(--space-6); }
+  @media (min-width: 64rem) {
+    .submit-layout { grid-template-columns: 18rem minmax(0, 42rem); gap: var(--space-6); }
+    .how { position: sticky; top: var(--space-4); align-self: start; }
+  }
+  .how h2 { margin: 0 0 var(--space-2); font-size: 1.25rem; font-weight: 700; }
+  .how h2:not(:first-child) { margin-top: var(--space-4); }
+  .how ol { margin: 0; padding-left: 1.25rem; display: grid; gap: var(--space-2); }
+  .how p { color: var(--color-muted); font-size: 0.95rem; }
+  .how .small { font-size: 0.8rem; font-style: italic; }
+
+  .story-form { display: grid; gap: var(--space-5); min-width: 0; }
+  fieldset { margin: 0; padding: 0; border: 0; display: grid; gap: var(--space-4); min-width: 0; }
+  legend { margin-bottom: var(--space-3); padding: 0; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; }
+  .field { display: grid; gap: var(--space-1); }
+  .field-row { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+  label, .label { font-weight: 500; line-height: 1.4; }
+  .sublabel { margin-top: var(--space-2); font-weight: 400; font-size: 0.95rem; color: var(--color-muted); }
+  .req { margin-left: 0.35em; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-rust-text); }
+  .hint { margin: 0; font-size: 0.9rem; color: var(--color-muted); }
+
+  input[type='text'], input[type='email'], textarea {
+    width: 100%; padding: 0.65rem 0.8rem; font: inherit; font-size: 1rem;
+    color: var(--color-text); background: #fff;
+    border: 1px solid #cfc6b8; border-radius: var(--radius);
+  }
+  textarea { resize: vertical; }
+  input:focus-visible, textarea:focus-visible { outline: 2px solid var(--color-rust); outline-offset: 1px; border-color: var(--color-rust); }
+
+  .choices { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); }
+  .choices label { display: inline-flex; align-items: center; gap: 0.4em; font-weight: 400; cursor: pointer; }
+  .choices input { accent-color: var(--color-green); width: 1.1rem; height: 1.1rem; }
+
+  .submit-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); }
+  .submit-row .button { border: 0; font: inherit; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; }
+  .submit-row .button:disabled { opacity: 0.5; cursor: not-allowed; }
+</style>

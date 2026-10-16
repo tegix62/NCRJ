@@ -1,0 +1,213 @@
+---
+// A single Archivist entry, laid out in the seven layers from docs/archivist-schema.md.
+import Default from '../../layouts/Default.astro';
+import PortableText from '../../components/PortableText.astro';
+import VerificationBadge from '../../components/VerificationBadge.astro';
+import EntryCard from '../../components/EntryCard.astro';
+import PlaceholderNotice from '../../components/PlaceholderNotice.astro';
+import { SITE } from '../../site';
+import {
+  getEntries, LAYERS, RECORD, ENTRY_TYPES, SOURCE_TYPES, VERIFICATION,
+  formatDate, placeAndPeriod, type ArchivistEntry,
+} from '../../lib/archivist';
+
+export async function getStaticPaths() {
+  const entries = await getEntries();
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: {
+      entry,
+      related: (entry.relatedSlugs ?? [])
+        .map((s) => entries.find((e) => e.slug === s))
+        .filter((e): e is ArchivistEntry => Boolean(e)),
+    },
+  }));
+}
+
+const { entry, related } = Astro.props;
+
+// Only layers with content appear, so partly researched entries read cleanly.
+const layers = LAYERS.filter((l) => entry[l.key]?.length);
+const toc = [...layers.map((l) => ({ id: l.key, label: l.heading })), { id: RECORD.key, label: RECORD.heading }, { id: 'cite', label: 'Cite this entry' }];
+
+const meta = placeAndPeriod(entry);
+const url = new URL(`/archivist/${entry.slug}/`, Astro.site).href;
+const citation = `“${entry.title}.” The Archivist, ${SITE.name}. Last reviewed ${formatDate(entry.lastReviewed)}. ${url}`;
+---
+
+<Default title={entry.title} description={entry.summary}>
+  <header class="entry-header">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/archivist/">The Archivist</a></nav>
+      <p class="eyebrow">{ENTRY_TYPES[entry.entryType]}</p>
+      <h1>{entry.title}</h1>
+      <p class="summary">{entry.summary}</p>
+      <div class="meta">
+        {meta && <span>{meta}</span>}
+        <a href="#verification" class="badge-link"><VerificationBadge status={entry.verificationStatus} /></a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container entry-layout">
+    <aside class="toc" aria-label="On this page">
+      <p class="eyebrow">On this page</p>
+      <ol>
+        {toc.map((t) => <li><a href={`#${t.id}`}>{t.label}</a></li>)}
+      </ol>
+    </aside>
+
+    <article class="entry-body">
+      {entry.isPlaceholder && <PlaceholderNotice message="This is a sample entry showing the layout. It does not describe a real story." />}
+
+      {entry.contentNote && (
+        <p class="content-note" role="note"><strong>Content note:</strong> {entry.contentNote}</p>
+      )}
+
+      {entry.centeredVoices && (
+        <div class="centered">
+          <p class="eyebrow">Centering</p>
+          <p>{entry.centeredVoices}</p>
+        </div>
+      )}
+
+      {layers.map((l) => (
+        <section id={l.key} class="layer">
+          <h2>{l.heading}</h2>
+          <p class="prompt">{l.prompt}</p>
+          <PortableText value={entry[l.key]!} />
+        </section>
+      ))}
+
+      <section id={RECORD.key} class="layer">
+        <h2>{RECORD.heading}</h2>
+        <p class="prompt">{RECORD.prompt}</p>
+        <ol class="sources">
+          {entry.sources.map((s) => (
+            <li>
+              <span class="source-type">{SOURCE_TYPES[s.sourceType]}</span>
+              <p class="citation">{s.citation}</p>
+              {(s.url || s.archivedUrl || s.accessNote) && (
+                <p class="source-links">
+                  {s.url && <a href={s.url} rel="noopener">View source</a>}
+                  {s.archivedUrl && <a href={s.archivedUrl} rel="noopener">Archived copy</a>}
+                  {s.accessNote && <span>{s.accessNote}</span>}
+                </p>
+              )}
+            </li>
+          ))}
+        </ol>
+
+        <div id="verification" class="verification">
+          <VerificationBadge status={entry.verificationStatus} />
+          <p>{VERIFICATION[entry.verificationStatus].description}</p>
+          {entry.verificationNote && <p class="verification-note">{entry.verificationNote}</p>}
+          <p class="reviewed">Last reviewed {formatDate(entry.lastReviewed)}</p>
+        </div>
+      </section>
+
+      <section id="cite" class="layer cite">
+        <h2>Cite this entry</h2>
+        <p class="citation-text" id="citation-text">{citation}</p>
+        <button type="button" class="copy" data-copy="citation-text">Copy citation</button>
+        <span class="copy-status" role="status" aria-live="polite"></span>
+      </section>
+
+      {entry.credit && <p class="credit">{entry.credit}</p>}
+    </article>
+  </div>
+
+  {related.length > 0 && (
+    <section class="related">
+      <div class="container">
+        <h2>Related stories</h2>
+        <div class="related-grid">
+          {related.map((e) => <EntryCard entry={e} />)}
+        </div>
+      </div>
+    </section>
+  )}
+</Default>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('button[data-copy]').forEach((btn) => {
+    const target = document.getElementById(btn.dataset.copy!)!;
+    const status = btn.nextElementSibling as HTMLElement;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(target.textContent!.trim());
+        status.textContent = 'Copied';
+      } catch {
+        // Clipboard blocked: select the text so it can be copied by hand.
+        const range = document.createRange();
+        range.selectNodeContents(target);
+        getSelection()?.removeAllRanges();
+        getSelection()?.addRange(range);
+        status.textContent = 'Selected. Press Ctrl+C or ⌘C to copy.';
+      }
+    });
+  });
+</script>
+
+<style>
+  .entry-header { background: var(--color-cream); border-bottom: 1px solid var(--color-border); padding-block: var(--space-4) var(--space-5); }
+  .crumbs { margin-bottom: var(--space-4); font-size: 0.9rem; }
+  .crumbs a { text-decoration: none; }
+  .crumbs a::before { content: '← '; }
+  .entry-header .eyebrow { margin: 0; }
+  h1 { margin: var(--space-2) 0 var(--space-3); max-width: 48rem; font-weight: 700; font-size: clamp(2rem, 5vw, 3.1rem); text-wrap: balance; }
+  .summary { max-width: 42rem; margin: 0 0 var(--space-3); font-size: 1.2rem; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); color: var(--color-muted); }
+  .badge-link { text-decoration: none; }
+
+  .entry-layout { display: grid; gap: var(--space-5); padding-block: var(--space-5) var(--space-6); }
+  @media (min-width: 64rem) {
+    .entry-layout { grid-template-columns: 14rem minmax(0, 44rem); gap: var(--space-6); }
+    .toc { position: sticky; top: var(--space-4); align-self: start; }
+  }
+  .toc .eyebrow { margin: 0 0 var(--space-2); font-size: 0.72rem; }
+  .toc ol { margin: 0; padding: 0; list-style: none; display: grid; gap: var(--space-1); border-left: 2px solid var(--color-border); }
+  .toc a { display: block; padding: 0.2rem 0 0.2rem var(--space-3); margin-left: -2px; border-left: 2px solid transparent; color: var(--color-muted); text-decoration: none; font-size: 0.95rem; }
+  .toc a:hover { color: var(--color-text); border-left-color: var(--color-rust); }
+  @media (max-width: 63.99rem) {
+    .toc ol { display: flex; flex-wrap: wrap; gap: var(--space-2); border: 0; }
+    .toc a { padding: 0.25rem 0.75rem; margin: 0; border: 1px solid var(--color-border); border-radius: 999px; font-size: 0.85rem; }
+  }
+
+  .entry-body { display: grid; gap: var(--space-5); min-width: 0; }
+  .content-note { margin: 0; padding: var(--space-3) var(--space-4); border-left: 4px solid var(--color-rust); background: var(--color-cream); }
+  .centered { padding: var(--space-4); background: var(--color-sand); border-radius: var(--radius); }
+  .centered .eyebrow { margin: 0 0 var(--space-1); font-size: 0.72rem; }
+  .centered p:last-child { margin: 0; font-family: var(--font-display); font-size: 1.15rem; }
+
+  .layer { scroll-margin-top: var(--space-4); }
+  .layer h2 { margin: 0; font-weight: 700; font-size: clamp(1.5rem, 3vw, 1.9rem); }
+  .prompt { margin: var(--space-1) 0 var(--space-3); color: var(--color-muted); font-style: italic; font-size: 0.95rem; }
+  .layer :global(p) { line-height: 1.7; }
+  .layer :global(blockquote) { margin: var(--space-4) 0; padding-left: var(--space-4); border-left: 3px solid var(--color-rust); font-family: var(--font-display); font-size: 1.15rem; }
+
+  .sources { margin: 0; padding-left: 1.5rem; display: grid; gap: var(--space-3); }
+  .sources li::marker { font-family: var(--font-display); color: var(--color-muted); }
+  .source-type { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-rust-text); }
+  .citation { margin: var(--space-1) 0; }
+  .source-links { margin: 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-3); font-size: 0.9rem; color: var(--color-muted); }
+
+  .verification { margin-top: var(--space-4); padding: var(--space-4); background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius); scroll-margin-top: var(--space-4); }
+  .verification p { margin: var(--space-2) 0 0; }
+  .verification-note { padding-top: var(--space-2); border-top: 1px solid var(--color-border); }
+  .reviewed { font-size: 0.9rem; color: var(--color-muted); }
+
+  .citation-text { margin: 0 0 var(--space-3); padding: var(--space-3) var(--space-4); background: var(--color-cream); border-radius: var(--radius); font-size: 0.95rem; overflow-wrap: anywhere; }
+  .copy {
+    padding: 0.5rem 1rem; border: 1px solid var(--color-green); border-radius: var(--radius);
+    background: var(--color-bg); color: var(--color-green); font: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+  }
+  .copy:hover { background: var(--color-green); color: #fff; }
+  .copy-status { margin-left: var(--space-3); font-size: 0.9rem; color: var(--color-muted); }
+
+  .credit { margin: 0; font-size: 0.95rem; color: var(--color-muted); }
+
+  .related { background: var(--color-sand); padding-block: var(--space-5) var(--space-6); }
+  .related h2 { margin: 0 0 var(--space-4); font-weight: 700; }
+  .related-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); }
+</style>

@@ -1,0 +1,17 @@
+---
+// Shown wherever sample content appears, so reviewers don't mistake it for real entries.
+interface Props {
+  message?: string;
+}
+const { message = 'These are sample entries showing the layout. Real, sourced stories will replace them.' } = Astro.props;
+---
+
+<p class="placeholder-notice" role="note"><strong>Prototype.</strong> {message}</p>
+
+<style>
+  .placeholder-notice {
+    margin: 0; padding: var(--space-3) var(--space-4);
+    background: #fff6e5; border: 1px dashed #c9a35c; border-radius: var(--radius);
+    font-size: 0.95rem; color: #5c4517;
+  }
+</style>

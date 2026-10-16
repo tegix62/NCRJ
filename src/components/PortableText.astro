@@ -1,0 +1,57 @@
+---
+// Minimal Portable Text renderer: paragraphs, h3, blockquote, bullet/number lists,
+// strong/em/link marks. Enough for Archivist layers without adding a dependency.
+import type { PortableText, PTBlock, PTSpan } from '../lib/archivist';
+
+interface Props {
+  value: PortableText;
+}
+
+const { value } = Astro.props;
+
+// Group consecutive list items into lists.
+type Group = { kind: 'block'; block: PTBlock } | { kind: 'list'; type: 'bullet' | 'number'; items: PTBlock[] };
+const groups: Group[] = [];
+for (const block of value) {
+  const last = groups.at(-1);
+  if (block.listItem) {
+    if (last?.kind === 'list' && last.type === block.listItem) last.items.push(block);
+    else groups.push({ kind: 'list', type: block.listItem, items: [block] });
+  } else {
+    groups.push({ kind: 'block', block });
+  }
+}
+
+const escape = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+function renderSpans(block: PTBlock) {
+  return block.children
+    .map((span: PTSpan) => {
+      let html = escape(span.text);
+      for (const mark of span.marks ?? []) {
+        if (mark === 'strong') html = `<strong>${html}</strong>`;
+        else if (mark === 'em') html = `<em>${html}</em>`;
+        else {
+          const link = block.markDefs?.find((d) => d._key === mark);
+          if (link) {
+            const external = /^https?:/.test(link.href);
+            html = `<a href="${escape(link.href)}"${external ? ' rel="noopener"' : ''}>${html}</a>`;
+          }
+        }
+      }
+      return html;
+    })
+    .join('');
+}
+---
+
+{groups.map((g) => {
+  if (g.kind === 'list') {
+    const items = g.items.map((b) => `<li>${renderSpans(b)}</li>`).join('');
+    return g.type === 'number' ? <ol set:html={items} /> : <ul set:html={items} />;
+  }
+  const html = renderSpans(g.block);
+  if (g.block.style === 'h3') return <h3 set:html={html} />;
+  if (g.block.style === 'blockquote') return <blockquote set:html={html} />;
+  return <p set:html={html} />;
+})}
