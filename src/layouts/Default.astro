@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { title, description = SITE.tagline } = Astro.props;
-const fullTitle = title ? `${title} · ${SITE.name}` : SITE.name;
+const fullTitle = title ? `${title} · ${SITE.shortName}` : SITE.shortName;
 ---
 
 <!doctype html>

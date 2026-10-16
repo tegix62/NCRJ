@@ -4,7 +4,7 @@ import { SITE, NAV } from '../site';
 
 <header class="site-header">
   <div class="container">
-    <a class="site-name" href="/">{SITE.name}</a>
+    <a class="site-name" href="/">{SITE.shortName}</a>
     <nav aria-label="Main">
       {NAV.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>

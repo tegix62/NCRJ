@@ -2,6 +2,8 @@
 // The name is provisional; change it here and it updates everywhere.
 export const SITE = {
   name: 'The National Collaborative for Reproductive Justice & Social Work',
+  // Used where space is tight: header, footer, browser tab.
+  shortName: 'The National Collaborative',
   tagline: 'Placeholder tagline until the copy is finalised.',
 };
 
