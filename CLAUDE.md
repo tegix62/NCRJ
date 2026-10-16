@@ -11,8 +11,27 @@ Subject matter is reproductive justice, which is politically polarizing. Tone sh
 ## Stack and hosting
 
 - Astro (static site), plain `.astro` components, plain CSS. No React/Vue/Tailwind.
-- Deployed by Cloudflare (Workers with static assets, config in `wrangler.jsonc`) from `main`. Every branch gets its own preview URL.
+- Deployed by Cloudflare (Workers with static assets, config in `wrangler.jsonc`).
 - `npm install`, `npm run dev` (localhost:4321), `npm run build` (output in `dist/`).
+
+## Links: live site vs. previews
+
+One collaborator is new to this. **Always give clickable links, and always say which kind of link it is.**
+
+| | URL | What it is |
+|---|---|---|
+| **Live site** | https://ncrj.rumeaudesign.workers.dev | The real site, built from `main`. This is what gets shared with others. |
+| **Preview** | `https://<branch>-ncrj.rumeaudesign.workers.dev` | A private test copy of one branch's changes. Safe to break; nobody else is looking at it. |
+
+How to explain it in plain terms: a **preview** is a draft you can click around in before it's published; the **live site** is the published version. Changes reach the live site only when a pull request is merged into `main`.
+
+Rules for sessions:
+
+- After pushing a branch, give the preview link for that branch, worked out from the branch name: lowercase, with anything that isn't a letter or number (slashes included) turned into `-`. Example: branch `claude/fix-header` → https://claude-fix-header-ncrj.rumeaudesign.workers.dev. If Cloudflare posted a preview URL on the pull request or in the GitHub check, use that one instead.
+- After a merge into `main`, give the live link: https://ncrj.rumeaudesign.workers.dev
+- Also link the pull request itself on GitHub (https://github.com/tegix62/NCRJ/pulls).
+- Builds take a minute or two after a push. Say so, so a "not found" right after pushing isn't alarming.
+- This environment may not be able to open `workers.dev` itself. If you can't load a link, say you couldn't check it and ask the user to click it, rather than claiming it works.
 
 The structure deliberately mirrors a Ghost theme so the design could be ported to Ghost later (see README for the file mapping). Sanity CMS is the likely future content backend if the Archivist grows. Don't add either yet.
 
@@ -39,7 +58,7 @@ The structure deliberately mirrors a Ghost theme so the design could be ported t
 
 ## Workflow
 
-- Work on a branch, open a pull request into `main`, check the Cloudflare preview link, then merge. Nothing goes straight to `main`.
+- Work on a branch, open a pull request into `main`, check the preview link, then merge. Nothing goes straight to `main`, because `main` is the live site.
 - Keep PRs focused on one thing. If two people are working at once, split by area (different pages/files) to avoid merge conflicts.
 - Run `npm run build` before pushing; it must succeed.
 
