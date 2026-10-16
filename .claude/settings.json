@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && git fetch --quiet origin main 2>/dev/null; echo \"Current branch: $(git branch --show-current)\"; echo 'Latest commits on main:'; git log --oneline -10 origin/main 2>/dev/null; echo; echo 'Latest project log (docs/log.md):'; sed -n '/^---$/,$p' docs/log.md 2>/dev/null | head -30"
+          }
+        ]
+      }
+    ]
+  }
+}
