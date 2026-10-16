@@ -1,0 +1,18 @@
+---
+import Default from '../../layouts/Default.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import { PILLARS } from '../../site';
+
+const section = PILLARS[1];
+---
+
+<Default title={section.title} description={section.description}>
+  <PageIntro eyebrow={section.subtitle} title={section.title} lede={section.description} />
+  <div class="content placeholder">
+    <p><em>Placeholder: curated teaching, research, and practice resources go here.</em></p>
+  </div>
+</Default>
+
+<style>
+  .placeholder { padding-block: var(--space-5); color: var(--color-muted); }
+</style>

@@ -1,0 +1,15 @@
+---
+// Placeholder mark approximating the mockup's leaf sprig. Swap for the real logo file when there is one.
+interface Props {
+  size?: number;
+}
+const { size = 56 } = Astro.props;
+---
+
+<svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true">
+  <path d="M30 58 C 31 44, 32 34, 36 22" stroke="#1f3b34" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  <path d="M34 30 C 26 26, 20 16, 22 4 C 32 10, 37 20, 34 30 Z" fill="#1f3b34" />
+  <path d="M36 34 C 42 24, 52 20, 62 22 C 56 32, 46 38, 36 34 Z" fill="#364638" />
+  <path d="M32 40 C 22 38, 12 30, 6 20 C 18 20, 28 28, 32 40 Z" fill="#7a5a46" />
+  <path d="M31 50 C 38 46, 48 46, 56 50 C 48 58, 38 58, 31 50 Z" fill="#c47555" />
+</svg>

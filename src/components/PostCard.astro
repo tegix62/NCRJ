@@ -12,7 +12,7 @@ const primaryTag = post.data.tags[0];
 
 <article class="post-card">
   <a class="eyebrow" href={`/category/${primaryTag}/`}>{CATEGORIES[primaryTag]?.name ?? primaryTag}</a>
-  <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+  <h3><a href={`/news/${post.id}/`}>{post.data.title}</a></h3>
   <p>{post.data.excerpt}</p>
 </article>
 

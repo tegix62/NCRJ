@@ -1,11 +1,17 @@
 ---
 // Maps to Ghost's page.hbs (a static page).
 import Default from '../layouts/Default.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { SITE } from '../site';
 ---
 
 <Default title="About">
-  <article class="content">
-    <h1>About</h1>
-    <p>Placeholder for the mission and who's behind the site.</p>
-  </article>
+  <PageIntro eyebrow="About" title="About the Collaborative" lede={SITE.description} />
+  <div class="content placeholder">
+    <p><em>Placeholder: mission, history, and the people behind the Collaborative.</em></p>
+  </div>
 </Default>
+
+<style>
+  .placeholder { padding-block: var(--space-5); color: var(--color-muted); }
+</style>

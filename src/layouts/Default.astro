@@ -10,7 +10,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = SITE.tagline } = Astro.props;
+const { title, description = SITE.description } = Astro.props;
 const fullTitle = title ? `${title} · ${SITE.shortName}` : SITE.shortName;
 ---
 

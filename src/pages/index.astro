@@ -1,65 +1,158 @@
 ---
-// Landing page. Maps to Ghost's home.hbs.
-// Section content is placeholder until the mockup copy is trimmed and dropped in.
+// Landing page, built from the approved mockup. Maps to Ghost's home.hbs.
+// Photography is placeholder (tinted panels) until real, licensed images are chosen.
 import Default from '../layouts/Default.astro';
-import PostGrid from '../components/PostGrid.astro';
-import { SITE, CATEGORIES } from '../site';
-import { getPublishedPosts } from '../lib/posts';
-
-const latest = (await getPublishedPosts()).slice(0, 3);
+import Icon from '../components/Icon.astro';
+import { SITE, PILLARS } from '../site';
 ---
 
 <Default>
   <section class="hero">
-    <div class="container">
-      <h1>{SITE.name}</h1>
-      <p class="lede">{SITE.tagline}</p>
-      <a class="button" href="/blog/">Read the articles</a>
+    <div class="hero-inner container">
+      <p class="values">
+        {SITE.values.map((v, i) => (<>{i > 0 && <span aria-hidden="true">•</span>}<span>{v}</span></>))}
+      </p>
+      <h1>
+        Reproductive Justice
+        <span class="accent">Informed by History.</span>
+        <span class="accent">Grounded in Community.</span>
+        <span class="accent">Building What’s Next.</span>
+      </h1>
+      <p class="intro">
+        The National Collaborative for Reproductive Justice Innovation and Political Education in Social Work
+        brings together scholars, practitioners, students, and community members to advance reproductive justice
+        through research, <strong>education</strong>, <strong>organizing</strong>, and collective action.
+      </p>
+      <a class="button" href="/about/">About the Collaborative <Icon name="arrow-right" size={16} /></a>
+    </div>
+
+    <div class="brush" aria-hidden="true">
+      <svg viewBox="0 0 400 140" preserveAspectRatio="none">
+        <path
+          d="M14 40 L60 30 L120 24 L190 14 L260 10 L330 4 L398 0 L400 112 L340 118 L270 124 L200 128 L130 134 L70 138 L22 140 L30 118 L8 104 L26 86 L4 70 L22 56 Z"
+          fill="var(--color-brush)"
+        />
+      </svg>
+      <span>Many Stories.<br />Collective Power.</span>
     </div>
   </section>
 
-  <section class="container section">
-    <h2>Explore by topic</h2>
-    <ul class="categories">
-      {Object.entries(CATEGORIES).map(([slug, cat]) => (
-        <li>
-          <a href={`/category/${slug}/`}>
-            <strong>{cat.name}</strong>
-            <span>{cat.description}</span>
-          </a>
-        </li>
+  <section class="pillars" aria-label="What we do">
+    <div class="container pillar-grid">
+      {PILLARS.map((p) => (
+        <article class="pillar">
+          <div class="pillar-icon"><Icon name={p.icon} size={36} strokeWidth={1.5} /></div>
+          <div>
+            <h2><a href={p.href}>{p.title}</a></h2>
+            <p class="pillar-subtitle">{p.subtitle}</p>
+            <p class="pillar-desc">{p.description}</p>
+            <a class="text-link" href={p.href} tabindex="-1" aria-hidden="true">{p.cta} <Icon name="arrow-right" size={16} /></a>
+          </div>
+        </article>
       ))}
-    </ul>
+    </div>
   </section>
 
-  <section class="container section">
-    <h2>Latest</h2>
-    <PostGrid posts={latest} />
-  </section>
-
-  <section class="container section cta">
-    <h2>Write with us</h2>
-    <p>Placeholder copy inviting new contributors.</p>
-    <a class="button" href="/write-for-us/">Learn how to contribute</a>
+  <section class="featured">
+    <div class="container">
+      <p class="eyebrow">Featured sections</p>
+      <h2 class="featured-title">Explore, Learn, Contribute, and Take Action</h2>
+      <div class="card-grid">
+        {PILLARS.map((p) => (
+          <a class={`card tone-${p.tone}`} href={p.href}>
+            <span class="card-text">
+              <strong>{p.title}</strong>
+              <span>{p.tagline}</span>
+            </span>
+            <span class="card-arrow"><Icon name="arrow-right" size={20} /></span>
+          </a>
+        ))}
+      </div>
+    </div>
   </section>
 </Default>
 
 <style>
-  .hero { padding-block: var(--space-6); border-bottom: 1px solid var(--color-border); }
-  .hero h1 { font-size: clamp(2.25rem, 6vw, 3.5rem); margin: 0 0 var(--space-3); }
-  .lede { font-size: 1.3rem; color: var(--color-muted); max-width: 36rem; }
-  .section { padding-top: var(--space-6); }
-  .categories {
-    list-style: none; padding: 0; margin: 0;
-    display: grid; gap: var(--space-3);
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  /* Hero */
+  .hero {
+    position: relative; overflow: hidden; color: #fff;
+    /* Placeholder for the hero photograph: swap in
+       background-image: linear-gradient(...), url('/images/hero.jpg'); */
+    background:
+      linear-gradient(90deg, var(--color-hero) 0%, rgba(15, 16, 13, 0.85) 45%, rgba(15, 16, 13, 0.2) 100%),
+      radial-gradient(ellipse at 75% 40%, #8a6a3a 0%, #4a3a22 35%, #1d1a12 70%);
   }
-  .categories a {
-    display: flex; flex-direction: column; gap: var(--space-1);
-    padding: var(--space-4); height: 100%;
-    background: var(--color-surface); border: 1px solid var(--color-border);
-    border-radius: var(--radius); color: var(--color-text); text-decoration: none;
+  .hero-inner { position: relative; z-index: 1; padding-block: var(--space-5) var(--space-6); max-width: 88rem; }
+  .values {
+    display: flex; flex-wrap: wrap; gap: 0.5em 1.2em; margin: 0 0 var(--space-4);
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase;
   }
-  .categories span { color: var(--color-muted); font-size: 1rem; }
-  .cta p { color: var(--color-muted); }
+  .hero h1 {
+    margin: 0 0 var(--space-4);
+    font-weight: 700; font-size: clamp(2rem, 3.6vw, 3.1rem); line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .hero h1 .accent { display: block; color: var(--color-rust); }
+  @media (min-width: 48rem) { .hero h1 .accent { white-space: nowrap; } }
+  .intro { max-width: 32rem; margin: 0 0 var(--space-4); font-size: 1.05rem; color: #f3efe9; }
+  .intro strong { color: #fff; }
+
+  .brush {
+    position: relative; margin: 0 0 var(--space-5) auto; width: min(90%, 26rem);
+    transform: rotate(-10deg);
+  }
+  .brush svg { display: block; width: 100%; height: 9rem; }
+  .brush span {
+    position: absolute; inset: 0; display: grid; place-content: center; text-align: center;
+    font-family: var(--font-script); font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.3; color: #fff;
+  }
+  @media (min-width: 64rem) {
+    .hero-inner { padding-block: var(--space-5) var(--space-5); }
+    .brush { position: absolute; right: -1rem; bottom: 2.5rem; margin: 0; width: 28rem; }
+  }
+
+  /* Pillars */
+  .pillars { background: var(--color-cream); padding-block: var(--space-4); }
+  .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+  .pillar { display: flex; gap: var(--space-4); padding: var(--space-3) 0; }
+  @media (min-width: 40rem) { .pillar { padding-inline: var(--space-4); } }
+  @media (max-width: 30rem) {
+    .values { font-size: 0.7rem; letter-spacing: 0.22em; gap: 0.5em 0.8em; }
+    .pillar-icon { width: 4rem; height: 4rem; }
+  }
+  @media (min-width: 72rem) {
+    .pillar + .pillar { border-left: 1px solid var(--color-border); }
+    .pillar:first-child { padding-left: 0; }
+  }
+  .pillar-icon {
+    flex: none; width: 5rem; height: 5rem; border-radius: 50%;
+    display: grid; place-items: center; background: var(--color-icon-bg); color: var(--color-text);
+  }
+  .pillar h2 { margin: 0; font-size: 1.6rem; }
+  .pillar h2 a { color: inherit; text-decoration: none; }
+  .pillar-subtitle { margin: var(--space-1) 0 var(--space-2); line-height: 1.35; }
+  .pillar-desc { margin: 0 0 var(--space-3); color: var(--color-muted); font-size: 0.95rem; line-height: 1.4; }
+
+  /* Featured cards */
+  .featured { background: var(--color-sand); padding-block: var(--space-5) var(--space-6); }
+  .featured .eyebrow { margin: 0; color: #564136; }
+  .featured-title { margin: var(--space-2) 0 var(--space-4); font-weight: 700; font-size: clamp(1.75rem, 3.5vw, 2.6rem); }
+  .card-grid { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); }
+  .card {
+    position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: var(--space-3);
+    min-height: 9rem; padding: var(--space-4); border-radius: var(--radius);
+    color: #fff; text-decoration: none; overflow: hidden;
+    /* Placeholder for each section's photograph */
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0) 70%), var(--tone);
+  }
+  .tone-plum { --tone: var(--tone-plum); }
+  .tone-green { --tone: var(--tone-green); }
+  .tone-rust { --tone: var(--tone-rust); }
+  .tone-teal { --tone: var(--tone-teal); }
+  .card-text { display: flex; flex-direction: column; }
+  .card-text strong { font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; line-height: 1.2; }
+  .card-arrow {
+    flex: none; width: 2.5rem; height: 2.5rem; border: 1.5px solid #fff; border-radius: 50%;
+    display: grid; place-items: center; transition: background 0.15s;
+  }
+  .card:hover .card-arrow { background: rgba(255, 255, 255, 0.15); }
 </style>

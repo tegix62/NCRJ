@@ -1,0 +1,18 @@
+---
+import Default from '../../layouts/Default.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import { PILLARS } from '../../site';
+
+const section = PILLARS[3];
+---
+
+<Default title={section.title} description={section.description}>
+  <PageIntro eyebrow={section.subtitle} title={section.title} lede={section.description} />
+  <div class="content placeholder">
+    <p><em>Placeholder: ways to contribute, including writing for the Collaborative and submitting to the Archivist.</em></p>
+  </div>
+</Default>
+
+<style>
+  .placeholder { padding-block: var(--space-5); color: var(--color-muted); }
+</style>

@@ -1,17 +1,35 @@
 ---
-import { SITE } from '../site';
+import Logo from './Logo.astro';
+import { SITE, NAV, CONNECT } from '../site';
 ---
 
 <footer class="site-footer">
-  <div class="container">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <Logo size={44} />
+      <p>{SITE.name}</p>
+    </div>
+    <nav aria-label="Footer">
+      <ul>
+        {[...NAV.slice(1), CONNECT].map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+  <div class="container legal">
     <p>© {new Date().getFullYear()} {SITE.shortName}</p>
   </div>
 </footer>
 
 <style>
-  .site-footer {
-    margin-top: var(--space-6); padding-block: var(--space-4);
-    border-top: 1px solid var(--color-border);
-    font-family: var(--font-ui); font-size: 0.9rem; color: var(--color-muted);
-  }
+  .site-footer { background: var(--color-green); color: #e8e4dc; padding-block: var(--space-5) var(--space-3); font-size: 0.95rem; }
+  .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-4); }
+  .footer-brand { display: flex; gap: var(--space-3); align-items: flex-start; max-width: 26rem; }
+  .footer-brand p { margin: 0; font-family: var(--font-display); line-height: 1.4; }
+  .footer-brand :global(svg) { flex: none; background: var(--color-cream); border-radius: 50%; padding: 4px; }
+  ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: var(--space-5); }
+  li { margin-bottom: var(--space-2); }
+  a { color: #e8e4dc; text-decoration: none; }
+  a:hover { color: #fff; text-decoration: underline; }
+  .legal { margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid rgba(255, 255, 255, 0.15); font-size: 0.85rem; }
+  .legal p { margin: 0; }
 </style>
