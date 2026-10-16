@@ -1,6 +1,7 @@
 // Site-wide settings. In Ghost these become @site / custom theme settings.
+// The name is provisional; change it here and it updates everywhere.
 export const SITE = {
-  name: 'Site Name',
+  name: 'The National Collaborative for Reproductive Justice & Social Work',
   tagline: 'Placeholder tagline until the copy is finalised.',
 };
 
