@@ -13,6 +13,13 @@ Format:
 
 ---
 
+## 2026-10-16 · Chris · Archivist schema
+- Added `docs/archivist-schema.md`: the fields for an Archivist entry (the seven layers, sources, place and time, verification), the private submission record, and matching Google Sheet columns.
+- Decision: the schema doc is the contract between Sanity and the site pages. Sanity work and page work both build against it; changes go through the doc first.
+- Important for the Sanity setup: make the dataset private, and keep contributor contact details out of entry documents (see the warning at the top of the doc).
+- CLAUDE.md updated: Sanity is now in progress, not "don't add yet".
+- Next: Archivist entry and collection pages built against this schema with placeholder data.
+
 ## 2026-10-16 · Chris · Live site, previews, Cloudflare fix
 - The site is live at https://ncrj.rumeaudesign.workers.dev. It updates automatically a minute or two after anything merges into `main`.
 - Every branch also gets its own preview link, e.g. https://<branch>-ncrj.rumeaudesign.workers.dev. Previews are drafts for checking changes; the live site is what we share.

@@ -33,7 +33,7 @@ Rules for sessions:
 - Builds take a minute or two after a push. Say so, so a "not found" right after pushing isn't alarming.
 - This environment may not be able to open `workers.dev` itself. If you can't load a link, say you couldn't check it and ask the user to click it, rather than claiming it works.
 
-The structure deliberately mirrors a Ghost theme so the design could be ported to Ghost later (see README for the file mapping). Sanity CMS is the likely future content backend if the Archivist grows. Don't add either yet.
+The structure deliberately mirrors a Ghost theme so the design could be ported to Ghost later (see README for the file mapping). Sanity is being added as the content backend (in progress). Ghost is not planned; don't add it.
 
 ## Where things live
 
@@ -92,4 +92,4 @@ Plus: location, time period, and a public verification status (documented / part
 
 The submission form will ask for the story, why it belongs, its RJ connection, missing perspectives, place and time, sources, the contributor's connection to it, ethical/consent concerns, and optional contact info. Collect only what's needed; contact info stays optional.
 
-The team is collecting initial stories in a Google Sheet. If its columns match the entry structure above, it can feed the site directly (CSV export → Astro content).
+The full field list, the submission form fields, and the Google Sheet columns are in **`docs/archivist-schema.md`**. It is the contract between the Sanity setup and the site pages: change it there first, by pull request, before changing either side. It also explains why the Sanity dataset must be private.
