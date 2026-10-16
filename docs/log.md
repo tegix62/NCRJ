@@ -13,6 +13,11 @@ Format:
 
 ---
 
+## 2026-10-16 · Chris · Scope guardrails
+- Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
+- Decision: the site is a presentation mockup. The goal is a presentable, coherent site with clearly labelled placeholders, not working backends or features that need a budget and a team. Requests beyond that get written up (in `docs/future-scope.md`) instead of built, until the team agrees.
+- The Archivist pages are complete as a demonstration. Next: simple, credible versions of the other menu sections.
+
 ## 2026-10-16 · Chris · Archivist pages
 - New pages: the Archivist landing page (`/archivist/`), an entry page for each story (`/archivist/<slug>/`), and the story submission form (`/archivist/submit/`).
 - Entries currently come from clearly labelled sample data in `src/data/archivist-placeholders.ts`. All pages get entries through `getEntries()` in `src/lib/archivist.ts`, so connecting Sanity means changing that one function to query Sanity for the fields in `docs/archivist-schema.md`.
