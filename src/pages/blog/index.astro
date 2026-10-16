@@ -1,0 +1,15 @@
+---
+// Maps to Ghost's index.hbs (the post list).
+import Default from '../../layouts/Default.astro';
+import PostGrid from '../../components/PostGrid.astro';
+import { getPublishedPosts } from '../../lib/posts';
+
+const posts = await getPublishedPosts();
+---
+
+<Default title="Articles">
+  <div class="container">
+    <h1>Articles</h1>
+    <PostGrid posts={posts} />
+  </div>
+</Default>

@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { CATEGORIES } from '../site';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const primaryTag = post.data.tags[0];
+---
+
+<article class="post-card">
+  <a class="eyebrow" href={`/category/${primaryTag}/`}>{CATEGORIES[primaryTag]?.name ?? primaryTag}</a>
+  <h3><a href={`/blog/${post.id}/`}>{post.data.title}</a></h3>
+  <p>{post.data.excerpt}</p>
+</article>
+
+<style>
+  .post-card {
+    padding: var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+  .eyebrow { text-decoration: none; }
+  h3 { margin: var(--space-2) 0; }
+  h3 a { color: var(--color-text); text-decoration: none; }
+  p { margin: 0; color: var(--color-muted); }
+</style>

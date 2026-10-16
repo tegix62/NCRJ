@@ -1,0 +1,42 @@
+---
+// Maps to Ghost's post.hbs.
+import { getEntry, render } from 'astro:content';
+import Default from '../../layouts/Default.astro';
+import { CATEGORIES } from '../../site';
+import { getPublishedPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const author = await getEntry(post.data.author);
+const { Content } = await render(post);
+const date = post.data.publishedAt.toLocaleDateString('en-US', { dateStyle: 'long' });
+---
+
+<Default title={post.data.title} description={post.data.excerpt}>
+  <article class="content">
+    <header>
+      <p class="eyebrow">
+        {post.data.tags.map((tag, i) => (
+          <>{i > 0 && ' · '}<a href={`/category/${tag}/`}>{CATEGORIES[tag]?.name ?? tag}</a></>
+        ))}
+      </p>
+      <h1>{post.data.title}</h1>
+      <p class="byline">
+        By <a href={`/author/${author.id}/`}>{author.data.name}</a> · <time datetime={post.data.publishedAt.toISOString()}>{date}</time>
+      </p>
+    </header>
+    <div class="post-body">
+      <Content />
+    </div>
+  </article>
+</Default>
+
+<style>
+  h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin-block: var(--space-2); }
+  .byline { font-family: var(--font-ui); color: var(--color-muted); font-size: 0.95rem; }
+  .post-body { margin-top: var(--space-5); }
+</style>

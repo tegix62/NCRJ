@@ -1,0 +1,65 @@
+---
+// Landing page. Maps to Ghost's home.hbs.
+// Section content is placeholder until the mockup copy is trimmed and dropped in.
+import Default from '../layouts/Default.astro';
+import PostGrid from '../components/PostGrid.astro';
+import { SITE, CATEGORIES } from '../site';
+import { getPublishedPosts } from '../lib/posts';
+
+const latest = (await getPublishedPosts()).slice(0, 3);
+---
+
+<Default>
+  <section class="hero">
+    <div class="container">
+      <h1>{SITE.name}</h1>
+      <p class="lede">{SITE.tagline}</p>
+      <a class="button" href="/blog/">Read the articles</a>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h2>Explore by topic</h2>
+    <ul class="categories">
+      {Object.entries(CATEGORIES).map(([slug, cat]) => (
+        <li>
+          <a href={`/category/${slug}/`}>
+            <strong>{cat.name}</strong>
+            <span>{cat.description}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="container section">
+    <h2>Latest</h2>
+    <PostGrid posts={latest} />
+  </section>
+
+  <section class="container section cta">
+    <h2>Write with us</h2>
+    <p>Placeholder copy inviting new contributors.</p>
+    <a class="button" href="/write-for-us/">Learn how to contribute</a>
+  </section>
+</Default>
+
+<style>
+  .hero { padding-block: var(--space-6); border-bottom: 1px solid var(--color-border); }
+  .hero h1 { font-size: clamp(2.25rem, 6vw, 3.5rem); margin: 0 0 var(--space-3); }
+  .lede { font-size: 1.3rem; color: var(--color-muted); max-width: 36rem; }
+  .section { padding-top: var(--space-6); }
+  .categories {
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: var(--space-3);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+  }
+  .categories a {
+    display: flex; flex-direction: column; gap: var(--space-1);
+    padding: var(--space-4); height: 100%;
+    background: var(--color-surface); border: 1px solid var(--color-border);
+    border-radius: var(--radius); color: var(--color-text); text-decoration: none;
+  }
+  .categories span { color: var(--color-muted); font-size: 1rem; }
+  .cta p { color: var(--color-muted); }
+</style>

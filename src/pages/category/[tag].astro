@@ -1,0 +1,26 @@
+---
+// Maps to Ghost's tag.hbs.
+import Default from '../../layouts/Default.astro';
+import PostGrid from '../../components/PostGrid.astro';
+import { CATEGORIES } from '../../site';
+import { getPublishedPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  return Object.entries(CATEGORIES).map(([slug, category]) => ({
+    params: { tag: slug },
+    props: { category, posts: posts.filter((p) => p.data.tags.includes(slug)) },
+  }));
+}
+
+const { category, posts } = Astro.props;
+---
+
+<Default title={category.name} description={category.description}>
+  <div class="container">
+    <p class="eyebrow">Topic</p>
+    <h1>{category.name}</h1>
+    <p>{category.description}</p>
+    {posts.length ? <PostGrid posts={posts} /> : <p>No articles yet.</p>}
+  </div>
+</Default>

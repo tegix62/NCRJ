@@ -1,0 +1,26 @@
+---
+// Maps to Ghost's author.hbs.
+import { getCollection } from 'astro:content';
+import Default from '../../layouts/Default.astro';
+import PostGrid from '../../components/PostGrid.astro';
+import { getPublishedPosts } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const [authors, posts] = await Promise.all([getCollection('authors'), getPublishedPosts()]);
+  return authors.map((author) => ({
+    params: { slug: author.id },
+    props: { author, posts: posts.filter((p) => p.data.author.id === author.id) },
+  }));
+}
+
+const { author, posts } = Astro.props;
+---
+
+<Default title={author.data.name}>
+  <div class="container">
+    <p class="eyebrow">Contributor</p>
+    <h1>{author.data.name}</h1>
+    {author.data.bio && <p>{author.data.bio}</p>}
+    <PostGrid posts={posts} />
+  </div>
+</Default>
