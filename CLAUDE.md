@@ -8,6 +8,29 @@ Prototype website for the relaunch of the **National Collaborative for Reproduct
 
 Subject matter is reproductive justice, which is politically polarizing. Tone should be friendly but authoritative.
 
+## Scope: this is a mockup
+
+**Read this before building anything.** The site is a presentation mockup for the Collaborative's leadership, not the finished product. The organization has not committed a budget, staff, or a timeline for building the full vision, and the person maintaining this site should not end up responsible for features nobody has funded.
+
+The goal is a site that is **presentable and coherent**: every page looks intentional, nothing is broken, and placeholders are clearly labelled as placeholders. It should show the vision clearly enough that leadership can see what a full build would involve.
+
+**In scope:**
+
+- Page layouts and visual design that follow the approved mockup
+- Basic, credible versions of every page in the menu
+- Clearly labelled placeholder content and sample entries
+- Copy edits, accessibility, and phone-width fixes
+- Small fixes that keep the site working and deploying
+
+**Out of scope unless the team explicitly decides otherwise:**
+
+- Working backends: live forms, submission handling, databases, user accounts or logins, payments, email or newsletter integrations
+- Expanding content management. Sanity Studio exists (`studio/`) to show what editing could look like; connecting it to the live site or extending it further is a decision for the team, not something to do because a request mentions it
+- Search, filtering, maps, analytics, or other features that need ongoing upkeep
+- More depth on sections already at demo level (the Archivist pages are complete as a demonstration)
+
+**When a request goes beyond this**, don't build it. Say plainly what it would take (for example: "a working submission form needs a place to store data securely, a privacy policy, and someone to review submissions"), and offer to add it to `docs/future-scope.md`, a running list of what a full build would need, written in plain language for the Collaborative's leadership. Build only after the person confirms the team has agreed to it.
+
 ## Stack and hosting
 
 - Astro (static site), plain `.astro` components, plain CSS. No React/Vue/Tailwind.
@@ -78,7 +101,7 @@ Done: homepage matching the mockup, header with mobile menu, footer, intro pages
 
 Placeholders: photos, logo (`src/components/Logo.astro` approximates the mockup's leaf mark), all inner page copy.
 
-Next priority is **The Archivist**, the centerpiece of the relaunch: a public, citable archive of reproductive justice stories, seeded by the Collaborative and grown through community submissions that are reviewed before publishing. Each entry is planned to have these sections:
+Next priority: bring every menu section up to the same basic, presentable level (see Scope above). The Archivist is the centerpiece of the relaunch and its demo pages are complete; it is planned as a public, citable archive of reproductive justice stories, seeded by the Collaborative and grown through community submissions that are reviewed before publishing. Each entry is planned to have these sections:
 
 1. The Story: what happened
 2. The Single Story: the dominant or simplified version
