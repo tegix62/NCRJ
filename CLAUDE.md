@@ -11,7 +11,7 @@ Subject matter is reproductive justice, which is politically polarizing. Tone sh
 ## Stack and hosting
 
 - Astro (static site), plain `.astro` components, plain CSS. No React/Vue/Tailwind.
-- Deployed by Cloudflare Pages from `main` at https://ncrj.pages.dev. Every branch gets its own preview URL.
+- Deployed by Cloudflare (Workers with static assets, config in `wrangler.jsonc`) from `main`. Every branch gets its own preview URL.
 - `npm install`, `npm run dev` (localhost:4321), `npm run build` (output in `dist/`).
 
 The structure deliberately mirrors a Ghost theme so the design could be ported to Ghost later (see README for the file mapping). Sanity CMS is the likely future content backend if the Archivist grows. Don't add either yet.
