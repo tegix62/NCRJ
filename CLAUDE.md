@@ -43,6 +43,16 @@ The structure deliberately mirrors a Ghost theme so the design could be ported t
 - Keep PRs focused on one thing. If two people are working at once, split by area (different pages/files) to avoid merge conflicts.
 - Run `npm run build` before pushing; it must succeed.
 
+## Keeping sessions in sync
+
+Both people work mostly through separate Claude chats, which can't see each other. The repo is the only shared memory, so Claude keeps it current **without being asked**:
+
+- **At the start of a session:** a hook prints the latest commits on `main` and the top of `docs/log.md`. Briefly tell the person, in plain language, what's changed since their last session (especially the other person's work). Ask who you're working with if it isn't clear; commits are all authored by "Claude", so names only appear in the log.
+- **Before editing:** run `git fetch origin main` and make sure your branch includes the latest `main` (rebase or merge it in). If the other person's open branch touches the same files, say so before starting.
+- **After each chunk of work, before pushing:** add an entry to the top of `docs/log.md` (date, who, what changed, decisions, what's unfinished). If the "Current state and next steps" section below is now out of date, update it in the same commit. If a decision is a lasting rule, add it to Rules.
+- **Long sessions:** fetch `main` again before pushing; the other person may have merged something.
+- **Merge conflicts in `docs/log.md` or this file:** keep both people's entries, in date order. Never drop someone else's notes.
+
 ## Current state and next steps
 
 Done: homepage matching the mockup, header with mobile menu, footer, intro pages for every menu item, News & Events with sample posts.
