@@ -11,7 +11,7 @@ export const VIDEOS: VideoResource[] = [
     youtubeId: 'lMP4TxKmoE8',
   },
   {
-    title: 'The 5th Principle of Reproductive Justice: A conversation with Loretta Ross',
+    title: 'The 5th Principle of Reproductive Justice: A Conversation with Loretta Ross',
     youtubeId: 'Nqa3gmjMVMQ',
   },
 ];

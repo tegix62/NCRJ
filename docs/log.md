@@ -14,7 +14,7 @@ Format:
 ---
 
 ## 2026-10-17 · Marissa · Resource Bank: first videos
-- The Resource Bank page now has a "Videos" section with two videos: "Violence Against Black Women Is Structural: From Adriana Smith to Cerina Fairfax" (YouTube `lMP4TxKmoE8`) and "The 5th Principle of Reproductive Justice: A conversation with Loretta Ross" (YouTube `Nqa3gmjMVMQ`).
+- The Resource Bank page now has a "Videos" section with two videos: "Violence Against Black Women Is Structural: From Adriana Smith to Cerina Fairfax" (YouTube `lMP4TxKmoE8`) and "The 5th Principle of Reproductive Justice: A Conversation with Loretta Ross" (YouTube `Nqa3gmjMVMQ`).
 - Videos are listed in `src/data/resources.ts`; add more by copying an entry. They use `src/components/VideoEmbed.astro`.
 - Privacy decision: nothing loads from YouTube until a visitor presses play, and then it uses youtube-nocookie.com. Without JavaScript, the "Watch on YouTube" link still works.
 - The rest of the page still has a labelled placeholder for other resources.
