@@ -68,6 +68,15 @@ The structure deliberately mirrors a Ghost theme so the design could be ported t
 | Homepage | `src/pages/index.astro` |
 | Section pages | `src/pages/{about,archivist,resources,activist-school,get-involved,connect}` |
 | News & Events posts | `src/content/posts/*.md` (tags = categories, authors in `src/content/authors/`) |
+| Sanity Studio (editing dashboard) | `studio/` (own `package.json`; the Archivist entry form is `studio/schemaTypes/archivistEntry.ts`) |
+
+## Sanity
+
+- Project ID `uzdi90po`, dataset `production`, which is **private** (as `docs/archivist-schema.md` requires). The ID is a public identifier, not a secret. Any API tokens go in `.env` files or Cloudflare's build settings, never in the repo.
+- `studio/` is a separate app from the site: `cd studio && npm install && npm run dev` (http://localhost:3333). It is not part of the Cloudflare build.
+- The Studio's forms (`studio/schemaTypes/`) follow `docs/archivist-schema.md` field for field, including internal fields like consent notes. Change the doc first, then the Studio.
+- The `submission` document from the schema doc is deliberately not in the Studio: submissions belong in a separate private store, which is a team decision (see Scope).
+- The Astro site does not read from Sanity. Connecting it would mean a read token at build time and changing `getEntries()` in `src/lib/archivist.ts`; per Scope, that's a team decision.
 
 ## Rules
 

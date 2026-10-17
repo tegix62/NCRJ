@@ -13,6 +13,13 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · Sanity Studio for the Archivist
+- Created a Sanity project (ID `uzdi90po`, dataset `production`, set to **private**) and added the Studio, the editing dashboard, in `studio/`.
+- The Studio's "Archivist entry" and "Theme" forms match `docs/archivist-schema.md` field for field, including the internal fields (consent notes, editor notes, editorial status), which are grouped under an "Internal" tab.
+- Not included: the `submission` document. Submissions need their own private store, which is a team decision.
+- The site still uses the placeholder entries; it does not read from Sanity.
+- Next up: publish the Studio online (needs a Sanity deploy token in the environment's settings) so both of us can try the form in a browser.
+
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
 - Decision: the site is a presentation mockup. The goal is a presentable, coherent site with clearly labelled placeholders, not working backends or features that need a budget and a team. Requests beyond that get written up (in `docs/future-scope.md`) instead of built, until the team agrees.
