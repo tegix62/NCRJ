@@ -3,7 +3,7 @@
 import { getEntry, render } from 'astro:content';
 import Default from '../../layouts/Default.astro';
 import { CATEGORIES } from '../../site';
-import { getPublishedPosts } from '../../lib/posts';
+import { getPublishedPosts, formatEventTime } from '../../lib/posts';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -11,32 +11,67 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const author = await getEntry(post.data.author);
+const { title, subtitle, excerpt, tags, publishedAt, featureImage, featureImageAlt, event } = post.data;
+const author = post.data.author ? await getEntry(post.data.author) : undefined;
 const { Content } = await render(post);
-const date = post.data.publishedAt.toLocaleDateString('en-US', { dateStyle: 'long' });
+const date = publishedAt.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' });
 ---
 
-<Default title={post.data.title} description={post.data.excerpt}>
+<Default title={title} description={excerpt}>
   <article class="content">
     <header>
       <p class="eyebrow">
-        {post.data.tags.map((tag, i) => (
+        {tags.map((tag, i) => (
           <>{i > 0 && ' · '}<a href={`/category/${tag}/`}>{CATEGORIES[tag]?.name ?? tag}</a></>
         ))}
       </p>
-      <h1>{post.data.title}</h1>
-      <p class="byline">
-        By <a href={`/author/${author.id}/`}>{author.data.name}</a> · <time datetime={post.data.publishedAt.toISOString()}>{date}</time>
-      </p>
+      <h1>{title}</h1>
+      {subtitle && <p class="subtitle">{subtitle}</p>}
+      {!event && (
+        <p class="byline">
+          {author && <>By <a href={`/author/${author.id}/`}>{author.data.name}</a> · </>}
+          <time datetime={publishedAt.toISOString()}>{date}</time>
+        </p>
+      )}
     </header>
+
+    {event && (
+      <aside class="event-details" aria-label="Event details">
+        <p class="when"><time datetime={event.startsAt.toISOString()}>{formatEventTime(event.startsAt)}</time></p>
+        <p>{event.location}</p>
+        {event.registerUrl
+          ? <a class="button" href={event.registerUrl}>Register</a>
+          : <p class="note">Registration link coming soon.</p>}
+      </aside>
+    )}
+
     <div class="post-body">
       <Content />
     </div>
+
+    {featureImage && (
+      <figure class="poster">
+        <a href={featureImage}><img src={featureImage} alt={featureImageAlt ?? ''} /></a>
+        {event && <figcaption>Event poster. Select to open full size.</figcaption>}
+      </figure>
+    )}
   </article>
 </Default>
 
 <style>
   h1 { font-size: clamp(2rem, 5vw, 2.75rem); margin-block: var(--space-2); }
+  .subtitle { margin: 0; font-size: 1.15rem; color: var(--color-muted); }
   .byline { font-family: var(--font-ui); color: var(--color-muted); font-size: 0.95rem; }
+  .event-details {
+    margin-top: var(--space-4); padding: var(--space-4);
+    background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius);
+  }
+  .event-details p { margin: 0 0 var(--space-2); }
+  .event-details .when { font-weight: 600; font-size: 1.1rem; }
+  .event-details .note { margin: var(--space-3) 0 0; color: var(--color-muted); font-style: italic; }
+  .event-details .button { margin-top: var(--space-2); }
   .post-body { margin-top: var(--space-5); }
+  .poster { margin: var(--space-5) 0; }
+  .poster img { display: block; width: 100%; max-width: 32rem; height: auto; border: 1px solid var(--color-border); }
+  .poster figcaption { margin-top: var(--space-2); font-size: 0.9rem; color: var(--color-muted); }
 </style>
