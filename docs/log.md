@@ -24,6 +24,15 @@ Format:
 - Org name now reads "National Collaborative for Reproductive Justice, Innovation, and Political Education in Social Work" everywhere (header, footer, homepage, page titles), changed once in `src/site.ts`.
 - Homepage intro and site description: "brings together" → "unites".
 - The homepage intro had the org name typed in by hand; it now uses `SITE.name`, so future renames reach it too.
+## 2026-10-17 · Marissa · News & Events: EPAS event
+- Removed the four sample posts and the sample author. News & Events now lists one real event: "What Kind of Social Work Profession Are We Becoming?" (Tuesday, October 20, 2026, 2:00 PM Eastern, virtual), with its poster (`public/images/events/epas-2029-poster.webp`).
+- Posts can now be events: optional `event` (start time, location, registration link), `subtitle`, and `featureImageAlt` fields in `src/content.config.ts`. Event times display in Eastern time. `author` is now optional, for posts from the Collaborative itself.
+- Placeholder categories replaced with one real category, "Events" (`src/site.ts`).
+- Registration: Register buttons link to the Google Form (https://forms.gle/PbZARhkuUnhETWUX6): a rounded "Register for this event" button under the poster on the News & Events card, plus one in the event page's details box and one under the poster at the bottom of the event page. Any event with a `registerUrl` gets these automatically.
+## 2026-10-17 · Chris · Preview builds turned off
+- Cloudflare's branch preview builds kept failing for reasons outside the repo (dashboard settings and a beta Cloudflare feature), so they were switched off in the Cloudflare dashboard. The live site was never affected.
+- CLAUDE.md: "Links" section rewritten. No more preview links; check changes with `npm run build` and a local look, then give the live link after merging.
+- Added `docs/future-scope.md`: plain-language list of what a full build would need (working submissions, connecting Sanity, preview links, own domain, moving accounts to the organization).
 
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.

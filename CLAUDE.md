@@ -37,24 +37,20 @@ The goal is a site that is **presentable and coherent**: every page looks intent
 - Deployed by Cloudflare (Workers with static assets, config in `wrangler.jsonc`).
 - `npm install`, `npm run dev` (localhost:4321), `npm run build` (output in `dist/`).
 
-## Links: live site vs. previews
+## Links and checking changes
 
-One collaborator is new to this. **Always give clickable links, and always say which kind of link it is.**
+One collaborator is new to this. **Always give clickable links, and say plainly whether a change is live yet.**
 
-| | URL | What it is |
-|---|---|---|
-| **Live site** | https://ncrj.rumeaudesign.workers.dev | The real site, built from `main`. This is what gets shared with others. |
-| **Preview** | `https://<branch>-ncrj.rumeaudesign.workers.dev` | A private test copy of one branch's changes. Safe to break; nobody else is looking at it. |
+- **Live site:** https://ncrj.rumeaudesign.workers.dev, built from `main`. This is what gets shared with others. It updates a minute or two after anything merges into `main`.
+- **Branch previews are turned off.** Cloudflare's preview builds kept failing for reasons outside the repo, so they were switched off in the Cloudflare dashboard. Don't promise or construct preview links. (Revisiting this is listed in `docs/future-scope.md`.)
 
-How to explain it in plain terms: a **preview** is a draft you can click around in before it's published; the **live site** is the published version. Changes reach the live site only when a pull request is merged into `main`.
+How to check a change before it goes live:
 
-Rules for sessions:
+- Run `npm run build`; it must succeed.
+- Where the session can, run the site locally (`npm run dev` or `npm run preview`) and look at the changed pages, including at phone width. Screenshots help the person see the change.
+- Describe what changed in plain language, page by page, so the person can judge it without a preview link.
 
-- After pushing a branch, give the preview link for that branch, worked out from the branch name: lowercase, with anything that isn't a letter or number (slashes included) turned into `-`. Example: branch `claude/fix-header` → https://claude-fix-header-ncrj.rumeaudesign.workers.dev. If Cloudflare posted a preview URL on the pull request or in the GitHub check, use that one instead.
-- After a merge into `main`, give the live link: https://ncrj.rumeaudesign.workers.dev
-- Also link the pull request itself on GitHub (https://github.com/tegix62/NCRJ/pulls).
-- Builds take a minute or two after a push. Say so, so a "not found" right after pushing isn't alarming.
-- This environment may not be able to open `workers.dev` itself. If you can't load a link, say you couldn't check it and ask the user to click it, rather than claiming it works.
+After merging into `main`, give the live link to the page that changed (e.g. https://ncrj.rumeaudesign.workers.dev/archivist/), mention it takes a minute or two, and link the pull request (https://github.com/tegix62/NCRJ/pulls). This environment may not be able to open `workers.dev`; if you can't load a link, say so and ask the person to click it, rather than claiming it works.
 
 The structure deliberately mirrors a Ghost theme so the design could be ported to Ghost later (see README for the file mapping). Don't add Ghost yet. Sanity is being set up as the content backend for the Archivist; see "Sanity" below.
 
@@ -81,7 +77,7 @@ The structure deliberately mirrors a Ghost theme so the design could be ported t
 
 ## Workflow
 
-- Work on a branch, open a pull request into `main`, check the preview link, then merge. Nothing goes straight to `main`, because `main` is the live site.
+- Work on a branch, open a pull request into `main`, check the change with a local build (see "Links and checking changes"), then merge. Nothing goes straight to `main`, because `main` is the live site.
 - Keep PRs focused on one thing. If two people are working at once, split by area (different pages/files) to avoid merge conflicts.
 - Run `npm run build` before pushing; it must succeed.
 
@@ -97,7 +93,7 @@ Both people work mostly through separate Claude chats, which can't see each othe
 
 ## Current state and next steps
 
-Done: homepage matching the mockup, header with mobile menu, footer, intro pages for every menu item, News & Events with sample posts.
+Done: homepage matching the mockup, header with mobile menu, footer, intro pages for every menu item, News & Events with one real event post (sample posts removed).
 
 Placeholders: photos (except the homepage hero, which is a credited Unsplash photo), logo (`src/components/Logo.astro` approximates the mockup's leaf mark), all inner page copy.
 
