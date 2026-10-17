@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · About: members list
+- The About page now lists the Collaborative's members (name, credentials, and role where given). The list lives in `src/data/members.ts`; Marissa expects to edit it later.
+- The mission/history part of the About page is still a labelled placeholder.
+
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
 - Decision: the site is a presentation mockup. The goal is a presentable, coherent site with clearly labelled placeholders, not working backends or features that need a budget and a team. Requests beyond that get written up (in `docs/future-scope.md`) instead of built, until the team agrees.
