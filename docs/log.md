@@ -13,6 +13,17 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · Homepage hero photo
+- The homepage hero now has a real photo (hands joined together, `public/images/hero-hands.webp`) behind the "Many Stories. Collective Power." banner, with the credit "Photo by Tasha Jolley on Unsplash" in the bottom-right corner.
+- Licence: Unsplash License (free to use; credit given as a courtesy). Only hands are shown, so no identifiable people. The image is stored in the repo, not loaded from Unsplash, per the privacy rule.
+- Homepage intro: "education" and "organizing" are no longer bold.
+- On phones the photo sits behind the text with a darker overlay so the text stays readable.
+- The "Unsplash" link goes to unsplash.com; swap in the photo's own Unsplash page if we have it.
+
+## 2026-10-17 · Marissa · Org name commas, "unites"
+- Org name now reads "National Collaborative for Reproductive Justice, Innovation, and Political Education in Social Work" everywhere (header, footer, homepage, page titles), changed once in `src/site.ts`.
+- Homepage intro and site description: "brings together" → "unites".
+- The homepage intro had the org name typed in by hand; it now uses `SITE.name`, so future renames reach it too.
 ## 2026-10-17 · Marissa · News & Events: EPAS event
 - Removed the four sample posts and the sample author. News & Events now lists one real event: "What Kind of Social Work Profession Are We Becoming?" (Tuesday, October 20, 2026, 2:00 PM Eastern, virtual), with its poster (`public/images/events/epas-2029-poster.webp`).
 - Posts can now be events: optional `event` (start time, location, registration link), `subtitle`, and `featureImageAlt` fields in `src/content.config.ts`. Event times display in Eastern time. `author` is now optional, for posts from the Collaborative itself.
