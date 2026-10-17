@@ -3,27 +3,66 @@ import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
 import { PILLARS } from '../../site';
-import { VIDEOS } from '../../data/resources';
+import { VIDEOS, ARTICLES } from '../../data/resources';
 
 const section = PILLARS[1];
+const categories = [
+  { id: 'videos', label: 'Videos', count: VIDEOS.length },
+  { id: 'articles', label: 'Articles', count: ARTICLES.length },
+];
 ---
 
 <Default title={section.title} description={section.description}>
   <PageIntro eyebrow={section.subtitle} title={section.title} lede={section.description} />
   <div class="content resources">
-    <section aria-labelledby="videos-heading">
+    <nav class="categories" aria-label="Resource categories">
+      {categories.map((c) => <a href={`#${c.id}`}>{c.label} <span>({c.count})</span></a>)}
+    </nav>
+
+    <section id="videos" aria-labelledby="videos-heading">
       <h2 id="videos-heading">Videos</h2>
       <div class="video-list">
         {VIDEOS.map((v) => <VideoEmbed title={v.title} youtubeId={v.youtubeId} />)}
       </div>
     </section>
-    <p class="placeholder"><em>Placeholder: more curated teaching, research, and practice resources go here.</em></p>
+
+    <section id="articles" aria-labelledby="articles-heading">
+      <h2 id="articles-heading">Articles</h2>
+      {ARTICLES.length ? (
+        <ul class="article-list">
+          {ARTICLES.map((a) => (
+            <li>
+              <h3><a href={a.url}>{a.title}</a></h3>
+              {(a.authors || a.publication) && (
+                <p>{[a.authors, a.publication].filter(Boolean).join(' · ')}</p>
+              )}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="placeholder"><em>Articles coming soon.</em></p>
+      )}
+    </section>
   </div>
 </Default>
 
 <style>
   .resources { padding-block: var(--space-5); }
+  .categories { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
+  .categories a {
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border); border-radius: 999px;
+    background: var(--color-cream); color: var(--color-text); text-decoration: none; font-weight: 500;
+  }
+  .categories a:hover { border-color: var(--color-rust); }
+  .categories span { color: var(--color-muted); font-weight: 400; }
+  section + section { margin-top: var(--space-6); }
+  section { scroll-margin-top: var(--space-5); }
   h2 { margin: 0 0 var(--space-4); font-size: 1.75rem; }
   .video-list { display: grid; gap: var(--space-5); }
-  .placeholder { margin-top: var(--space-5); color: var(--color-muted); }
+  .article-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
+  .article-list li { padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
+  .article-list h3 { margin: 0 0 var(--space-1); font-size: 1.25rem; }
+  .article-list p { margin: 0; color: var(--color-muted); font-size: 0.95rem; }
+  .placeholder { color: var(--color-muted); }
 </style>

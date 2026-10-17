@@ -1,5 +1,5 @@
-// Resource Bank items. Add a video by copying an entry; `youtubeId` is the part
-// after "watch?v=" in the YouTube link.
+// Resource Bank items, grouped by category. Add an item by copying an entry.
+// For videos, `youtubeId` is the part after "watch?v=" in the YouTube link.
 export interface VideoResource {
   title: string;
   youtubeId: string;
@@ -15,3 +15,14 @@ export const VIDEOS: VideoResource[] = [
     youtubeId: 'Nqa3gmjMVMQ',
   },
 ];
+
+export interface ArticleResource {
+  title: string;
+  url: string;
+  /** e.g. "Jane Doe and Sam Lee" */
+  authors?: string;
+  /** e.g. "Reflections: Narratives of Professional Helping, 2024" */
+  publication?: string;
+}
+
+export const ARTICLES: ArticleResource[] = [];
