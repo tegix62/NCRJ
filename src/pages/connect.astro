@@ -1,8 +1,40 @@
 ---
 import Default from '../layouts/Default.astro';
 import PageIntro from '../components/PageIntro.astro';
+import { SOCIAL } from '../site';
 ---
 
 <Default title="Connect">
-  <PageIntro eyebrow="Connect" title="Connect with Us" lede="Placeholder: contact details and a newsletter signup." />
+  <PageIntro eyebrow="Connect" title="Connect with Us" />
+  <div class="content connect">
+    <a class="channel" href={SOCIAL.youtube.href}>
+      <!-- YouTube logo, drawn inline so nothing loads from YouTube until the link is clicked.
+           #FF0000 is YouTube's brand red, required by their brand guidelines. -->
+      <svg class="logo" viewBox="0 0 28 20" width="44" height="31" aria-hidden="true">
+        <rect width="28" height="20" rx="5" fill="#FF0000" />
+        <path d="M11 5.5 L19 10 L11 14.5 Z" fill="#fff" />
+      </svg>
+      <span class="text">
+        <strong>Our YouTube channel</strong>
+        <span class="handle">{SOCIAL.youtube.handle}</span>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
 </Default>
+
+<style>
+  .connect { padding-block: var(--space-5); }
+  .channel {
+    display: flex; align-items: center; gap: var(--space-3);
+    max-width: 26rem; padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border); border-radius: var(--radius);
+    background: var(--color-cream); color: var(--color-text); text-decoration: none;
+  }
+  .channel:hover, .channel:focus-visible { border-color: var(--color-rust); }
+  .logo { flex: none; }
+  .text { display: grid; flex: 1; }
+  .text strong { font-weight: 600; }
+  .handle { color: var(--color-muted); font-size: 0.95rem; }
+  .arrow { color: var(--color-rust-text); font-size: 1.25rem; }
+</style>

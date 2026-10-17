@@ -72,3 +72,8 @@ export const PILLARS = [
     tone: 'teal',
   },
 ] as const;
+
+// Social channels, shown on the Connect page.
+export const SOCIAL = {
+  youtube: { href: 'https://www.youtube.com/@crystalmhc', handle: '@crystalmhc' },
+};

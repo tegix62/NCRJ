@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · Connect: YouTube channel
+- The Connect page now links to the YouTube channel (https://www.youtube.com/@crystalmhc) with a small YouTube logo. The link lives in `SOCIAL` in `src/site.ts`.
+- The logo is drawn inline (no request to YouTube until someone clicks).
+- Removed the "Placeholder: contact details and a newsletter signup." line under the Connect heading.
 ## 2026-10-17 · Marissa · Activist School and Get Involved: "Updates coming soon"
 - The Activist School and Get Involved pages' placeholder lines are replaced with a small "Updates coming soon." note.
 ## 2026-10-17 · Marissa · Resource Bank: first videos
