@@ -93,7 +93,7 @@ Both people work mostly through separate Claude chats, which can't see each othe
 
 ## Current state and next steps
 
-Done: homepage matching the mockup, header with mobile menu, footer, intro pages for every menu item, News & Events with sample posts.
+Done: homepage matching the mockup, header with mobile menu, footer, intro pages for every menu item, News & Events with one real event post (sample posts removed).
 
 Placeholders: photos, logo (`src/components/Logo.astro` approximates the mockup's leaf mark), all inner page copy.
 

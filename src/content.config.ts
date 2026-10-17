@@ -11,8 +11,19 @@ const posts = defineCollection({
     excerpt: z.string(),
     publishedAt: z.coerce.date(),
     tags: z.array(z.string()).min(1),
-    author: reference('authors'),
+    // Optional: posts from the Collaborative itself have no individual byline.
+    author: reference('authors').optional(),
+    subtitle: z.string().optional(),
     featureImage: z.string().optional(),
+    featureImageAlt: z.string().optional(),
+    // Only for event posts. Times include their UTC offset; they're shown in Eastern time.
+    event: z
+      .object({
+        startsAt: z.coerce.date(),
+        location: z.string(),
+        registerUrl: z.string().url().optional(),
+      })
+      .optional(),
     draft: z.boolean().default(false),
   }),
 });
