@@ -13,8 +13,8 @@ Format:
 
 ---
 
-## 2026-10-17 · Marissa · Activist School: "Updates coming soon"
-- The Activist School page's placeholder line is replaced with a small "Updates coming soon." note.
+## 2026-10-17 · Marissa · Activist School and Get Involved: "Updates coming soon"
+- The Activist School and Get Involved pages' placeholder lines are replaced with a small "Updates coming soon." note.
 
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
