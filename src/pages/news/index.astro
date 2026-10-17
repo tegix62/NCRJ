@@ -9,9 +9,9 @@ const posts = await getPublishedPosts();
 ---
 
 <Default title="News & Events">
-  <PageIntro eyebrow="Updates" title="News & Events" />
+  <PageIntro eyebrow="Updates" title="News & Events" lede="Gatherings, dialogues, and updates from the Collaborative." />
   <div class="container list">
-    <PostGrid posts={posts} />
+    {posts.length ? <PostGrid posts={posts} /> : <p>Nothing posted yet. Check back soon.</p>}
   </div>
 </Default>
 

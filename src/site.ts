@@ -1,21 +1,19 @@
 // Site-wide settings. In Ghost these become @site / custom theme settings.
 // The name is provisional; change it here and it updates everywhere.
 export const SITE = {
-  name: 'National Collaborative for Reproductive Justice Innovation and Political Education in Social Work',
+  name: 'National Collaborative for Reproductive Justice, Innovation, and Political Education in Social Work',
   // Used where space is tight: browser tab, footer.
   shortName: 'National Collaborative',
   // Header lockup: first line set in caps, the rest beneath it.
-  lockup: ['National Collaborative', 'for Reproductive Justice Innovation', 'and Political Education in Social Work'],
+  lockup: ['National Collaborative', 'for Reproductive Justice, Innovation,', 'and Political Education in Social Work'],
   description:
-    'The National Collaborative for Reproductive Justice Innovation and Political Education in Social Work brings together scholars, practitioners, students, and community members to advance reproductive justice through research, education, organizing, and collective action.',
+    'The National Collaborative for Reproductive Justice, Innovation, and Political Education in Social Work unites scholars, practitioners, students, and community members to advance reproductive justice through research, education, organizing, and collective action.',
   values: ['Knowledge', 'Solidarity', 'Liberation'],
 };
 
 // Categories = Ghost tags. Slug -> display info.
 export const CATEGORIES: Record<string, { name: string; description: string }> = {
-  'category-one': { name: 'Category One', description: 'Placeholder description.' },
-  'category-two': { name: 'Category Two', description: 'Placeholder description.' },
-  'category-three': { name: 'Category Three', description: 'Placeholder description.' },
+  events: { name: 'Events', description: 'Gatherings, dialogues, and trainings from the Collaborative.' },
 };
 
 export const NAV = [
