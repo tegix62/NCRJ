@@ -16,6 +16,7 @@ Format:
 ## 2026-10-17 · Marissa · Homepage hero photo
 - The homepage hero now has a real photo (hands joined together, `public/images/hero-hands.webp`) behind the "Many Stories. Collective Power." banner, with the credit "Photo by Tasha Jolley on Unsplash" in the bottom-right corner.
 - Licence: Unsplash License (free to use; credit given as a courtesy). Only hands are shown, so no identifiable people. The image is stored in the repo, not loaded from Unsplash, per the privacy rule.
+- Homepage intro: "education" and "organizing" are no longer bold.
 - On phones the photo sits behind the text with a darker overlay so the text stays readable.
 - The "Unsplash" link goes to unsplash.com; swap in the photo's own Unsplash page if we have it.
 
