@@ -13,6 +13,11 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · Org name commas, "unites"
+- Org name now reads "National Collaborative for Reproductive Justice, Innovation, and Political Education in Social Work" everywhere (header, footer, homepage, page titles), changed once in `src/site.ts`.
+- Homepage intro and site description: "brings together" → "unites".
+- The homepage intro had the org name typed in by hand; it now uses `SITE.name`, so future renames reach it too.
+
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
 - Decision: the site is a presentation mockup. The goal is a presentable, coherent site with clearly labelled placeholders, not working backends or features that need a budget and a team. Requests beyond that get written up (in `docs/future-scope.md`) instead of built, until the team agrees.

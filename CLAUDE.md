@@ -4,7 +4,7 @@ Context for any Claude Code session working on this repo. Two people work on it;
 
 ## What this is
 
-Prototype website for the relaunch of the **National Collaborative for Reproductive Justice Innovation and Political Education in Social Work** (working short name: "National Collaborative"; the org is still settling on a name). The prototype exists to win approval from the org's leadership. The approved visual reference is a single homepage mockup; the current homepage is built from it.
+Prototype website for the relaunch of the **National Collaborative for Reproductive Justice, Innovation, and Political Education in Social Work** (working short name: "National Collaborative"; the org is still settling on a name). The prototype exists to win approval from the org's leadership. The approved visual reference is a single homepage mockup; the current homepage is built from it.
 
 Subject matter is reproductive justice, which is politically polarizing. Tone should be friendly but authoritative.
 
