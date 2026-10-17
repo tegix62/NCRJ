@@ -3,15 +3,43 @@
 import Default from '../layouts/Default.astro';
 import PageIntro from '../components/PageIntro.astro';
 import { SITE } from '../site';
+import { MEMBERS } from '../data/members';
 ---
 
 <Default title="About">
   <PageIntro eyebrow="About" title="About the Collaborative" lede={SITE.description} />
-  <div class="content placeholder">
-    <p><em>Placeholder: mission, history, and the people behind the Collaborative.</em></p>
+  <div class="content about">
+    <section aria-labelledby="mission-heading">
+      <h2 id="mission-heading">Mission</h2>
+      <p class="coming-soon"><em>Mission statement coming soon.</em></p>
+    </section>
+
+    <section aria-labelledby="members-heading">
+      <h2 id="members-heading">Members</h2>
+      <ul class="members">
+        {MEMBERS.map((m) => (
+          <li>
+            <span class="name">{m.name}{m.credentials && <span class="credentials">, {m.credentials}</span>}</span>
+            {m.role && <span class="role">{m.role}</span>}
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 </Default>
 
 <style>
-  .placeholder { padding-block: var(--space-5); color: var(--color-muted); }
+  .about { padding-block: var(--space-5); }
+  h2 { margin: 0 0 var(--space-4); font-size: 1.75rem; }
+  section + section { margin-top: var(--space-6); }
+  .coming-soon { margin: 0; color: var(--color-muted); }
+  .members { list-style: none; margin: 0; padding: 0; }
+  .members li {
+    display: grid; gap: 0.15rem;
+    padding-block: var(--space-3); border-bottom: 1px solid var(--color-border);
+  }
+  .members li:first-child { border-top: 1px solid var(--color-border); }
+  .name { font-weight: 600; }
+  .credentials { font-weight: 400; color: var(--color-muted); }
+  .role { color: var(--color-rust-text); font-size: 0.95rem; }
 </style>

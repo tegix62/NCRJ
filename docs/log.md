@@ -13,6 +13,9 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · About: members list
+- The About page now lists the Collaborative's members (name, credentials, and role where given). The list lives in `src/data/members.ts`; Marissa expects to edit it later.
+- Removed the old placeholder line; added a "Mission" section above the members with "Mission statement coming soon." until the text is ready.
 ## 2026-10-17 · Marissa · Connect: YouTube channel
 - The Connect page now links to the YouTube channel (https://www.youtube.com/@crystalmhc) with a small YouTube logo. The link lives in `SOCIAL` in `src/site.ts`.
 - The logo is drawn inline (no request to YouTube until someone clicks).
