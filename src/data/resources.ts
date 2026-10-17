@@ -10,4 +10,8 @@ export const VIDEOS: VideoResource[] = [
     title: 'Violence Against Black Women Is Structural: From Adriana Smith to Cerina Fairfax',
     youtubeId: 'lMP4TxKmoE8',
   },
+  {
+    title: 'The 5th Principle of Reproductive Justice: A conversation with Loretta Ross',
+    youtubeId: 'Nqa3gmjMVMQ',
+  },
 ];
