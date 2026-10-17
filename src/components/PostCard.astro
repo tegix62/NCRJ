@@ -23,6 +23,9 @@ const primaryTag = tags[0];
     <h3><a href={`/news/${post.id}/`}>{title}</a></h3>
     {event && <p class="when">{formatEventTime(event.startsAt)} · {event.location}</p>}
     <p>{excerpt}</p>
+    {event?.registerUrl && (
+      <a class="register" href={event.registerUrl}>Register for this event <span aria-hidden="true">→</span></a>
+    )}
   </div>
 </article>
 
@@ -41,4 +44,10 @@ const primaryTag = tags[0];
   h3 a { color: var(--color-text); text-decoration: none; }
   .when { margin: 0 0 var(--space-2); font-weight: 600; color: var(--color-text); }
   p { margin: 0; color: var(--color-muted); }
+  .register {
+    display: inline-block; margin-top: var(--space-3); padding: var(--space-2) var(--space-4);
+    border-radius: 999px; background: var(--color-rust); color: #fff;
+    font-weight: 600; font-size: 0.95rem; text-decoration: none;
+  }
+  .register:hover, .register:focus-visible { background: var(--color-rust-text); }
 </style>

@@ -17,7 +17,7 @@ Format:
 - Removed the four sample posts and the sample author. News & Events now lists one real event: "What Kind of Social Work Profession Are We Becoming?" (Tuesday, October 20, 2026, 2:00 PM Eastern, virtual), with its poster (`public/images/events/epas-2029-poster.webp`).
 - Posts can now be events: optional `event` (start time, location, registration link), `subtitle`, and `featureImageAlt` fields in `src/content.config.ts`. Event times display in Eastern time. `author` is now optional, for posts from the Collaborative itself.
 - Placeholder categories replaced with one real category, "Events" (`src/site.ts`).
-- Registration: the event page has a Register button linking to the Google Form (https://forms.gle/PbZARhkuUnhETWUX6).
+- Registration: Register buttons link to the Google Form (https://forms.gle/PbZARhkuUnhETWUX6): a rounded "Register for this event" button under the poster on the News & Events card, plus one in the event page's details box and one under the poster at the bottom of the event page. Any event with a `registerUrl` gets these automatically.
 
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
