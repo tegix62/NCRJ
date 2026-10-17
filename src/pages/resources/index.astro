@@ -1,18 +1,29 @@
 ---
 import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
+import VideoEmbed from '../../components/VideoEmbed.astro';
 import { PILLARS } from '../../site';
+import { VIDEOS } from '../../data/resources';
 
 const section = PILLARS[1];
 ---
 
 <Default title={section.title} description={section.description}>
   <PageIntro eyebrow={section.subtitle} title={section.title} lede={section.description} />
-  <div class="content placeholder">
-    <p><em>Placeholder: curated teaching, research, and practice resources go here.</em></p>
+  <div class="content resources">
+    <section aria-labelledby="videos-heading">
+      <h2 id="videos-heading">Videos</h2>
+      <div class="video-list">
+        {VIDEOS.map((v) => <VideoEmbed title={v.title} youtubeId={v.youtubeId} />)}
+      </div>
+    </section>
+    <p class="placeholder"><em>Placeholder: more curated teaching, research, and practice resources go here.</em></p>
   </div>
 </Default>
 
 <style>
-  .placeholder { padding-block: var(--space-5); color: var(--color-muted); }
+  .resources { padding-block: var(--space-5); }
+  h2 { margin: 0 0 var(--space-4); font-size: 1.75rem; }
+  .video-list { display: grid; gap: var(--space-5); }
+  .placeholder { margin-top: var(--space-5); color: var(--color-muted); }
 </style>
