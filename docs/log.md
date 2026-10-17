@@ -13,6 +13,11 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · Connect: YouTube channel
+- The Connect page now links to the YouTube channel (https://www.youtube.com/@crystalmhc) with a small YouTube logo. The link lives in `SOCIAL` in `src/site.ts`.
+- The logo is drawn inline (no request to YouTube until someone clicks).
+- The rest of the Connect page (contact details, newsletter) is still placeholder.
+
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
 - Decision: the site is a presentation mockup. The goal is a presentable, coherent site with clearly labelled placeholders, not working backends or features that need a budget and a team. Requests beyond that get written up (in `docs/future-scope.md`) instead of built, until the team agrees.
