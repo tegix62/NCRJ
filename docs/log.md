@@ -13,6 +13,12 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · Resource Bank: first videos
+- The Resource Bank page now has a "Videos" section with two videos: "Violence Against Black Women Is Structural: From Adriana Smith to Cerina Fairfax" (YouTube `lMP4TxKmoE8`) and "The 5th Principle of Reproductive Justice: A Conversation with Loretta Ross" (YouTube `Nqa3gmjMVMQ`).
+- Videos are listed in `src/data/resources.ts`; add more by copying an entry. They use `src/components/VideoEmbed.astro`.
+- Privacy decision: nothing loads from YouTube until a visitor presses play, and then it uses youtube-nocookie.com. Without JavaScript, the "Watch on YouTube" link still works.
+- The page is organized into two categories, **Videos** and **Articles**, with buttons at the top that jump to each and show how many items it has. Articles are listed in `ARTICLES` in `src/data/resources.ts` (title, link, optional authors and publication).
+- First article: "An Act of Love: Building a Collaborative for Reproductive Justice and Abolition Amidst Tumultuous Times" by Crystal M. Hayes and E. D. Goldblatt Hyatt, in *Reflections: Narratives of Professional Helping*, 2026 (details supplied by Marissa; the journal site couldn't be reached from Claude's environment to double-check).
 ## 2026-10-17 · Marissa · Homepage hero photo
 - The homepage hero now has a real photo (hands joined together, `public/images/hero-hands.webp`) behind the "Many Stories. Collective Power." banner, with the credit "Photo by Tasha Jolley on Unsplash" in the bottom-right corner.
 - Licence: Unsplash License (free to use; credit given as a courtesy). Only hands are shown, so no identifiable people. The image is stored in the repo, not loaded from Unsplash, per the privacy rule.
