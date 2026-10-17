@@ -13,6 +13,11 @@ Format:
 
 ---
 
+## 2026-10-17 · Chris · Preview builds turned off
+- Cloudflare's branch preview builds kept failing for reasons outside the repo (dashboard settings and a beta Cloudflare feature), so they were switched off in the Cloudflare dashboard. The live site was never affected.
+- CLAUDE.md: "Links" section rewritten. No more preview links; check changes with `npm run build` and a local look, then give the live link after merging.
+- Added `docs/future-scope.md`: plain-language list of what a full build would need (working submissions, connecting Sanity, preview links, own domain, moving accounts to the organization).
+
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
 - Decision: the site is a presentation mockup. The goal is a presentable, coherent site with clearly labelled placeholders, not working backends or features that need a budget and a team. Requests beyond that get written up (in `docs/future-scope.md`) instead of built, until the team agrees.
