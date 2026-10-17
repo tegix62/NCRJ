@@ -13,6 +13,8 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · Activist School and Get Involved: "Updates coming soon"
+- The Activist School and Get Involved pages' placeholder lines are replaced with a small "Updates coming soon." note.
 ## 2026-10-17 · Marissa · Resource Bank: first videos
 - The Resource Bank page now has a "Videos" section with two videos: "Violence Against Black Women Is Structural: From Adriana Smith to Cerina Fairfax" (YouTube `lMP4TxKmoE8`) and "The 5th Principle of Reproductive Justice: A Conversation with Loretta Ross" (YouTube `Nqa3gmjMVMQ`).
 - Videos are listed in `src/data/resources.ts`; add more by copying an entry. They use `src/components/VideoEmbed.astro`.
