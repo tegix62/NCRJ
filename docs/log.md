@@ -18,7 +18,7 @@ Format:
 - Videos are listed in `src/data/resources.ts`; add more by copying an entry. They use `src/components/VideoEmbed.astro`.
 - Privacy decision: nothing loads from YouTube until a visitor presses play, and then it uses youtube-nocookie.com. Without JavaScript, the "Watch on YouTube" link still works.
 - The page is organized into two categories, **Videos** and **Articles**, with buttons at the top that jump to each and show how many items it has. Articles are listed in `ARTICLES` in `src/data/resources.ts` (title, link, optional authors and publication).
-- Articles is empty for now ("Articles coming soon"). The first one to add is https://reflectionsnarrativesofprofessionalhelping.org/index.php/Reflections/article/view/2251/1848, but we still need its title and authors; the journal site couldn't be reached from Claude's environment.
+- First article: "An Act of Love: Building a Collaborative for Reproductive Justice and Abolition Amidst Tumultuous Times" by Crystal M. Hayes and E. D. Goldblatt Hyatt, in *Reflections: Narratives of Professional Helping*, 2026 (details supplied by Marissa; the journal site couldn't be reached from Claude's environment to double-check).
 
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.

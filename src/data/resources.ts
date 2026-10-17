@@ -25,4 +25,11 @@ export interface ArticleResource {
   publication?: string;
 }
 
-export const ARTICLES: ArticleResource[] = [];
+export const ARTICLES: ArticleResource[] = [
+  {
+    title: 'An Act of Love: Building a Collaborative for Reproductive Justice and Abolition Amidst Tumultuous Times',
+    authors: 'Crystal M. Hayes and E. D. Goldblatt Hyatt',
+    publication: 'Reflections: Narratives of Professional Helping, 2026',
+    url: 'https://reflectionsnarrativesofprofessionalhelping.org/index.php/Reflections/article/view/2251/1848',
+  },
+];
