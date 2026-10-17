@@ -1,6 +1,7 @@
 ---
 // Landing page, built from the approved mockup. Maps to Ghost's home.hbs.
-// Photography is placeholder (tinted panels) until real, licensed images are chosen.
+// Hero photo: Tasha Jolley on Unsplash (Unsplash License; hands only, no identifiable faces).
+// The featured-card photography is still placeholder (tinted panels) until licensed images are chosen.
 import Default from '../layouts/Default.astro';
 import Icon from '../components/Icon.astro';
 import { SITE, PILLARS } from '../site';
@@ -35,6 +36,8 @@ import { SITE, PILLARS } from '../site';
       </svg>
       <span>Many Stories.<br />Collective Power.</span>
     </div>
+
+    <p class="photo-credit">Photo by Tasha Jolley on <a href="https://unsplash.com/">Unsplash</a></p>
   </section>
 
   <section class="pillars" aria-label="What we do">
@@ -76,11 +79,18 @@ import { SITE, PILLARS } from '../site';
   /* Hero */
   .hero {
     position: relative; overflow: hidden; color: #fff;
-    /* Placeholder for the hero photograph: swap in
-       background-image: linear-gradient(...), url('/images/hero.jpg'); */
+    /* On phones the text covers the whole photo, so the overlay stays dark throughout. */
     background:
-      linear-gradient(90deg, var(--color-hero) 0%, rgba(15, 16, 13, 0.85) 45%, rgba(15, 16, 13, 0.2) 100%),
-      radial-gradient(ellipse at 75% 40%, #8a6a3a 0%, #4a3a22 35%, #1d1a12 70%);
+      linear-gradient(rgba(15, 16, 13, 0.7), rgba(15, 16, 13, 0.7)),
+      var(--color-hero) url('/images/hero-hands.webp') center / cover no-repeat;
+  }
+  @media (min-width: 64rem) {
+    /* Wider screens: dark behind the text on the left, photo showing through on the right. */
+    .hero {
+      background:
+        linear-gradient(90deg, var(--color-hero) 0%, rgba(15, 16, 13, 0.85) 40%, rgba(15, 16, 13, 0.1) 100%),
+        var(--color-hero) url('/images/hero-hands.webp') right center / cover no-repeat;
+    }
   }
   .hero-inner { position: relative; z-index: 1; padding-block: var(--space-5) var(--space-6); max-width: 88rem; }
   .values {
@@ -105,9 +115,15 @@ import { SITE, PILLARS } from '../site';
     position: absolute; inset: 0; display: grid; place-content: center; text-align: center;
     font-family: var(--font-script); font-size: clamp(1.5rem, 3vw, 2.1rem); line-height: 1.3; color: #fff;
   }
+  .photo-credit {
+    position: relative; z-index: 1; margin: 0; padding: 0 var(--space-3) var(--space-3);
+    text-align: right; font-size: 0.75rem; color: #f3efe9;
+  }
+  .photo-credit a { color: inherit; }
   @media (min-width: 64rem) {
     .hero-inner { padding-block: var(--space-5) var(--space-5); }
     .brush { position: absolute; right: -1rem; bottom: 2.5rem; margin: 0; width: 28rem; }
+    .photo-credit { position: absolute; right: 0; bottom: 0; padding: var(--space-2) var(--space-3); }
   }
 
   /* Pillars */
