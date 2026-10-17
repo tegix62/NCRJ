@@ -15,7 +15,7 @@ Format:
 
 ## 2026-10-17 · Marissa · About: members list
 - The About page now lists the Collaborative's members (name, credentials, and role where given). The list lives in `src/data/members.ts`; Marissa expects to edit it later.
-- Removed the About page's placeholder line.
+- Removed the old placeholder line; added a "Mission" section above the members with "Mission statement coming soon." until the text is ready.
 
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.

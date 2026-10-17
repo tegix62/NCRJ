@@ -9,6 +9,11 @@ import { MEMBERS } from '../data/members';
 <Default title="About">
   <PageIntro eyebrow="About" title="About the Collaborative" lede={SITE.description} />
   <div class="content about">
+    <section aria-labelledby="mission-heading">
+      <h2 id="mission-heading">Mission</h2>
+      <p class="coming-soon"><em>Mission statement coming soon.</em></p>
+    </section>
+
     <section aria-labelledby="members-heading">
       <h2 id="members-heading">Members</h2>
       <ul class="members">
@@ -26,6 +31,8 @@ import { MEMBERS } from '../data/members';
 <style>
   .about { padding-block: var(--space-5); }
   h2 { margin: 0 0 var(--space-4); font-size: 1.75rem; }
+  section + section { margin-top: var(--space-6); }
+  .coming-soon { margin: 0; color: var(--color-muted); }
   .members { list-style: none; margin: 0; padding: 0; }
   .members li {
     display: grid; gap: 0.15rem;
