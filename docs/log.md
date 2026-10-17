@@ -13,6 +13,9 @@ Format:
 
 ---
 
+## 2026-10-17 · Marissa · Activist School: "Updates coming soon"
+- The Activist School page's placeholder line is replaced with a small "Updates coming soon." note.
+
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
 - Decision: the site is a presentation mockup. The goal is a presentable, coherent site with clearly labelled placeholders, not working backends or features that need a budget and a team. Requests beyond that get written up (in `docs/future-scope.md`) instead of built, until the team agrees.
