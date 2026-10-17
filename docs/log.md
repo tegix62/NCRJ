@@ -16,7 +16,7 @@ Format:
 ## 2026-10-17 · Marissa · Connect: YouTube channel
 - The Connect page now links to the YouTube channel (https://www.youtube.com/@crystalmhc) with a small YouTube logo. The link lives in `SOCIAL` in `src/site.ts`.
 - The logo is drawn inline (no request to YouTube until someone clicks).
-- The rest of the Connect page (contact details, newsletter) is still placeholder.
+- Removed the "Placeholder: contact details and a newsletter signup." line under the Connect heading.
 
 ## 2026-10-16 · Chris · Scope guardrails
 - Added a "Scope: this is a mockup" section near the top of CLAUDE.md.
