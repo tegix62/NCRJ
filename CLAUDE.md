@@ -4,7 +4,7 @@ Context for any Claude Code session working on this repo. Two people work on it;
 
 ## What this is
 
-Prototype website for the relaunch of the **National Collaborative for Reproductive Justice Innovation and Political Education in Social Work** (working short name: "National Collaborative"; the org is still settling on a name). The prototype exists to win approval from the org's leadership. The approved visual reference is a single homepage mockup; the current homepage is built from it.
+Prototype website for the relaunch of the **National Collaborative for Reproductive Justice, Innovation, and Political Education in Social Work** (working short name: "National Collaborative"; the org is still settling on a name). The prototype exists to win approval from the org's leadership. The approved visual reference is a single homepage mockup; the current homepage is built from it.
 
 Subject matter is reproductive justice, which is politically polarizing. Tone should be friendly but authoritative.
 
@@ -99,7 +99,7 @@ Both people work mostly through separate Claude chats, which can't see each othe
 
 Done: homepage matching the mockup, header with mobile menu, footer, intro pages for every menu item, News & Events with sample posts.
 
-Placeholders: photos, logo (`src/components/Logo.astro` approximates the mockup's leaf mark), all inner page copy.
+Placeholders: photos (except the homepage hero, which is a credited Unsplash photo), logo (`src/components/Logo.astro` approximates the mockup's leaf mark), all inner page copy.
 
 Next priority: bring every menu section up to the same basic, presentable level (see Scope above). The Archivist is the centerpiece of the relaunch and its demo pages are complete; it is planned as a public, citable archive of reproductive justice stories, seeded by the Collaborative and grown through community submissions that are reviewed before publishing. Each entry is planned to have these sections:
 
