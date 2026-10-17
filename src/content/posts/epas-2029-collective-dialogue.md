@@ -9,6 +9,7 @@ featureImageAlt: "Event poster: What Kind of Social Work Profession Are We Becom
 event:
   startsAt: 2026-10-20T14:00:00-04:00
   location: Virtual meeting
+  registerUrl: https://forms.gle/PbZARhkuUnhETWUX6
 ---
 
 The proposed 2029 Educational Policy and Accreditation Standards (EPAS) remove the dedicated Anti-Racism, Diversity, Equity, and Inclusion (ADEI) competency and replace explicit anti-racist and anti-oppressive practice requirements with broader language about dignity, respect, fairness, and cultural humility.
