@@ -34,11 +34,8 @@ import { MEMBERS } from '../data/members';
   section + section { margin-top: var(--space-6); }
   .coming-soon { margin: 0; color: var(--color-muted); }
   .members { list-style: none; margin: 0; padding: 0; }
-  .members li {
-    display: grid; gap: 0.15rem;
-    padding-block: var(--space-3); border-bottom: 1px solid var(--color-border);
-  }
-  .members li:first-child { border-top: 1px solid var(--color-border); }
+  #members-heading { padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
+  .members li { display: grid; gap: 0.15rem; padding-block: var(--space-3); }
   .name { font-weight: 600; }
   .credentials { font-weight: 400; color: var(--color-muted); }
   .role { color: var(--color-rust-text); font-size: 0.95rem; }
