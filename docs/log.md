@@ -13,6 +13,11 @@ Format:
 
 ---
 
+## 2026-10-18 · Marissa · About: photo
+- The About page now has a photo (pride-flag pin buttons, `public/images/about-pins.webp`), credited "Photo by Marek Studzinski on Unsplash" in the photo's bottom-right corner, like the homepage photo.
+- Unsplash License; no people in the photo. Stored in the repo, not loaded from Unsplash.
+- Layout: on wider screens the photo sits to the right of Mission and Members; on phones a wider crop of it sits above them.
+
 ## 2026-10-18 · Marissa · Quotes
 - New reusable quote block: `src/components/Quote.astro`, with quotes listed in `src/data/quotes.ts`. Add a quote there, then place it on any page with `<Quote id="..." />` (light cream band by default, or `tone="dark"`).
 - Three quotes on the Archivist page:

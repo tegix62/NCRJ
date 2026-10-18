@@ -95,7 +95,7 @@ Both people work mostly through separate Claude chats, which can't see each othe
 
 Done: homepage matching the mockup, header with mobile menu, footer, intro pages for every menu item, News & Events with one real event post (sample posts removed).
 
-Placeholders: photos (except the homepage hero, which is a credited Unsplash photo), logo (`src/components/Logo.astro` approximates the mockup's leaf mark), all inner page copy.
+Placeholders: photos (except the homepage hero and the About page photo, which are credited Unsplash photos), logo (`src/components/Logo.astro` approximates the mockup's leaf mark), all inner page copy.
 
 Next priority: bring every menu section up to the same basic, presentable level (see Scope above). The Archivist is the centerpiece of the relaunch and its demo pages are complete; it is planned as a public, citable archive of reproductive justice stories, seeded by the Collaborative and grown through community submissions that are reviewed before publishing. Each entry is planned to have these sections:
 
