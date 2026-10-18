@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-10-18 · Marissa · About: photo removed
+- Removed the About page photo (pride-flag pin buttons) and its credit: its colors didn't fit the site's palette. The About page is back to the layout before the photo.
+- Decision: photos should fit the site's color palette (dark green, rust, cream, sand).
+
 ## 2026-10-18 · Marissa · About: photo
 - The About page now has a photo (pride-flag pin buttons, `public/images/about-pins.webp`), credited "Photo by Marek Studzinski on Unsplash" in the photo's bottom-right corner, like the homepage photo.
 - Unsplash License; no people in the photo. Stored in the repo, not loaded from Unsplash.
