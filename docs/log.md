@@ -13,6 +13,14 @@ Format:
 
 ---
 
+## 2026-10-18 · Marissa · Quotes
+- New reusable quote block: `src/components/Quote.astro`, with quotes listed in `src/data/quotes.ts`. Add a quote there, then place it on any page with `<Quote id="..." />` (light cream band by default, or `tone="dark"`).
+- Three quotes on the Archivist page:
+  - Chimamanda Ngozi Adichie, "Many stories matter…" (*The Danger of a Single Story*), cream band between "Why narrative power matters" and "A citable archive".
+  - Hopi traditional proverb, "The one who tells the stories rules the world…", dark green band before "Stories in the archive".
+  - Lena Waithe, screenwriter, "I'm writing my story so that others might see fragments of themselves.", cream band before "Know a story that belongs here?".
+- Rule for quotes: only add ones whose exact wording and source are confirmed (no paraphrases or unverified attributions).
+
 ## 2026-10-18 · Marissa · About: fewer lines in the members list
 - Removed the divider lines between member names on the About page; the only line left is the one under the "Members" heading.
 - Also restored the blank lines between log entries (lost when yesterday's pull requests were merged).
