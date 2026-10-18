@@ -1,0 +1,47 @@
+---
+// A featured quotation. Use between sections of a page:
+//   <Quote id="adichie-stories" />            (cream band, the default)
+//   <Quote id="adichie-stories" tone="dark" /> (dark green band)
+import { QUOTES, type QuoteId } from '../data/quotes';
+
+interface Props {
+  id: QuoteId;
+  tone?: 'light' | 'dark';
+}
+const { id, tone = 'light' } = Astro.props;
+const quote = QUOTES[id];
+---
+
+<section class:list={['quote-band', tone]}>
+  <figure class="container">
+    <blockquote>
+      <p>{quote.text}</p>
+    </blockquote>
+    <figcaption>
+      <span class="author">{quote.author}</span>
+      {'role' in quote && quote.role && <span class="source">, {quote.role}</span>}
+      {quote.source && <span class="source">, <cite>{quote.source}</cite></span>}
+    </figcaption>
+  </figure>
+</section>
+
+<style>
+  .quote-band { padding-block: var(--space-6); background: var(--color-cream); }
+  .quote-band.dark { background: var(--color-green); color: #fff; }
+  figure { margin-block: 0; max-width: 52rem; text-align: center; }
+  figure::before {
+    content: '“'; display: block; height: 3.5rem;
+    font-family: var(--font-display); font-size: 6rem; line-height: 1; color: var(--color-rust);
+  }
+  blockquote { margin: 0; }
+  blockquote p {
+    margin: 0; font-family: var(--font-display); font-style: italic;
+    font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.45;
+  }
+  figcaption { margin-top: var(--space-4); font-size: 0.95rem; letter-spacing: 0.04em; }
+  figcaption::before { content: '— '; color: var(--color-rust); }
+  .author { font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; }
+  .source { color: var(--color-muted); }
+  .dark .source { color: #e8e4dc; }
+  cite { font-style: italic; }
+</style>

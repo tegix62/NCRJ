@@ -6,6 +6,7 @@ import EntryCard from '../../components/EntryCard.astro';
 import VerificationBadge from '../../components/VerificationBadge.astro';
 import PlaceholderNotice from '../../components/PlaceholderNotice.astro';
 import Icon from '../../components/Icon.astro';
+import Quote from '../../components/Quote.astro';
 import { getEntries, LAYERS, RECORD, VERIFICATION, type VerificationStatus } from '../../lib/archivist';
 
 const entries = await getEntries();
@@ -62,6 +63,8 @@ const layers = [...LAYERS, RECORD];
     </div>
   </section>
 
+  <Quote id="adichie-stories" />
+
   <section class="record-band">
     <div class="container record-grid">
       <div>
@@ -84,6 +87,8 @@ const layers = [...LAYERS, RECORD];
     </div>
   </section>
 
+  <Quote id="hopi-stories" tone="dark" />
+
   <section class="container stories" id="stories">
     <h2>Stories in the archive</h2>
     {hasPlaceholders && <PlaceholderNotice />}
@@ -91,6 +96,8 @@ const layers = [...LAYERS, RECORD];
       {entries.map((entry) => <EntryCard entry={entry} />)}
     </div>
   </section>
+
+  <Quote id="waithe-fragments" />
 
   <section class="cta">
     <div class="container cta-inner">
