@@ -11,7 +11,23 @@ import { MEMBERS } from '../data/members';
   <div class="content about">
     <section aria-labelledby="mission-heading">
       <h2 id="mission-heading">Mission</h2>
-      <p class="coming-soon"><em>Mission statement coming soon.</em></p>
+      <p>
+        The {SITE.name} is all of us—educators, clinicians, policy advocates, students, allied professionals, and
+        more. Our mission is to advance reproductive justice and abolitionist framework by providing education,
+        training, and advocacy tools that transform social work and the broader helping professions. We strive to
+        ensure that reproductive justice and abolition are embedded in the core competencies of these fields,
+        equipping professionals to challenge systemic harm and build community-centered models of care.
+      </p>
+    </section>
+
+    <section aria-labelledby="vision-heading">
+      <h2 id="vision-heading">Vision</h2>
+      <p>
+        We envision a future where reproductive justice and abolition are foundational to social work and the helping
+        professions, shaping policies, education, and practice that prioritize liberation, equity, and healing. Through
+        collective action and innovation, we are dismantling oppressive systems and reimagining care work as a force
+        for transformative justice that centers Black and marginalized communities.
+      </p>
     </section>
 
     <section aria-labelledby="members-heading">
@@ -32,7 +48,7 @@ import { MEMBERS } from '../data/members';
   .about { padding-block: var(--space-5); }
   h2 { margin: 0 0 var(--space-4); font-size: 1.75rem; }
   section + section { margin-top: var(--space-6); }
-  .coming-soon { margin: 0; color: var(--color-muted); }
+  section p { margin: 0; font-size: 1.05rem; line-height: 1.65; }
   .members { list-style: none; margin: 0; padding: 0; }
   #members-heading { padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
   .members li { display: grid; gap: 0.15rem; padding-block: var(--space-3); }

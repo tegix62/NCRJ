@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-10-18 · Marissa · About: mission and vision
+- The About page's Mission section now has the real mission statement (replacing "Mission statement coming soon."), and a new Vision section follows it, above Members. Text supplied by Marissa.
+- The org name in the mission statement comes from `SITE.name`, so it follows any rename.
+
 ## 2026-10-18 · Marissa · About: photo removed
 - Removed the About page photo (pride-flag pin buttons) and its credit: its colors didn't fit the site's palette. The About page is back to the layout before the photo.
 - Decision: photos should fit the site's color palette (dark green, rust, cream, sand).
