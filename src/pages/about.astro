@@ -1,6 +1,5 @@
 ---
 // Maps to Ghost's page.hbs (a static page).
-// Photo: Marek Studzinski on Unsplash (Unsplash License; objects only, no people).
 import Default from '../layouts/Default.astro';
 import PageIntro from '../components/PageIntro.astro';
 import { SITE } from '../site';
@@ -9,17 +8,7 @@ import { MEMBERS } from '../data/members';
 
 <Default title="About">
   <PageIntro eyebrow="About" title="About the Collaborative" lede={SITE.description} />
-  <div class="container about">
-    <figure class="photo">
-      <img
-        src="/images/about-pins.webp"
-        alt="Colorful pin-back buttons, each printed with a pride flag and a gender symbol."
-        width="750" height="1141"
-      />
-      <figcaption>Photo by Marek Studzinski on <a href="https://unsplash.com/">Unsplash</a></figcaption>
-    </figure>
-
-    <div class="text">
+  <div class="content about">
     <section aria-labelledby="mission-heading">
       <h2 id="mission-heading">Mission</h2>
       <p class="coming-soon"><em>Mission statement coming soon.</em></p>
@@ -36,28 +25,11 @@ import { MEMBERS } from '../data/members';
         ))}
       </ul>
     </section>
-    </div>
   </div>
 </Default>
 
 <style>
-  .about { display: grid; gap: var(--space-5); padding-block: var(--space-5); }
-  .text { max-width: 40rem; }
-
-  /* Phones: a wide crop of the photo above the text. Wider screens: full photo beside it. */
-  .photo { position: relative; margin: 0; overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 3; }
-  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
-  .photo figcaption {
-    position: absolute; right: 0; bottom: 0; padding: var(--space-1) var(--space-2);
-    background: rgba(15, 16, 13, 0.6); color: #f3efe9; font-size: 0.75rem;
-    border-top-left-radius: var(--radius);
-  }
-  .photo figcaption a { color: inherit; }
-  @media (min-width: 56rem) {
-    .about { grid-template-columns: minmax(0, 1fr) minmax(16rem, 24rem); gap: var(--space-6); align-items: start; }
-    .photo { order: 2; aspect-ratio: auto; position: sticky; top: var(--space-4); }
-    .photo img { height: auto; }
-  }
+  .about { padding-block: var(--space-5); }
   h2 { margin: 0 0 var(--space-4); font-size: 1.75rem; }
   section + section { margin-top: var(--space-6); }
   .coming-soon { margin: 0; color: var(--color-muted); }
