@@ -4,6 +4,22 @@ import Default from '../layouts/Default.astro';
 import PageIntro from '../components/PageIntro.astro';
 import { SITE } from '../site';
 import { MEMBERS } from '../data/members';
+
+// The original twelve founders of reproductive justice, as listed by Marissa.
+const RJ_FOUNDERS = [
+  'Dr. Toni M. Bond Leonard',
+  'Reverend Alma Crawford',
+  'Evelyn S. Field',
+  'Terri James',
+  'Bisola Marignay',
+  'Cassandra McConnell',
+  'Cynthia Newbille',
+  'Loretta J. Ross',
+  'Elizabeth Terry',
+  'Mable Thomas',
+  'Winnette P. Willis',
+  'Kim Youngblood',
+];
 ---
 
 <Default title="About">
@@ -44,7 +60,11 @@ import { MEMBERS } from '../data/members';
         <li>The right to parent children in safe and healthy environments</li>
       </ol>
       <p>In addition, reproductive justice demands sexual autonomy and gender freedom for every human being.</p>
-      <p class="credit">— Loretta Ross and Rickie Solinger, <cite>Reproductive Justice: An Introduction</cite> (2017)</p>
+
+      <h3 class="founders-heading">The original twelve founders of reproductive justice</h3>
+      <ul class="founders">
+        {RJ_FOUNDERS.map((name) => <li>{name}</li>)}
+      </ul>
     </section>
 
     <section aria-labelledby="members-heading">
@@ -67,8 +87,12 @@ import { MEMBERS } from '../data/members';
   section + section { margin-top: var(--space-6); }
   section p { margin: 0; font-size: 1.05rem; line-height: 1.65; }
   section p + p, .tenets + p { margin-top: var(--space-3); }
-  .credit { color: var(--color-muted); font-size: 0.95rem; }
-  .credit cite { font-style: italic; }
+  .founders-heading { margin: var(--space-5) 0 var(--space-3); font-size: 1.25rem; }
+  .founders {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: var(--space-2) var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 14rem), 1fr));
+  }
+  .founders li { padding-left: var(--space-3); border-left: 2px solid var(--color-rust); }
   .tenets { list-style: none; counter-reset: tenet; margin: var(--space-4) 0; padding: 0; display: grid; gap: var(--space-2); }
   .tenets li {
     counter-increment: tenet; display: grid; grid-template-columns: 2.25rem 1fr; align-items: center; gap: var(--space-3);
