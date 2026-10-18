@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-10-18 · Marissa · About: heading wording
+- "The original twelve founders of reproductive justice" → "The Original Twelve Founders of Reproductive Justice".
+- "Members" → "Members of the Collaborative".
+
 ## 2026-10-18 · Marissa · About: tenets of reproductive justice
 - New "The Tenets of Reproductive Justice" section on the About page, between Vision and Members: the definition text supplied by Marissa, with the three principles shown as a numbered list.
 - Below the principles: "The original twelve founders of reproductive justice", a list of the twelve names supplied by Marissa (Dr. Toni M. Bond Leonard, Reverend Alma Crawford, Evelyn S. Field, Terri James, Bisola Marignay, Cassandra McConnell, Cynthia Newbille, Loretta J. Ross, Elizabeth Terry, Mable Thomas, Winnette P. Willis, Kim Youngblood). The definition is credited as a source note: "Source: Loretta Ross and Rickie Solinger, *Reproductive Justice: An Introduction* (2017)".
