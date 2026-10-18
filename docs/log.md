@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-10-18 · Marissa · About: tenets of reproductive justice
+- New "The Tenets of Reproductive Justice" section on the About page, between Vision and Members: the definition text supplied by Marissa, with the three principles shown as a numbered list.
+- Credited below the text: "— Loretta Ross and Rickie Solinger, *Reproductive Justice: An Introduction* (2017)", the book the definition comes from. (Marissa asked to credit them; worded as authors of the definition rather than founders of the movement, since the term was coined in 1994 by a group of Black women.)
+
 ## 2026-10-18 · Marissa · About: mission and vision
 - The About page's Mission section now has the real mission statement (replacing "Mission statement coming soon."), and a new Vision section follows it, above Members. Text supplied by Marissa.
 - The org name in the mission statement comes from `SITE.name`, so it follows any rename.

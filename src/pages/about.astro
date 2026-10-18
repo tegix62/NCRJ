@@ -30,6 +30,23 @@ import { MEMBERS } from '../data/members';
       </p>
     </section>
 
+    <section aria-labelledby="tenets-heading">
+      <h2 id="tenets-heading">The Tenets of Reproductive Justice</h2>
+      <p>
+        Reproductive justice is a contemporary framework for activism and for thinking about the experience of
+        reproduction. It is also a political movement that splices reproductive rights with social justice to achieve
+        reproductive justice. The definition of reproductive justice goes beyond the pro-choice/pro-life debate and has
+        three primary principles:
+      </p>
+      <ol class="tenets">
+        <li>The right not to have a child</li>
+        <li>The right to have a child</li>
+        <li>The right to parent children in safe and healthy environments</li>
+      </ol>
+      <p>In addition, reproductive justice demands sexual autonomy and gender freedom for every human being.</p>
+      <p class="credit">— Loretta Ross and Rickie Solinger, <cite>Reproductive Justice: An Introduction</cite> (2017)</p>
+    </section>
+
     <section aria-labelledby="members-heading">
       <h2 id="members-heading">Members</h2>
       <ul class="members">
@@ -49,6 +66,19 @@ import { MEMBERS } from '../data/members';
   h2 { margin: 0 0 var(--space-4); font-size: 1.75rem; }
   section + section { margin-top: var(--space-6); }
   section p { margin: 0; font-size: 1.05rem; line-height: 1.65; }
+  section p + p, .tenets + p { margin-top: var(--space-3); }
+  .credit { color: var(--color-muted); font-size: 0.95rem; }
+  .credit cite { font-style: italic; }
+  .tenets { list-style: none; counter-reset: tenet; margin: var(--space-4) 0; padding: 0; display: grid; gap: var(--space-2); }
+  .tenets li {
+    counter-increment: tenet; display: grid; grid-template-columns: 2.25rem 1fr; align-items: center; gap: var(--space-3);
+    padding: var(--space-3); background: var(--color-cream); border-left: 3px solid var(--color-rust);
+    font-family: var(--font-display); font-size: 1.15rem;
+  }
+  .tenets li::before {
+    content: counter(tenet); width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--color-icon-bg); font-weight: 700;
+  }
   .members { list-style: none; margin: 0; padding: 0; }
   #members-heading { padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
   .members li { display: grid; gap: 0.15rem; padding-block: var(--space-3); }
