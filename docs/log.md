@@ -13,8 +13,9 @@ Format:
 
 ---
 
-## 2026-10-18 · Marissa · About: founders heading in title case
+## 2026-10-18 · Marissa · About: heading wording
 - "The original twelve founders of reproductive justice" → "The Original Twelve Founders of Reproductive Justice".
+- "Members" → "Members of the Collaborative".
 
 ## 2026-10-18 · Marissa · About: tenets of reproductive justice
 - New "The Tenets of Reproductive Justice" section on the About page, between Vision and Members: the definition text supplied by Marissa, with the three principles shown as a numbered list.
