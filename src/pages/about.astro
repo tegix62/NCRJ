@@ -3,7 +3,6 @@
 import Default from '../layouts/Default.astro';
 import PageIntro from '../components/PageIntro.astro';
 import { SITE } from '../site';
-import { MEMBERS } from '../data/members';
 
 // The original twelve founders of reproductive justice, as listed by Marissa.
 const RJ_FOUNDERS = [
@@ -67,18 +66,6 @@ const RJ_FOUNDERS = [
         {RJ_FOUNDERS.map((name) => <li>{name}</li>)}
       </ul>
     </section>
-
-    <section aria-labelledby="members-heading">
-      <h2 id="members-heading">Members of the Collaborative</h2>
-      <ul class="members">
-        {MEMBERS.map((m) => (
-          <li>
-            <span class="name">{m.name}{m.credentials && <span class="credentials">, {m.credentials}</span>}</span>
-            {m.role && <span class="role">{m.role}</span>}
-          </li>
-        ))}
-      </ul>
-    </section>
   </div>
 </Default>
 
@@ -106,10 +93,4 @@ const RJ_FOUNDERS = [
     content: counter(tenet); width: 2.25rem; height: 2.25rem; border-radius: 50%; display: grid; place-items: center;
     background: var(--color-icon-bg); font-weight: 700;
   }
-  .members { list-style: none; margin: 0; padding: 0; }
-  #members-heading { padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border); }
-  .members li { display: grid; gap: 0.15rem; padding-block: var(--space-3); }
-  .name { font-weight: 600; }
-  .credentials { font-weight: 400; color: var(--color-muted); }
-  .role { color: var(--color-rust-text); font-size: 0.95rem; }
 </style>

@@ -1,0 +1,72 @@
+---
+// One person on the Leadership page. `size="large"` is used for the co-directors.
+// Missing headshots and bios show as clearly labelled placeholders.
+import type { Member } from '../data/members';
+
+interface Props {
+  member: Member;
+  size?: 'large' | 'small';
+}
+const { member, size = 'small' } = Astro.props;
+const initials = member.name
+  .replace(/\(.*?\)/g, '')
+  .split(/\s+/)
+  .filter((w) => /^[A-Z]/.test(w))
+  .map((w) => w[0])
+  .filter((_, i, all) => i === 0 || i === all.length - 1)
+  .join('');
+---
+
+<article class:list={['member', size]}>
+  <div class="headshot">
+    {member.headshot ? (
+      <img src={member.headshot} alt={`Headshot of ${member.name}`} loading="lazy" />
+    ) : (
+      <div class="headshot-placeholder" role="img" aria-label="Headshot coming soon">
+        <span class="initials" aria-hidden="true">{initials}</span>
+        <span class="note">Headshot coming soon</span>
+      </div>
+    )}
+  </div>
+  <div class="details">
+    {member.role && <p class="role">{member.role}</p>}
+    <h3>{member.name}</h3>
+    {(member.credentials || member.pronouns) && (
+      <p class="meta">{[member.credentials, member.pronouns && `(${member.pronouns})`].filter(Boolean).join(' ')}</p>
+    )}
+    {member.bio ? <p class="bio">{member.bio}</p> : <p class="bio placeholder"><em>Bio coming soon.</em></p>}
+  </div>
+</article>
+
+<style>
+  .member { display: grid; gap: var(--space-3); align-items: start; align-content: start; }
+  .member.large { gap: var(--space-4); }
+  .member.large .headshot { width: min(100%, 14rem); }
+  @media (min-width: 40rem) {
+    .member.large { grid-template-columns: 13rem 1fr; }
+    .member.large .headshot { width: 100%; }
+  }
+
+  .headshot { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--tone-green); }
+  .member.small .headshot { aspect-ratio: 1; }
+  .headshot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .headshot-placeholder {
+    height: 100%; display: grid; place-content: center; justify-items: center; gap: var(--space-2);
+    background: linear-gradient(160deg, var(--tone-green), var(--tone-plum));
+    color: #f3efe9;
+  }
+  .initials { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 3.5rem); line-height: 1; opacity: 0.9; }
+  .member.small .initials { font-size: 2.5rem; }
+  .note { padding-inline: var(--space-2); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; text-align: center; opacity: 0.8; }
+
+  .role {
+    margin: 0 0 var(--space-1); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--color-rust-text);
+  }
+  h3 { margin: 0; font-weight: 700; font-size: 1.2rem; line-height: 1.2; }
+  .large h3 { font-size: clamp(1.6rem, 3vw, 2.1rem); }
+  .meta { margin: var(--space-1) 0 0; color: var(--color-muted); }
+  .bio { margin: var(--space-3) 0 0; line-height: 1.6; }
+  .small .bio { margin-top: var(--space-2); font-size: 0.95rem; }
+  .bio.placeholder { color: var(--color-muted); }
+</style>

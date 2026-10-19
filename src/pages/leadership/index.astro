@@ -1,0 +1,78 @@
+---
+// Leadership page: co-directors, then the other members, then a band about
+// interns, graduate assistants, and volunteers. People come from src/data/members.ts.
+import Default from '../../layouts/Default.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import MemberCard from '../../components/MemberCard.astro';
+import Icon from '../../components/Icon.astro';
+import { MEMBERS } from '../../data/members';
+
+const featured = MEMBERS.filter((m) => m.featured);
+const others = MEMBERS.filter((m) => !m.featured);
+---
+
+<Default title="Leadership" description="The people who guide the Collaborative's work.">
+  <PageIntro
+    eyebrow="People. Leadership. Community."
+    title="Our Leadership"
+    lede="The Collaborative is guided by visionary leaders, dedicated interns, graduate assistants, and volunteers who bring their knowledge, lived experience, and commitment to reproductive justice into our collective work."
+  />
+
+  <section class="directors" aria-label="Co-directors">
+    <div class="container directors-grid">
+      {featured.map((m) => <MemberCard member={m} size="large" />)}
+    </div>
+  </section>
+
+  <section class="team container" aria-labelledby="team-heading">
+    <h2 id="team-heading">Members of the Collaborative</h2>
+    <div class="team-grid">
+      {others.map((m) => <MemberCard member={m} />)}
+    </div>
+  </section>
+
+  <section class="volunteers">
+    <div class="container volunteers-inner">
+      <div class="volunteers-icon" aria-hidden="true"><Icon name="users" size={48} strokeWidth={1.5} /></div>
+      <div>
+        <p class="eyebrow">Interns, graduate assistants, and volunteers</p>
+        <h2>Students. Emerging Leaders. Community Builders.</h2>
+        <p>
+          Our interns, graduate assistants, and volunteers play a vital role in the Collaborative’s work. They bring
+          fresh perspectives, critical creativity, and deep commitment to reproductive justice, helping to advance our
+          research, education, organizing, and community engagement.
+        </p>
+      </div>
+    </div>
+  </section>
+</Default>
+
+<style>
+  /* Co-directors */
+  .directors { padding-block: var(--space-6); border-bottom: 1px solid var(--color-border); }
+  .directors-grid { display: grid; gap: var(--space-6); }
+  @media (min-width: 72rem) {
+    .directors-grid { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+    .directors-grid > :global(* + *) { border-left: 1px solid var(--color-border); padding-left: var(--space-5); }
+  }
+
+  /* Other members */
+  .team { padding-block: var(--space-6); }
+  .team h2 {
+    margin: 0 0 var(--space-5); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border);
+    font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem);
+  }
+  .team-grid { display: grid; gap: var(--space-5) var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr)); }
+  @media (min-width: 48rem) { .team-grid { grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: var(--space-5); } }
+
+  /* Interns and volunteers */
+  .volunteers { background: var(--color-sand); padding-block: var(--space-5); }
+  .volunteers-inner { display: grid; gap: var(--space-4); align-items: center; }
+  @media (min-width: 48rem) { .volunteers-inner { grid-template-columns: auto 1fr; gap: var(--space-5); } }
+  .volunteers-icon {
+    width: 7rem; height: 7rem; border-radius: 50%; display: grid; place-items: center; background: var(--color-icon-bg);
+  }
+  .volunteers .eyebrow { margin: 0; color: var(--color-rust-text); }
+  .volunteers h2 { margin: var(--space-2) 0; font-weight: 700; font-size: clamp(1.5rem, 3vw, 2.1rem); }
+  .volunteers p:last-child { margin: 0; max-width: 46rem; color: #4a4744; }
+</style>

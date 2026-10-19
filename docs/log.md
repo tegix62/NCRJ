@@ -13,6 +13,13 @@ Format:
 
 ---
 
+## 2026-10-19 · Marissa · New Leadership page
+- New page, `/leadership/`, added to the menu between About and The Archivist. Layout based on a mockup from Marissa; the top banner matches the other inner pages (cream header).
+- Co-directors (Crystal M. Hayes, E. Goldblatt Hyatt) get large cards; the other members get smaller cards below under "Members of the Collaborative". Each card has a headshot space and a bio space, showing "Headshot coming soon" (initials on a tinted panel) and "Bio coming soon." until real ones are added in `src/data/members.ts` (`bio`, `headshot`, optional `pronouns`).
+- A band at the bottom introduces interns, graduate assistants, and volunteers (copy from the mockup).
+- The members list moved off the About page (About now has Mission, Vision, and the Tenets of Reproductive Justice).
+- Left out of the mockup on purpose: the bios and pronouns shown in it (need to come from each person), the "Learn more" and "Meet our interns" buttons (no pages to link to yet), and the hero photo.
+
 ## 2026-10-18 · Marissa · About: heading wording
 - "The original twelve founders of reproductive justice" → "The Original Twelve Founders of Reproductive Justice".
 - "Members" → "Members of the Collaborative".
