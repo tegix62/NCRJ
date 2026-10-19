@@ -62,7 +62,8 @@ The structure deliberately mirrors a Ghost theme so the design could be ported t
 | Org name, menu, the four program areas | `src/site.ts` |
 | Page shell (header, footer) | `src/layouts/Default.astro`, `src/components/` |
 | Homepage | `src/pages/index.astro` |
-| Section pages | `src/pages/{about,archivist,resources,activist-school,get-involved,connect}` |
+| Section pages | `src/pages/{about,leadership,archivist,resources,activist-school,get-involved,connect}` |
+| People on the Leadership page | `src/data/members.ts` (bios, headshots, roles) |
 | News & Events posts | `src/content/posts/*.md` (tags = categories, authors in `src/content/authors/`) |
 
 ## Rules

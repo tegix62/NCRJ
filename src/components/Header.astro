@@ -68,7 +68,7 @@ const [lockupTop, ...lockupRest] = SITE.lockup;
   .connect:hover { background: #142822; }
 
   /* Small screens: dropdown panel */
-  @media (max-width: 84.99rem) {
+  @media (max-width: 89.99rem) {
     .nav-toggle { position: static; }
     .site-header { position: relative; }
     .nav-toggle[open] nav {
@@ -88,7 +88,7 @@ const [lockupTop, ...lockupRest] = SITE.lockup;
   }
 
   /* Wide screens: full inline nav, toggle hidden */
-  @media (min-width: 85rem) {
+  @media (min-width: 90rem) {
     summary { display: none; }
     .nav-toggle nav { display: flex; align-items: center; gap: clamp(1.5rem, 2vw, 2.5rem); }
     nav ul { display: flex; gap: clamp(1.1rem, 1.8vw, 2.5rem); }
@@ -99,7 +99,7 @@ const [lockupTop, ...lockupRest] = SITE.lockup;
   // On wide screens the nav must always be visible, so keep the <details> open there.
   (() => {
     const d = document.querySelector('.nav-toggle');
-    const mq = matchMedia('(min-width: 85rem)');
+    const mq = matchMedia('(min-width: 90rem)');
     const sync = () => { if (mq.matches) d.open = true; };
     sync();
     mq.addEventListener('change', sync);
