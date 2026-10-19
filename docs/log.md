@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-10-19 · Marissa · Leadership: co-director bios
+- Added the bios and pronouns (she/her; they/them) for Crystal M. Hayes and E. Goldblatt Hyatt, taken from the Leadership mockup Marissa supplied. Bios can italicize a title with *asterisks*.
+- Headshots not added yet: waiting to confirm the mockup's portraits are real photos of them, shared with permission.
+
 ## 2026-10-19 · Marissa · New Leadership page
 - New page, `/leadership/`, added to the menu between About and The Archivist. Layout based on a mockup from Marissa; the top banner matches the other inner pages (cream header).
 - Co-directors (Crystal M. Hayes, E. Goldblatt Hyatt) get large cards; the other members get smaller cards below under "Members of the Collaborative". Each card has a headshot space and a bio space, showing "Headshot coming soon" (initials on a tinted panel) and "Bio coming soon." until real ones are added in `src/data/members.ts` (`bio`, `headshot`, optional `pronouns`).

@@ -15,6 +15,10 @@ const initials = member.name
   .map((w) => w[0])
   .filter((_, i, all) => i === 0 || i === all.length - 1)
   .join('');
+
+// Escape the bio, then turn *title* into <em>title</em>.
+const escape = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const bioHtml = member.bio && escape(member.bio).replace(/\*([^*]+)\*/g, '<em>$1</em>');
 ---
 
 <article class:list={['member', size]}>
@@ -34,7 +38,7 @@ const initials = member.name
     {(member.credentials || member.pronouns) && (
       <p class="meta">{[member.credentials, member.pronouns && `(${member.pronouns})`].filter(Boolean).join(' ')}</p>
     )}
-    {member.bio ? <p class="bio">{member.bio}</p> : <p class="bio placeholder"><em>Bio coming soon.</em></p>}
+    {bioHtml ? <p class="bio" set:html={bioHtml} /> : <p class="bio placeholder"><em>Bio coming soon.</em></p>}
   </div>
 </article>
 
