@@ -13,7 +13,7 @@ export interface Member {
 }
 
 export const MEMBERS: Member[] = [
-  { name: 'Crystal M. Hayes', credentials: 'Ph.D., MSW', role: 'Founder and Co-Director', featured: true },
+  { name: 'Crystal M. Hayes', credentials: 'Ph.D., MSW', role: 'Founder and Director', featured: true },
   { name: 'E. Goldblatt Hyatt', credentials: 'DSW, LCSW, MSW', role: 'Co-Director', featured: true },
   { name: 'Simone Snyder', credentials: 'DSW, MSW' },
   { name: 'Jessica (Danuwoa) A Pelletier', credentials: 'LCSWR' },
