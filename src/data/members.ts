@@ -1,5 +1,5 @@
-// Members of the Collaborative, shown on the Leadership page in this order.
-// Members with `featured: true` (the co-directors) get the large cards at the top.
+// Members of the Collaborative, in this order. Members with `featured: true` (the
+// co-directors) appear on the Leadership page; everyone else on the Members page.
 // To add a bio or headshot, fill in `bio` or `headshot` (a path under public/,
 // e.g. '/images/leadership/crystal-hayes.webp'). Only add pronouns the person has given.
 // In a bio, wrap a title in *asterisks* to show it in italics.

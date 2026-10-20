@@ -1,6 +1,6 @@
 ---
-// Leadership page: co-directors, then the other members, then a band about
-// interns, graduate assistants, and volunteers. People come from src/data/members.ts.
+// Leadership page: the co-directors, then a band about interns, graduate assistants,
+// and volunteers. People come from src/data/members.ts; other members are on /members/.
 import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import MemberCard from '../../components/MemberCard.astro';
@@ -8,7 +8,6 @@ import Icon from '../../components/Icon.astro';
 import { MEMBERS } from '../../data/members';
 
 const featured = MEMBERS.filter((m) => m.featured);
-const others = MEMBERS.filter((m) => !m.featured);
 ---
 
 <Default title="Leadership" description="The people who guide the Collaborative's work.">
@@ -24,13 +23,6 @@ const others = MEMBERS.filter((m) => !m.featured);
     </div>
   </section>
 
-  <section class="team container" aria-labelledby="team-heading">
-    <h2 id="team-heading">Members of the Collaborative</h2>
-    <div class="team-grid">
-      {others.map((m) => <MemberCard member={m} />)}
-    </div>
-  </section>
-
   <section class="volunteers">
     <div class="container volunteers-inner">
       <div class="volunteers-icon" aria-hidden="true"><Icon name="users" size={48} strokeWidth={1.5} /></div>
@@ -43,32 +35,32 @@ const others = MEMBERS.filter((m) => !m.featured);
           research, education, organizing, and community engagement.
         </p>
       </div>
+      <a class="outline-button" href="/interns/">Meet Our Interns, GAs, and Volunteers <Icon name="arrow-right" size={16} /></a>
     </div>
   </section>
 </Default>
 
 <style>
   /* Co-directors */
-  .directors { padding-block: var(--space-6); border-bottom: 1px solid var(--color-border); }
+  .directors { padding-block: var(--space-6); }
   .directors-grid { display: grid; gap: var(--space-6); }
   @media (min-width: 72rem) {
     .directors-grid { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
     .directors-grid > :global(* + *) { border-left: 1px solid var(--color-border); padding-left: var(--space-5); }
   }
 
-  /* Other members */
-  .team { padding-block: var(--space-6); }
-  .team h2 {
-    margin: 0 0 var(--space-5); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border);
-    font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem);
-  }
-  .team-grid { display: grid; gap: var(--space-5) var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr)); }
-  @media (min-width: 48rem) { .team-grid { grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: var(--space-5); } }
-
   /* Interns and volunteers */
   .volunteers { background: var(--color-sand); padding-block: var(--space-5); }
   .volunteers-inner { display: grid; gap: var(--space-4); align-items: center; }
   @media (min-width: 48rem) { .volunteers-inner { grid-template-columns: auto 1fr; gap: var(--space-5); } }
+  @media (min-width: 72rem) { .volunteers-inner { grid-template-columns: auto 1fr auto; } }
+  .outline-button {
+    justify-self: start; display: inline-flex; align-items: center; gap: var(--space-2);
+    padding: var(--space-3) var(--space-4); border: 1.5px solid var(--color-rust-text); border-radius: 999px;
+    color: var(--color-rust-text); font-weight: 600; letter-spacing: 0.04em; text-decoration: none; text-align: center;
+  }
+  .outline-button:hover, .outline-button:focus-visible { background: var(--color-rust-text); color: #fff; }
+  @media (min-width: 48rem) and (max-width: 71.99rem) { .outline-button { grid-column: 2; } }
   .volunteers-icon {
     width: 7rem; height: 7rem; border-radius: 50%; display: grid; place-items: center; background: var(--color-icon-bg);
   }
