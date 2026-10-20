@@ -17,6 +17,8 @@ Format:
 - New page, `/members/`, in the menu after Leadership: "Members of the Collaborative", with a card (headshot and bio space) for each member who isn't a co-director.
 - The Leadership page now shows only the co-directors and the interns/volunteers band.
 - Both pages read from `src/data/members.ts`; `featured: true` decides which page a person appears on.
+- Leadership page: a "Meet Our Interns, GAs, and Volunteers" button in the bottom band, linking to a new `/interns/` page (not in the menu) that says "Updates coming soon." for now.
+- Header: the full menu is visible again on laptops. From 70rem to 100rem (about 1120–1600px) the links sit on their own row under the logo; wider screens keep one row; narrower screens use the ☰ menu.
 
 ## 2026-10-19 · Marissa · Leadership: co-director bios
 - Added the bios and pronouns (she/her; they/them) for Crystal M. Hayes and E. Goldblatt Hyatt, taken from the Leadership mockup Marissa supplied. Bios can italicize a title with *asterisks*.

@@ -68,7 +68,7 @@ const [lockupTop, ...lockupRest] = SITE.lockup;
   .connect:hover { background: #142822; }
 
   /* Small screens: dropdown panel */
-  @media (max-width: 99.99rem) {
+  @media (max-width: 69.99rem) {
     .nav-toggle { position: static; }
     .site-header { position: relative; }
     .nav-toggle[open] nav {
@@ -87,19 +87,26 @@ const [lockupTop, ...lockupRest] = SITE.lockup;
     .brand :global(svg) { width: 40px; height: 40px; }
   }
 
-  /* Wide screens: full inline nav, toggle hidden */
-  @media (min-width: 100rem) {
+  /* Laptops and up: the full menu is always visible, toggle hidden */
+  @media (min-width: 70rem) {
     summary { display: none; }
     .nav-toggle nav { display: flex; align-items: center; gap: clamp(1.5rem, 2vw, 2.5rem); }
     nav ul { display: flex; gap: clamp(1.1rem, 1.8vw, 2.5rem); }
   }
+  /* Laptops: the menu gets its own row under the logo, so every link fits */
+  @media (min-width: 70rem) and (max-width: 99.99rem) {
+    .bar { flex-wrap: wrap; row-gap: var(--space-2); padding-bottom: var(--space-2); }
+    .nav-toggle { flex-basis: 100%; }
+    .nav-toggle nav { justify-content: space-between; }
+    nav ul { gap: clamp(1rem, 1.6vw, 2rem); }
+  }
 </style>
 
 <script is:inline>
-  // On wide screens the nav must always be visible, so keep the <details> open there.
+  // On laptops and up the nav must always be visible, so keep the <details> open there.
   (() => {
     const d = document.querySelector('.nav-toggle');
-    const mq = matchMedia('(min-width: 100rem)');
+    const mq = matchMedia('(min-width: 70rem)');
     const sync = () => { if (mq.matches) d.open = true; };
     sync();
     mq.addEventListener('change', sync);
