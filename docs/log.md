@@ -13,6 +13,11 @@ Format:
 
 ---
 
+## 2026-10-20 · Marissa · New Members page
+- New page, `/members/`, in the menu after Leadership: "Members of the Collaborative", with a card (headshot and bio space) for each member who isn't a co-director.
+- The Leadership page now shows only the co-directors and the interns/volunteers band.
+- Both pages read from `src/data/members.ts`; `featured: true` decides which page a person appears on.
+
 ## 2026-10-19 · Marissa · Leadership: co-director bios
 - Added the bios and pronouns (she/her; they/them) for Crystal M. Hayes and E. Goldblatt Hyatt, taken from the Leadership mockup Marissa supplied. Bios can italicize a title with *asterisks*.
 - Headshots not added yet: waiting to confirm the mockup's portraits are real photos of them, shared with permission.

@@ -1,0 +1,30 @@
+---
+// Members page: everyone in src/data/members.ts who isn't a co-director
+// (co-directors are on /leadership/).
+import Default from '../../layouts/Default.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import MemberCard from '../../components/MemberCard.astro';
+import { MEMBERS } from '../../data/members';
+
+const members = MEMBERS.filter((m) => !m.featured);
+---
+
+<Default title="Members" description="The members of the Collaborative.">
+  <PageIntro
+    eyebrow="Members"
+    title="Members of the Collaborative"
+    lede="Educators, clinicians, policy advocates, students, allied professionals, and more."
+  />
+
+  <section class="container team" aria-label="Members">
+    <div class="team-grid">
+      {members.map((m) => <MemberCard member={m} />)}
+    </div>
+  </section>
+</Default>
+
+<style>
+  .team { padding-block: var(--space-6); }
+  .team-grid { display: grid; gap: var(--space-5) var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr)); }
+  @media (min-width: 48rem) { .team-grid { grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: var(--space-5); } }
+</style>

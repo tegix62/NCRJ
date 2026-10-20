@@ -1,6 +1,6 @@
 ---
-// Leadership page: co-directors, then the other members, then a band about
-// interns, graduate assistants, and volunteers. People come from src/data/members.ts.
+// Leadership page: the co-directors, then a band about interns, graduate assistants,
+// and volunteers. People come from src/data/members.ts; other members are on /members/.
 import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import MemberCard from '../../components/MemberCard.astro';
@@ -8,7 +8,6 @@ import Icon from '../../components/Icon.astro';
 import { MEMBERS } from '../../data/members';
 
 const featured = MEMBERS.filter((m) => m.featured);
-const others = MEMBERS.filter((m) => !m.featured);
 ---
 
 <Default title="Leadership" description="The people who guide the Collaborative's work.">
@@ -21,13 +20,6 @@ const others = MEMBERS.filter((m) => !m.featured);
   <section class="directors" aria-label="Co-directors">
     <div class="container directors-grid">
       {featured.map((m) => <MemberCard member={m} size="large" />)}
-    </div>
-  </section>
-
-  <section class="team container" aria-labelledby="team-heading">
-    <h2 id="team-heading">Members of the Collaborative</h2>
-    <div class="team-grid">
-      {others.map((m) => <MemberCard member={m} />)}
     </div>
   </section>
 
@@ -49,21 +41,12 @@ const others = MEMBERS.filter((m) => !m.featured);
 
 <style>
   /* Co-directors */
-  .directors { padding-block: var(--space-6); border-bottom: 1px solid var(--color-border); }
+  .directors { padding-block: var(--space-6); }
   .directors-grid { display: grid; gap: var(--space-6); }
   @media (min-width: 72rem) {
     .directors-grid { grid-template-columns: 1fr 1fr; gap: var(--space-5); }
     .directors-grid > :global(* + *) { border-left: 1px solid var(--color-border); padding-left: var(--space-5); }
   }
-
-  /* Other members */
-  .team { padding-block: var(--space-6); }
-  .team h2 {
-    margin: 0 0 var(--space-5); padding-bottom: var(--space-3); border-bottom: 1px solid var(--color-border);
-    font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem);
-  }
-  .team-grid { display: grid; gap: var(--space-5) var(--space-4); grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr)); }
-  @media (min-width: 48rem) { .team-grid { grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: var(--space-5); } }
 
   /* Interns and volunteers */
   .volunteers { background: var(--color-sand); padding-block: var(--space-5); }

@@ -20,6 +20,7 @@ export const NAV = [
   { href: '/', label: 'Home' },
   { href: '/about/', label: 'About' },
   { href: '/leadership/', label: 'Leadership' },
+  { href: '/members/', label: 'Members' },
   { href: '/archivist/', label: 'The Archivist' },
   { href: '/resources/', label: 'Resource Bank' },
   { href: '/activist-school/', label: 'Activist School' },
