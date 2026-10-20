@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-10-20 · Marissa · Interns button goes to Members
+- The Leadership page's "Meet Our Interns, GAs, and Volunteers" button now opens the Members page (`/members/`).
+- Removed the separate `/interns/` placeholder page.
+
 ## 2026-10-20 · Marissa · New Members page
 - New page, `/members/`, in the menu after Leadership: "Members of the Collaborative", with a card (headshot and bio space) for each member who isn't a co-director.
 - The Leadership page now shows only the co-directors and the interns/volunteers band.
