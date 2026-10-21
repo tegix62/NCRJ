@@ -15,6 +15,7 @@ Format:
 
 ## 2026-10-21 · Marissa · Leadership: E. Goldblatt Hyatt's headshot
 - Added E. Goldblatt Hyatt's headshot (`public/images/leadership/e-goldblatt-hyatt.webp`), supplied by Marissa.
+- Marissa confirmed it is a real photo of E. and that they want it on the site. Crystal M. Hayes's headshot is still to come.
 
 ## 2026-10-21 · Marissa · Leadership: two-line intro
 - The Leadership page banner sentence now spreads across two lines on laptops, like the About page.
