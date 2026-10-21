@@ -4,15 +4,17 @@ interface Props {
   eyebrow?: string;
   title: string;
   lede?: string;
+  /** Let a short lede run the full width instead of wrapping at 40rem. */
+  wideLede?: boolean;
 }
-const { eyebrow, title, lede } = Astro.props;
+const { eyebrow, title, lede, wideLede = false } = Astro.props;
 ---
 
 <header class="page-intro">
   <div class="container">
     {eyebrow && <p class="eyebrow">{eyebrow}</p>}
     <h1>{title}</h1>
-    {lede && <p class="lede">{lede}</p>}
+    {lede && <p class:list={['lede', { wide: wideLede }]}>{lede}</p>}
     <slot />
   </div>
 </header>
@@ -22,4 +24,5 @@ const { eyebrow, title, lede } = Astro.props;
   .eyebrow { margin: 0; }
   h1 { margin: var(--space-2) 0; font-weight: 700; font-size: clamp(2rem, 5vw, 3rem); }
   .lede { max-width: 40rem; margin: 0; font-size: 1.15rem; color: var(--color-muted); }
+  .lede.wide { max-width: none; }
 </style>
