@@ -16,6 +16,7 @@ Format:
 ## 2026-10-21 · Marissa · Members: Simone's headshot
 - Added Simone Snyder's headshot (`public/images/leadership/simone-snyder.webp`), supplied by Marissa.
 - Headshots are cropped to fill their frame, centered slightly above the middle so faces aren't cut off.
+- Removed the "Bio coming soon." lines: members without a bio now show just their name and credentials.
 
 ## 2026-10-20 · Marissa · Members: updated credentials
 - Nakita Joseph: LMSW, PMH-C, Doctoral Candidate in Social Work

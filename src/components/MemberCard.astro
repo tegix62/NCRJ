@@ -1,6 +1,6 @@
 ---
 // One person on the Leadership page. `size="large"` is used for the co-directors.
-// Missing headshots and bios show as clearly labelled placeholders.
+// A missing headshot shows as a labelled placeholder; a missing bio is simply left out.
 import type { Member } from '../data/members';
 
 interface Props {
@@ -38,7 +38,7 @@ const bioHtml = member.bio && escape(member.bio).replace(/\*([^*]+)\*/g, '<em>$1
     {(member.credentials || member.pronouns) && (
       <p class="meta">{[member.credentials, member.pronouns && `(${member.pronouns})`].filter(Boolean).join(' ')}</p>
     )}
-    {bioHtml ? <p class="bio" set:html={bioHtml} /> : <p class="bio placeholder"><em>Bio coming soon.</em></p>}
+    {bioHtml && <p class="bio" set:html={bioHtml} />}
   </div>
 </article>
 
@@ -72,5 +72,4 @@ const bioHtml = member.bio && escape(member.bio).replace(/\*([^*]+)\*/g, '<em>$1
   .meta { margin: var(--space-1) 0 0; color: var(--color-muted); }
   .bio { margin: var(--space-3) 0 0; line-height: 1.6; }
   .small .bio { margin-top: var(--space-2); font-size: 0.95rem; }
-  .bio.placeholder { color: var(--color-muted); }
 </style>
