@@ -27,6 +27,7 @@ export const MEMBERS: Member[] = [
     credentials: 'DSW, LCSW, MSW',
     role: 'Co-Director',
     pronouns: 'they/them',
+    headshot: '/images/leadership/e-goldblatt-hyatt.webp',
     featured: true,
     bio: 'Dr. E. Goldblatt Hyatt is an administrator, clinician, and author whose work centers reproductive justice, grief and loss, and transformative care. They are a nationally recognized speaker and educator with nearly two decades of experience, and author of *Social Work and Reproductive Justice: A Necessary Fit* (2025).',
   },
