@@ -13,6 +13,12 @@ Format:
 
 ---
 
+## 2026-10-21 · Marissa · Header: bigger name, menu, and Connect
+- The name at the top is bigger. On laptops and up it reads on two lines: "NATIONAL COLLABORATIVE", then the rest of the name on one longer line. Phones keep the stacked three-line version, slightly larger than before.
+- Menu links are bigger and spread evenly across their row; the Connect button is bigger to match.
+- From 73rem (about 1170px) up, the header is always two rows: the name on top, then the menu. The single-row layout for very wide screens is gone, since the bigger name no longer leaves room. The header now lines up with the page content on very wide screens.
+- Below 73rem the menu is under the ☰ button, as before.
+
 ## 2026-10-21 · Marissa · Members: Simone's headshot
 - Added Simone Snyder's headshot (`public/images/leadership/simone-snyder.webp`), supplied by Marissa.
 - Headshots are cropped to fill their frame, centered slightly above the middle so faces aren't cut off.
