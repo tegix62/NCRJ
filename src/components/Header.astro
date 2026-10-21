@@ -117,6 +117,8 @@ const [lockupTop, ...lockupRest] = SITE.lockup;
   @media (min-width: 73rem) {
     summary { display: none; }
     .bar { flex-wrap: wrap; row-gap: var(--space-2); padding-bottom: var(--space-2); }
+    /* Sit the logo and name a little further left than the menu row */
+    .brand { margin-left: calc(-1 * var(--space-4)); }
     .nav-toggle { flex-basis: 100%; }
     .nav-toggle nav { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); }
     nav ul { display: flex; flex: 1; justify-content: space-between; gap: var(--space-3); }

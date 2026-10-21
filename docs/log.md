@@ -13,6 +13,9 @@ Format:
 
 ---
 
+## 2026-10-21 · Marissa · Header: name and logo nudged left
+- On laptops and up, the logo and name sit 1.5rem further left than the menu row.
+
 ## 2026-10-21 · Marissa · Header: bigger name, menu, and Connect
 - The name at the top is bigger. On laptops and up it reads on two lines: "NATIONAL COLLABORATIVE", then the rest of the name on one longer line. Phones keep the stacked three-line version, slightly larger than before.
 - Menu links are bigger and spread evenly across their row; the Connect button is bigger to match.
