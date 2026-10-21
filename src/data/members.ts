@@ -31,7 +31,7 @@ export const MEMBERS: Member[] = [
     bio: 'Dr. E. Goldblatt Hyatt is an administrator, clinician, and author whose work centers reproductive justice, grief and loss, and transformative care. They are a nationally recognized speaker and educator with nearly two decades of experience, and author of *Social Work and Reproductive Justice: A Necessary Fit* (2025).',
   },
   { name: 'Simone Snyder', credentials: 'DSW, MSW' },
-  { name: 'Jessica (Danuwoa) A Pelletier', credentials: 'LCSWR' },
-  { name: 'Nakita Joseph', credentials: 'LMSW' },
-  { name: 'Marissa Aitken' },
+  { name: 'Jessica “Danuwoa” A Pelletier', credentials: 'LCSWR, Ph.D. Student of Social Work, Graduate Assistant' },
+  { name: 'Nakita Joseph', credentials: 'LMSW, PMH-C, Doctoral Candidate in Social Work' },
+  { name: 'Marissa Aitken', credentials: 'BS, MSW Student, Research Assistant' },
 ];

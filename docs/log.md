@@ -13,6 +13,11 @@ Format:
 
 ---
 
+## 2026-10-20 · Marissa · Members: updated credentials
+- Nakita Joseph: LMSW, PMH-C, Doctoral Candidate in Social Work
+- Marissa Aitken: BS, MSW Student, Research Assistant
+- Jessica “Danuwoa” A Pelletier: LCSWR, Ph.D. Student of Social Work, Graduate Assistant (her name now shows Danuwoa in quotation marks instead of parentheses)
+
 ## 2026-10-20 · Marissa · Interns button goes to Members
 - The Leadership page's "Meet Our Interns, GAs, and Volunteers" button now opens the Members page (`/members/`).
 - Removed the separate `/interns/` placeholder page.
