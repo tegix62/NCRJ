@@ -53,7 +53,7 @@ const bioHtml = member.bio && escape(member.bio).replace(/\*([^*]+)\*/g, '<em>$1
 
   .headshot { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5; background: var(--tone-green); }
   .member.small .headshot { aspect-ratio: 1; }
-  .headshot img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .headshot img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
   .headshot-placeholder {
     height: 100%; display: grid; place-content: center; justify-items: center; gap: var(--space-2);
     background: linear-gradient(160deg, var(--tone-green), var(--tone-plum));
