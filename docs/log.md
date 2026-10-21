@@ -13,6 +13,9 @@ Format:
 
 ---
 
+## 2026-10-21 · Marissa · About: two-line intro
+- The About page banner sentence ("The National Collaborative … collective action.") now spreads across two lines on laptops instead of four. It wraps more on tablets and phones. The homepage intro is unchanged.
+
 ## 2026-10-21 · Marissa · Members: one-line intro
 - The Members page intro ("Educators, clinicians, … and more.") now stays on one line on laptops instead of wrapping "more." onto a second line. Phones still wrap it, since it's too long for a phone screen.
 
