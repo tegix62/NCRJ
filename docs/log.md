@@ -13,6 +13,9 @@ Format:
 
 ---
 
+## 2026-10-21 · Marissa · Members: one-line intro
+- The Members page intro ("Educators, clinicians, … and more.") now stays on one line on laptops instead of wrapping "more." onto a second line. Phones still wrap it, since it's too long for a phone screen.
+
 ## 2026-10-21 · Marissa · Header: name and logo nudged left
 - On laptops and up, the logo and name sit 1.5rem further left than the menu row.
 
