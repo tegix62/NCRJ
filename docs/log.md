@@ -13,6 +13,9 @@ Format:
 
 ---
 
+## 2026-10-21 · Marissa · Leadership: E. Goldblatt Hyatt's headshot
+- Added E. Goldblatt Hyatt's headshot (`public/images/leadership/e-goldblatt-hyatt.webp`), supplied by Marissa.
+
 ## 2026-10-21 · Marissa · Leadership: two-line intro
 - The Leadership page banner sentence now spreads across two lines on laptops, like the About page.
 
