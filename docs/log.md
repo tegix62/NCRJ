@@ -13,6 +13,9 @@ Format:
 
 ---
 
+## 2026-10-21 · Marissa · Leadership: two-line intro
+- The Leadership page banner sentence now spreads across two lines on laptops, like the About page.
+
 ## 2026-10-21 · Marissa · About: two-line intro
 - The About page banner sentence ("The National Collaborative … collective action.") now spreads across two lines on laptops instead of four. It wraps more on tablets and phones. The homepage intro is unchanged.
 
