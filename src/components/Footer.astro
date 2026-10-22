@@ -1,13 +1,16 @@
 ---
 import Logo from './Logo.astro';
-import { SITE, NAV, CONNECT } from '../site';
+import { SITE, NAV, CONNECT, CONTACT_EMAIL } from '../site';
 ---
 
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
       <Logo size={44} />
-      <p>{SITE.name}</p>
+      <div>
+        <p>{SITE.name}</p>
+        <a class="email" href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      </div>
     </div>
     <nav aria-label="Footer">
       <ul>
@@ -25,6 +28,7 @@ import { SITE, NAV, CONNECT } from '../site';
   .footer-grid { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-4); }
   .footer-brand { display: flex; gap: var(--space-3); align-items: flex-start; max-width: 26rem; }
   .footer-brand p { margin: 0; font-family: var(--font-display); line-height: 1.4; }
+  .footer-brand .email { display: inline-block; margin-top: var(--space-2); text-decoration: underline; text-underline-offset: 3px; }
   .footer-brand :global(svg) { flex: none; background: var(--color-cream); border-radius: 50%; padding: 4px; }
   ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: var(--space-5); }
   li { margin-bottom: var(--space-2); }
