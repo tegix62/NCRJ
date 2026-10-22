@@ -75,6 +75,9 @@ export const PILLARS = [
   },
 ] as const;
 
+// The Collaborative's public email, shown on the Connect page and in the footer.
+export const CONTACT_EMAIL = 'ncrjisw@gmail.com';
+
 // Social channels, shown on the Connect page.
 export const SOCIAL = {
   youtube: { href: 'https://www.youtube.com/@crystalmhc', handle: '@crystalmhc' },

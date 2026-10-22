@@ -13,6 +13,9 @@ Format:
 
 ---
 
+## 2026-10-22 · Marissa · Contact email
+- The Collaborative's email, ncrjisw@gmail.com, is now on the Connect page ("Email the Collaborative", above the YouTube box) and in the footer under the name on every page. Both open the visitor's email app. The address lives in `CONTACT_EMAIL` in `src/site.ts`.
+
 ## 2026-10-21 · Marissa · Leadership: E. Goldblatt Hyatt's headshot
 - Added E. Goldblatt Hyatt's headshot (`public/images/leadership/e-goldblatt-hyatt.webp`), supplied by Marissa.
 - Marissa confirmed it is a real photo of E. and that they want it on the site. Crystal M. Hayes's headshot is still to come.

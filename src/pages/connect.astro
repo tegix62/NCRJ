@@ -1,12 +1,25 @@
 ---
 import Default from '../layouts/Default.astro';
 import PageIntro from '../components/PageIntro.astro';
-import { SOCIAL } from '../site';
+import { SOCIAL, CONTACT_EMAIL } from '../site';
 ---
 
 <Default title="Connect">
   <PageIntro eyebrow="Connect" title="Connect with Us" />
   <div class="content connect">
+    <a class="channel" href={`mailto:${CONTACT_EMAIL}`}>
+      <span class="logo mail" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 7-10 6L2 7" />
+        </svg>
+      </span>
+      <span class="text">
+        <strong>Email the Collaborative</strong>
+        <span class="handle">{CONTACT_EMAIL}</span>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+
     <a class="channel" href={SOCIAL.youtube.href}>
       <!-- YouTube logo, drawn inline so nothing loads from YouTube until the link is clicked.
            #FF0000 is YouTube's brand red, required by their brand guidelines. -->
@@ -24,7 +37,7 @@ import { SOCIAL } from '../site';
 </Default>
 
 <style>
-  .connect { padding-block: var(--space-5); }
+  .connect { display: grid; gap: var(--space-3); padding-block: var(--space-5); }
   .channel {
     display: flex; align-items: center; gap: var(--space-3);
     max-width: 26rem; padding: var(--space-3) var(--space-4);
@@ -33,6 +46,10 @@ import { SOCIAL } from '../site';
   }
   .channel:hover, .channel:focus-visible { border-color: var(--color-rust); }
   .logo { flex: none; }
+  .mail {
+    width: 44px; height: 31px; display: grid; place-items: center;
+    border-radius: 7px; background: var(--color-green); color: #fff;
+  }
   .text { display: grid; flex: 1; }
   .text strong { font-weight: 600; }
   .handle { color: var(--color-muted); font-size: 0.95rem; }
