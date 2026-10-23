@@ -74,6 +74,7 @@ The structure deliberately mirrors a Ghost theme so the design could be ported t
 - **Mobile matters.** Check every change at phone width (~390px). No horizontal scrolling.
 - **No invented facts.** Never write realistic-sounding stories, people, histories, statistics, or citations as sample content, especially for the Archivist, which is meant to be a citable archive. Use clearly labelled placeholders.
 - **Privacy.** No analytics or tracking scripts, no third-party font or asset hosts (fonts are self-hosted via Fontsource). Story submissions and contact details must never be committed to this repo.
+- **Sanity bandwidth.** Sanity's Free plan blocks everything (images return errors, builds fail, nothing deploys) until the 1st of the month once its 100 GB bandwidth runs out, and on another Astro + Sanity + Cloudflare site that was caused by the site's own automation, not visitors. So: images live in `public/images/` (served by Cloudflare, free). If Sanity is ever connected, never put `cdn.sanity.io` image URLs in pages; route them through a Cloudflare cache first (see "Connecting the content system" in `docs/future-scope.md`). Don't add GitHub Actions, scheduled jobs, or tests that load the live site's images; screenshots and checks run against a local build only.
 - **Photos.** Placeholders are tinted panels. Real photos must be licensed, with consent from identifiable people, and should suit the site's palette (dark green, rust, cream, sand); bright, multicolored photos clash with it.
 
 ## Workflow

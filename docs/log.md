@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-10-23 · Chris · Sanity bandwidth check
+- Checked the site against a Sanity bandwidth outage that took down another Astro + Sanity + Cloudflare site. Not exposed today: the site doesn't load anything from Sanity (all images are in `public/images/`), there are no GitHub Actions, tests, scheduled jobs, or service workers, and the Studio (on the unmerged `sanity-studio` branch) is only used by editors.
+- Added a "Sanity bandwidth" rule to CLAUDE.md and the required safeguards to the Sanity item in `docs/future-scope.md`, so they're in place before Sanity is ever connected to the site.
+
 ## 2026-10-22 · Marissa · Contact email
 - The Collaborative's email, ncrjisw@gmail.com, is now on the Connect page ("Email the Collaborative", above the YouTube box) and in the footer under the name on every page. Both open the visitor's email app. The address lives in `CONTACT_EMAIL` in `src/site.ts`.
 
