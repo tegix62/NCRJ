@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-11-06 · Marissa · Resource Bank: full title and intro
+- The menu still says "Resource Bank", but the page title is now "Reproductive Justice and ADEI Resource Bank".
+- The banner's intro line is the Resource Bank's description ("a living collection of scholarship, teaching materials, …"), and below it: why the Collaborative created it, the bulleted list of what it centers, and what kinds of materials are welcome. Text supplied by Marissa. Videos and Articles follow as before.
+
 ## 2026-10-22 · Marissa · Contact email
 - The Collaborative's email, ncrjisw@gmail.com, is now on the Connect page ("Email the Collaborative", above the YouTube box) and in the footer under the name on every page. Both open the visitor's email app. The address lives in `CONTACT_EMAIL` in `src/site.ts`.
 
