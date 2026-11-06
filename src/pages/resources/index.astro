@@ -3,12 +3,12 @@ import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
 import Icon from '../../components/Icon.astro';
-import { PILLARS, CONTACT_EMAIL } from '../../site';
+import { PILLARS } from '../../site';
 import { VIDEOS, ARTICLES } from '../../data/resources';
 
 const section = PILLARS[1];
-// Recommendations go by email for now (no submission form; see docs/future-scope.md).
-const recommendHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Resource Bank recommendation')}`;
+// Resource recommendations go to the Collaborative's Google Form.
+const SUBMIT_RESOURCE_FORM = 'https://forms.gle/moT8PbNJ1iozcEpg8';
 // The menu says "Resource Bank"; the page itself uses the full name.
 const pageTitle = 'Reproductive Justice and ADEI Resource Bank';
 const intro =
@@ -90,7 +90,7 @@ const categories = [
           submit it for consideration. You do not have to be the author or creator of the resource to recommend it.
         </p>
       </div>
-      <a class="button" href={recommendHref}>Recommend a resource <Icon name="arrow-right" size={16} /></a>
+      <a class="button" href={SUBMIT_RESOURCE_FORM}>Submit A Resource <Icon name="arrow-right" size={16} /></a>
     </div>
   </section>
 </Default>
