@@ -13,6 +13,15 @@ Format:
 
 ---
 
+## 2026-11-06 · Marissa · Resource Bank: new layout
+- Rebuilt the Resource Bank page below the banner, based on a mockup from Marissa:
+  - "About the Resource Bank" (the why and what-we-welcome paragraphs) with "Browse the Resource Bank" and "Submit a Resource" buttons, beside a pale green box listing what the Bank centers, each with a green check.
+  - A row of 13 resource types with icons (Books, Articles, Book Chapters, … And More). Articles and Videos jump to those items; the rest are labels for now.
+  - "Featured Resources": cards for Videos (both click-to-play videos), Articles (the "An Act of Love" article), and a "Featured resource coming soon." placeholder.
+  - "Help Us Grow the Resource Bank" is now a pale green panel with a "Submit a Resource" button (Google Form).
+- Left out of the mockup on purpose: its photo thumbnails (none supplied; YouTube thumbnails would load from YouTube), the "Proposed 2029 EPAS: What Changed?" featured resource (not supplied), and the "View more resources" / "Learn more about submissions" links (no pages for them yet).
+- New icons in `src/components/Icon.astro`; `VideoEmbed` has a `compact` option for cards.
+
 ## 2026-11-06 · Marissa · Resource Bank: full title and intro
 - The menu still says "Resource Bank", but the page title is now "Reproductive Justice and ADEI Resource Bank".
 - The banner's intro line is the Resource Bank's description ("a living collection of scholarship, teaching materials, …"), and below it: why the Collaborative created it, the bulleted list of what it centers, and what kinds of materials are welcome. Text supplied by Marissa. Videos and Articles follow as before.

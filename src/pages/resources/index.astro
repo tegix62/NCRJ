@@ -1,4 +1,7 @@
 ---
+// Reproductive Justice and ADEI Resource Bank. Layout based on a mockup from Marissa:
+// about + "we center" checklist, resource types, featured resources, and a call
+// for submissions. Items come from src/data/resources.ts.
 import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
@@ -7,81 +10,126 @@ import { PILLARS } from '../../site';
 import { VIDEOS, ARTICLES } from '../../data/resources';
 
 const section = PILLARS[1];
-// Resource recommendations go to the Collaborative's Google Form.
-const SUBMIT_RESOURCE_FORM = 'https://forms.gle/moT8PbNJ1iozcEpg8';
 // The menu says "Resource Bank"; the page itself uses the full name.
 const pageTitle = 'Reproductive Justice and ADEI Resource Bank';
 const intro =
   'The Reproductive Justice and ADEI Resource Bank is a living collection of scholarship, teaching materials, community knowledge, multimedia resources, and public scholarship designed to support learning, research, practice, advocacy, and organizing.';
+// Resource recommendations go to the Collaborative's Google Form.
+const SUBMIT_RESOURCE_FORM = 'https://forms.gle/moT8PbNJ1iozcEpg8';
+
 const centers = [
-  'reflect the lived experiences of marginalized communities;',
-  'advance reproductive justice, anti-racism, diversity, equity, and inclusion;',
-  'center Black, Indigenous, and other marginalized voices;',
-  'use intersectional, abolitionist, decolonial, and transformative frameworks;',
-  'document resistance, advocacy, organizing, and movement building;',
-  'connect reproductive justice to social work education, policy, research, and practice; and',
-  'provide accessible resources for students, educators, practitioners, researchers, organizers, advocates, and community members.',
+  'Reflect the lived experiences of marginalized communities',
+  'Advance reproductive justice, anti-racism, diversity, equity, and inclusion',
+  'Center Black, Indigenous, and other marginalized voices',
+  'Use intersectional, abolitionist, decolonial, and transformative frameworks',
+  'Document resistance, advocacy, organizing, and movement building',
+  'Connect reproductive justice to social work education, policy, research, and practice',
+  'Provide accessible resources for students, educators, practitioners, researchers, organizers, advocates, and community members',
 ];
-const categories = [
-  { id: 'videos', label: 'Videos', count: VIDEOS.length },
-  { id: 'articles', label: 'Articles', count: ARTICLES.length },
-];
+
+// Kinds of resources the Bank collects. Those with an `href` jump to items on this page.
+const types = [
+  { label: 'Books', icon: 'book' },
+  { label: 'Articles', icon: 'file-text', href: '#articles' },
+  { label: 'Book Chapters', icon: 'layers' },
+  { label: 'Podcasts', icon: 'mic' },
+  { label: 'Videos', icon: 'video', href: '#videos' },
+  { label: 'Webinars', icon: 'monitor' },
+  { label: 'Reports', icon: 'clipboard' },
+  { label: 'Policy Briefs', icon: 'briefcase' },
+  { label: 'Teaching Materials', icon: 'lightbulb' },
+  { label: 'Practice Tools', icon: 'wrench' },
+  { label: 'Community Resources', icon: 'users' },
+  { label: 'Creative Works', icon: 'pencil' },
+  { label: 'And More', icon: 'more' },
+] as const;
 ---
 
 <Default title={pageTitle} description={intro}>
   <PageIntro eyebrow={section.subtitle} title={pageTitle} lede={intro} wideLede />
-  <div class="content resources">
-    <section class="about-bank" aria-label="About the Resource Bank">
+
+  <section class="container about" aria-labelledby="about-heading">
+    <div class="about-text">
+      <h2 id="about-heading">About the Resource Bank</h2>
       <p>
         We created the Resource Bank because it can still be difficult to find materials that reflect the lived
         experiences of communities most affected by reproductive oppression—particularly Black, Indigenous, and other
         systemically marginalized communities. Our goal is to make diverse, justice-centered resources easier to find,
         use, teach, and share.
       </p>
-      <p>The Resource Bank centers materials that:</p>
-      <ul class="centers">
-        {centers.map((c) => <li>{c}</li>)}
-      </ul>
       <p>
         We welcome books, book chapters, peer-reviewed articles, reports, policy briefs, podcasts, videos, webinars,
         community resources, creative works, and other materials that deepen understanding and support action around
         reproductive justice. We generally prioritize work from the past ten years while also including foundational
         texts that continue to shape the field.
       </p>
-    </section>
-
-    <nav class="categories" aria-label="Resource categories">
-      {categories.map((c) => <a href={`#${c.id}`}>{c.label} <span>({c.count})</span></a>)}
-    </nav>
-
-    <section id="videos" aria-labelledby="videos-heading">
-      <h2 id="videos-heading">Videos</h2>
-      <div class="video-list">
-        {VIDEOS.map((v) => <VideoEmbed title={v.title} youtubeId={v.youtubeId} />)}
+      <div class="actions">
+        <a class="pill pill-rust" href="#featured"><Icon name="book-open" size={18} /> Browse the Resource Bank <Icon name="arrow-right" size={16} /></a>
+        <a class="pill pill-green" href={SUBMIT_RESOURCE_FORM}><Icon name="plus" size={18} /> Submit a Resource <Icon name="arrow-right" size={16} /></a>
       </div>
-    </section>
+    </div>
 
-    <section id="articles" aria-labelledby="articles-heading">
-      <h2 id="articles-heading">Articles</h2>
-      {ARTICLES.length ? (
-        <ul class="article-list">
-          {ARTICLES.map((a) => (
-            <li>
-              <h3><a href={a.url}>{a.title}</a></h3>
-              {(a.authors || a.publication) && (
-                <p>{[a.authors, a.publication].filter(Boolean).join(' · ')}</p>
-              )}
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p class="placeholder"><em>Articles coming soon.</em></p>
-      )}
-    </section>
-  </div>
+    <div class="centers">
+      <h3>The Resource Bank centers materials that:</h3>
+      <ul>
+        {centers.map((c) => (
+          <li><span class="check" aria-hidden="true"><Icon name="check" size={14} strokeWidth={3} /></span>{c}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
 
-  <section class="grow" aria-labelledby="grow-heading">
-    <div class="container grow-inner">
+  <section class="types" aria-label="Types of resources">
+    <ul class="container types-list">
+      {types.map((t) => {
+        const inner = (
+          <>
+            <span class="type-icon" aria-hidden="true"><Icon name={t.icon} size={24} /></span>
+            <span class="type-label">{t.label}</span>
+          </>
+        );
+        return <li>{'href' in t ? <a href={t.href}>{inner}</a> : <span>{inner}</span>}</li>;
+      })}
+    </ul>
+  </section>
+
+  <section class="container featured" id="featured" aria-labelledby="featured-heading">
+    <h2 id="featured-heading">Featured Resources</h2>
+    <div class="featured-grid">
+      <article class="card" id="videos" aria-labelledby="videos-heading">
+        <h3 id="videos-heading" class="card-title">Videos</h3>
+        <div class="video-grid">
+          {VIDEOS.map((v) => <VideoEmbed title={v.title} youtubeId={v.youtubeId} compact />)}
+        </div>
+      </article>
+
+      <article class="card" id="articles" aria-labelledby="articles-heading">
+        <h3 id="articles-heading" class="card-title">Articles</h3>
+        {ARTICLES.map((a) => (
+          <div class="article">
+            <div class="article-thumb" aria-hidden="true"><Icon name="file-text" size={36} strokeWidth={1.5} /></div>
+            <div>
+              <h4><a href={a.url}>{a.title}</a></h4>
+              {a.authors && <p class="byline">{a.authors}</p>}
+              {a.publication && <p class="publication">{a.publication}</p>}
+            </div>
+          </div>
+        ))}
+      </article>
+
+      <article class="card" aria-labelledby="featured-resource-heading">
+        <h3 id="featured-resource-heading" class="card-title">Featured Resource</h3>
+        <div class="coming-soon">
+          <span aria-hidden="true"><Icon name="lightbulb" size={36} strokeWidth={1.5} /></span>
+          <p>Featured resource coming soon.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="container grow-wrap" aria-labelledby="grow-heading">
+    <div class="grow">
+      <div class="grow-icon" aria-hidden="true"><Icon name="users" size={40} strokeWidth={1.5} /></div>
       <div>
         <h2 id="grow-heading">Help Us Grow the Resource Bank</h2>
         <p>
@@ -90,39 +138,100 @@ const categories = [
           submit it for consideration. You do not have to be the author or creator of the resource to recommend it.
         </p>
       </div>
-      <a class="button" href={SUBMIT_RESOURCE_FORM}>Submit A Resource <Icon name="arrow-right" size={16} /></a>
+      <a class="pill pill-green" href={SUBMIT_RESOURCE_FORM}><Icon name="plus" size={18} /> Submit a Resource <Icon name="arrow-right" size={16} /></a>
     </div>
   </section>
 </Default>
 
 <style>
-  .resources { padding-block: var(--space-5); }
-  .about-bank { margin-bottom: var(--space-6); padding-bottom: var(--space-5); border-bottom: 1px solid var(--color-border); }
-  .about-bank p { margin: 0 0 var(--space-3); font-size: 1.05rem; line-height: 1.65; }
-  .about-bank p:last-child { margin-bottom: 0; }
-  .centers { margin: 0 0 var(--space-4); padding-left: 1.25rem; display: grid; gap: var(--space-2); line-height: 1.55; }
-  .centers li::marker { color: var(--color-rust); }
-  .categories { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
-  .categories a {
-    padding: var(--space-2) var(--space-3);
-    border: 1px solid var(--color-border); border-radius: 999px;
-    background: var(--color-cream); color: var(--color-text); text-decoration: none; font-weight: 500;
+  /* A pale green tint, mixed from the site's green and background */
+  .about, .featured, .grow-wrap { --sage: color-mix(in srgb, var(--color-green) 13%, var(--color-cream)); }
+
+  /* Shared pill buttons */
+  .pill {
+    display: inline-flex; align-items: center; gap: var(--space-2);
+    padding: 0.8rem 1.4rem; border-radius: 999px; color: #fff; text-decoration: none;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
   }
-  .categories a:hover { border-color: var(--color-rust); }
-  .categories span { color: var(--color-muted); font-weight: 400; }
-  section + section { margin-top: var(--space-6); }
-  section { scroll-margin-top: var(--space-5); }
-  h2 { margin: 0 0 var(--space-4); font-size: 1.75rem; }
-  .video-list { display: grid; gap: var(--space-5); }
-  .article-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-4); }
-  .article-list li { padding-bottom: var(--space-4); border-bottom: 1px solid var(--color-border); }
-  .article-list h3 { margin: 0 0 var(--space-1); font-size: 1.25rem; }
-  .article-list p { margin: 0; color: var(--color-muted); font-size: 0.95rem; }
-  .placeholder { color: var(--color-muted); }
-  .grow { background: var(--color-green); color: #fff; padding-block: var(--space-6); }
-  .grow-inner { display: grid; gap: var(--space-4); align-items: center; }
-  @media (min-width: 56rem) { .grow-inner { grid-template-columns: 1fr auto; gap: var(--space-6); } }
-  .grow h2 { margin: 0 0 var(--space-3); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem); }
-  .grow p { margin: 0; max-width: 46rem; color: #e8e4dc; line-height: 1.65; }
-  .grow .button { justify-self: start; }
+  .pill-rust { background: var(--color-rust-text); }
+  .pill-green { background: var(--color-green); }
+  .pill-rust:hover, .pill-rust:focus-visible { background: color-mix(in srgb, var(--color-rust-text) 80%, black); }
+  .pill-green:hover, .pill-green:focus-visible { background: #142822; }
+
+  /* About + checklist */
+  .about { display: grid; gap: var(--space-5); padding-block: var(--space-6) var(--space-5); align-items: start; }
+  @media (min-width: 64rem) { .about { grid-template-columns: 1fr 1fr; gap: var(--space-6); } }
+  .about h2 { margin: 0 0 var(--space-3); font-weight: 700; font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
+  .about-text p { margin: 0 0 var(--space-3); font-size: 1.05rem; line-height: 1.65; }
+  .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-4); }
+  .centers { padding: var(--space-4) var(--space-5); background: var(--sage); border-radius: var(--radius); }
+  .centers h3 { margin: 0 0 var(--space-3); font-weight: 700; font-size: 1.35rem; }
+  .centers ul { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+  .centers li { display: grid; grid-template-columns: auto 1fr; gap: var(--space-3); align-items: start; line-height: 1.45; }
+  .check {
+    width: 1.4rem; height: 1.4rem; margin-top: 1px; border-radius: 50%;
+    display: grid; place-items: center; background: var(--color-green); color: #fff;
+  }
+
+  /* Resource types row */
+  .types { background: var(--color-cream); border-block: 1px solid var(--color-border); padding-block: var(--space-4); }
+  .types-list {
+    list-style: none; margin-block: 0; padding: 0;
+    display: grid; gap: var(--space-4) var(--space-2); grid-template-columns: repeat(auto-fill, minmax(6.5rem, 1fr));
+  }
+  /* Wide screens: all thirteen types on one row */
+  @media (min-width: 75rem) { .types-list { grid-template-columns: repeat(13, 1fr); gap: var(--space-2); } }
+  .types-list a, .types-list li > span {
+    display: grid; justify-items: center; gap: var(--space-2); text-align: center; color: var(--color-text); text-decoration: none;
+  }
+  .type-icon {
+    width: 3.25rem; height: 3.25rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--color-icon-bg); color: var(--color-rust-text);
+  }
+  .types-list a:hover .type-icon, .types-list a:focus-visible .type-icon { background: var(--color-rust); color: #fff; }
+  .type-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.3; }
+
+  /* Featured resources */
+  .featured { padding-block: var(--space-6) var(--space-5); }
+  .featured h2 { margin: 0 0 var(--space-4); font-weight: 700; font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
+  .featured-grid { display: grid; gap: var(--space-4); }
+  @media (min-width: 64rem) { .featured-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
+  .card {
+    padding: var(--space-4); background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius);
+    scroll-margin-top: var(--space-5);
+  }
+  .card-title { margin: 0 0 var(--space-4); padding-bottom: var(--space-2); font-weight: 700; font-size: 1.35rem; position: relative; }
+  .card-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 2.5rem; height: 3px; background: var(--color-rust); }
+  .video-grid { display: grid; gap: var(--space-4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); }
+  .article { display: grid; grid-template-columns: 6.5rem 1fr; gap: var(--space-3); align-items: start; }
+  .article-thumb {
+    aspect-ratio: 1; border-radius: var(--radius); display: grid; place-items: center;
+    background: linear-gradient(160deg, var(--tone-rust), var(--tone-plum)); color: #f3efe9;
+  }
+  .article h4 { margin: 0 0 var(--space-2); font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; line-height: 1.3; }
+  .article h4 a { color: var(--color-text); text-decoration: none; }
+  .article h4 a:hover { color: var(--color-rust-text); text-decoration: underline; }
+  .byline { margin: 0; font-size: 0.9rem; }
+  .publication { margin: var(--space-1) 0 0; font-size: 0.85rem; font-style: italic; color: var(--color-muted); }
+  .coming-soon {
+    display: grid; justify-items: center; gap: var(--space-2); padding: var(--space-5) var(--space-3);
+    background: var(--sage); border-radius: var(--radius); color: var(--color-muted); text-align: center;
+  }
+  .coming-soon p { margin: 0; font-style: italic; }
+  .coming-soon span { color: var(--color-green); }
+
+  /* Help us grow */
+  .grow-wrap { padding-block: 0 var(--space-6); }
+  .grow {
+    display: grid; gap: var(--space-4); align-items: center;
+    padding: var(--space-5); background: var(--sage); border-radius: var(--radius);
+  }
+  @media (min-width: 56rem) { .grow { grid-template-columns: auto 1fr auto; gap: var(--space-5); } }
+  .grow-icon {
+    width: 5.5rem; height: 5.5rem; border-radius: 50%; display: grid; place-items: center;
+    background: var(--color-icon-bg); color: var(--color-green);
+  }
+  .grow h2 { margin: 0 0 var(--space-2); font-weight: 700; font-size: clamp(1.4rem, 2.6vw, 1.8rem); }
+  .grow p { margin: 0; max-width: 46rem; line-height: 1.6; }
+  .grow .pill { justify-self: start; }
 </style>
