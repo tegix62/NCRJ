@@ -2,10 +2,13 @@
 import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
-import { PILLARS } from '../../site';
+import Icon from '../../components/Icon.astro';
+import { PILLARS, CONTACT_EMAIL } from '../../site';
 import { VIDEOS, ARTICLES } from '../../data/resources';
 
 const section = PILLARS[1];
+// Recommendations go by email for now (no submission form; see docs/future-scope.md).
+const recommendHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Resource Bank recommendation')}`;
 // The menu says "Resource Bank"; the page itself uses the full name.
 const pageTitle = 'Reproductive Justice and ADEI Resource Bank';
 const intro =
@@ -76,6 +79,20 @@ const categories = [
       )}
     </section>
   </div>
+
+  <section class="grow" aria-labelledby="grow-heading">
+    <div class="container grow-inner">
+      <div>
+        <h2 id="grow-heading">Help Us Grow the Resource Bank</h2>
+        <p>
+          This is not meant to be a static collection. We want the Resource Bank to continue growing through the
+          knowledge and recommendations of our community. If you know of a resource that should be included, please
+          submit it for consideration. You do not have to be the author or creator of the resource to recommend it.
+        </p>
+      </div>
+      <a class="button" href={recommendHref}>Recommend a resource <Icon name="arrow-right" size={16} /></a>
+    </div>
+  </section>
 </Default>
 
 <style>
@@ -102,4 +119,10 @@ const categories = [
   .article-list h3 { margin: 0 0 var(--space-1); font-size: 1.25rem; }
   .article-list p { margin: 0; color: var(--color-muted); font-size: 0.95rem; }
   .placeholder { color: var(--color-muted); }
+  .grow { background: var(--color-green); color: #fff; padding-block: var(--space-6); }
+  .grow-inner { display: grid; gap: var(--space-4); align-items: center; }
+  @media (min-width: 56rem) { .grow-inner { grid-template-columns: 1fr auto; gap: var(--space-6); } }
+  .grow h2 { margin: 0 0 var(--space-3); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem); }
+  .grow p { margin: 0; max-width: 46rem; color: #e8e4dc; line-height: 1.65; }
+  .grow .button { justify-self: start; }
 </style>
