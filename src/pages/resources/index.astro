@@ -2,19 +2,54 @@
 import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
+import Icon from '../../components/Icon.astro';
 import { PILLARS } from '../../site';
 import { VIDEOS, ARTICLES } from '../../data/resources';
 
 const section = PILLARS[1];
+// Resource recommendations go to the Collaborative's Google Form.
+const SUBMIT_RESOURCE_FORM = 'https://forms.gle/moT8PbNJ1iozcEpg8';
+// The menu says "Resource Bank"; the page itself uses the full name.
+const pageTitle = 'Reproductive Justice and ADEI Resource Bank';
+const intro =
+  'The Reproductive Justice and ADEI Resource Bank is a living collection of scholarship, teaching materials, community knowledge, multimedia resources, and public scholarship designed to support learning, research, practice, advocacy, and organizing.';
+const centers = [
+  'reflect the lived experiences of marginalized communities;',
+  'advance reproductive justice, anti-racism, diversity, equity, and inclusion;',
+  'center Black, Indigenous, and other marginalized voices;',
+  'use intersectional, abolitionist, decolonial, and transformative frameworks;',
+  'document resistance, advocacy, organizing, and movement building;',
+  'connect reproductive justice to social work education, policy, research, and practice; and',
+  'provide accessible resources for students, educators, practitioners, researchers, organizers, advocates, and community members.',
+];
 const categories = [
   { id: 'videos', label: 'Videos', count: VIDEOS.length },
   { id: 'articles', label: 'Articles', count: ARTICLES.length },
 ];
 ---
 
-<Default title={section.title} description={section.description}>
-  <PageIntro eyebrow={section.subtitle} title={section.title} lede={section.description} />
+<Default title={pageTitle} description={intro}>
+  <PageIntro eyebrow={section.subtitle} title={pageTitle} lede={intro} wideLede />
   <div class="content resources">
+    <section class="about-bank" aria-label="About the Resource Bank">
+      <p>
+        We created the Resource Bank because it can still be difficult to find materials that reflect the lived
+        experiences of communities most affected by reproductive oppression—particularly Black, Indigenous, and other
+        systemically marginalized communities. Our goal is to make diverse, justice-centered resources easier to find,
+        use, teach, and share.
+      </p>
+      <p>The Resource Bank centers materials that:</p>
+      <ul class="centers">
+        {centers.map((c) => <li>{c}</li>)}
+      </ul>
+      <p>
+        We welcome books, book chapters, peer-reviewed articles, reports, policy briefs, podcasts, videos, webinars,
+        community resources, creative works, and other materials that deepen understanding and support action around
+        reproductive justice. We generally prioritize work from the past ten years while also including foundational
+        texts that continue to shape the field.
+      </p>
+    </section>
+
     <nav class="categories" aria-label="Resource categories">
       {categories.map((c) => <a href={`#${c.id}`}>{c.label} <span>({c.count})</span></a>)}
     </nav>
@@ -44,10 +79,29 @@ const categories = [
       )}
     </section>
   </div>
+
+  <section class="grow" aria-labelledby="grow-heading">
+    <div class="container grow-inner">
+      <div>
+        <h2 id="grow-heading">Help Us Grow the Resource Bank</h2>
+        <p>
+          This is not meant to be a static collection. We want the Resource Bank to continue growing through the
+          knowledge and recommendations of our community. If you know of a resource that should be included, please
+          submit it for consideration. You do not have to be the author or creator of the resource to recommend it.
+        </p>
+      </div>
+      <a class="button" href={SUBMIT_RESOURCE_FORM}>Submit A Resource <Icon name="arrow-right" size={16} /></a>
+    </div>
+  </section>
 </Default>
 
 <style>
   .resources { padding-block: var(--space-5); }
+  .about-bank { margin-bottom: var(--space-6); padding-bottom: var(--space-5); border-bottom: 1px solid var(--color-border); }
+  .about-bank p { margin: 0 0 var(--space-3); font-size: 1.05rem; line-height: 1.65; }
+  .about-bank p:last-child { margin-bottom: 0; }
+  .centers { margin: 0 0 var(--space-4); padding-left: 1.25rem; display: grid; gap: var(--space-2); line-height: 1.55; }
+  .centers li::marker { color: var(--color-rust); }
   .categories { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-5); }
   .categories a {
     padding: var(--space-2) var(--space-3);
@@ -65,4 +119,10 @@ const categories = [
   .article-list h3 { margin: 0 0 var(--space-1); font-size: 1.25rem; }
   .article-list p { margin: 0; color: var(--color-muted); font-size: 0.95rem; }
   .placeholder { color: var(--color-muted); }
+  .grow { background: var(--color-green); color: #fff; padding-block: var(--space-6); }
+  .grow-inner { display: grid; gap: var(--space-4); align-items: center; }
+  @media (min-width: 56rem) { .grow-inner { grid-template-columns: 1fr auto; gap: var(--space-6); } }
+  .grow h2 { margin: 0 0 var(--space-3); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.1rem); }
+  .grow p { margin: 0; max-width: 46rem; color: #e8e4dc; line-height: 1.65; }
+  .grow .button { justify-self: start; }
 </style>
