@@ -49,7 +49,9 @@ Please help me like this:
    the end. Help me set up the alert emails and check the domain's public
    details, as described there.
 11. At the end, help me fill in the Phase 7 table, run the checks in section 4,
-   and make sure every account has two owners from the Collaborative.
+   go through the loose ends in section 7, and make sure every account has two
+   owners from the Collaborative. Then walk me through the "You're done when"
+   checklist in section 8, and don't say we're finished until every box is true.
 
 Start with step 1 now: explain how the website works and what each account is
 for, then ask me which phase I'd like to start with.

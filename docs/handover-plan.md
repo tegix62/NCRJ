@@ -148,7 +148,7 @@ Then you check the new domain on a phone and a laptop.
 | 6.1 | Owner 1 | **GitHub:** *Repository → Settings → Collaborators → Add people*, with the **Write** role (they can propose and publish changes but can't delete the repository or change ownership). Remove them whenever you like. |
 | 6.2 | Owner 1 | **Cloudflare:** *Manage Account → Members → Invite*, with a role limited to Workers (not billing and not domains). Optional; they can work through GitHub alone, since publishing happens automatically from there. |
 | 6.3 | Owner 1 | **Keep** the domain registration, billing, and ownership with the two owners only. |
-| 6.4 | Developer | **Only after the Collaborative's own Cloudflare site (Phase 2) works, and the domain is connected (Phase 3):** delete the old Worker and its API token in the personal Cloudflare account, and remove the old GitHub app connection. The old `rumeaudesign.workers.dev` address then stops working, so tell anyone who has it. |
+| 6.4 | Developer | **Only after the Collaborative's own Cloudflare site (Phase 2) works, and the domain is connected (Phase 3):** delete the old Worker and its API token in the personal Cloudflare account, and remove the old GitHub app connection. The old `rumeaudesign.workers.dev` address then stops working, so tell anyone who has it. Keeping the old Worker for a week or two as a fallback is fine; nothing depends on it. |
 | 6.5 | Developer with the Sanity account | Delete the Sanity project (it is unused), or invite an owner as Administrator first. |
 
 ### Phase 7: Make sure nothing depends on one person  ·  10 minutes
@@ -208,3 +208,33 @@ This site is about reproductive justice. Sites on this topic attract bad-faith a
 - A notice from Cloudflare, GitHub or the registrar: read it, don't panic, and ask Claude to help you reply. Keep a copy.
 - You think an account was accessed by someone else: change its password, sign out all sessions, check the member list, and tell the other owner.
 - The site is down or showing something unexpected: ask Claude to undo the last change (every version is kept), then look at Cloudflare → the `ncrj` Worker → *Deployments*.
+
+## 7. Loose ends to confirm
+
+These are small content questions the new owners should settle with whoever supplied the material. None of them stops the handover.
+
+1. **Links that don't match.** Two pages use a link in the text that differs from the link on the poster or in its QR code. They may lead to the same form, but they were never checked. Open each one and confirm.
+   - *Open letter (News & Events, pinned post):* the text says `https://lnkd.in/eDifWnKu`; the poster and its QR code use `https://forms.gle/v6TeAWbvZZwEC5tn9`.
+   - *Founding membership (Get Involved):* the button uses `https://lnkd.in/evfVjtbT`; the graphic and its QR code use `https://forms.gle/2uGy9NhCb4NzS9ur9`.
+   If a link is wrong, tell Claude which one is correct. It will fix the text and re-render the graphic.
+2. **The signature count.** The open-letter poster says "1,400+ signatures". That's a snapshot. When the number changes, ask Claude to update and re-render the poster (`design-sources/`).
+3. **Photos.** The Resource Bank page has no banner photo yet. The books-and-plant photo in the original mockup was not supplied. The photo of the featured guest on the November 17 event poster is lower resolution than the others; a better one can be swapped in.
+4. **The "Proposed 2029 EPAS" infographic's wording** was copied exactly from the version supplied. It has not been checked against the actual EPAS drafts.
+5. **Event dates.** Events show "This event has passed" automatically. When an event is over, you can leave its page up or ask Claude to remove it.
+6. **GitHub housekeeping (optional).** About 40 old finished branches came with the repository. They're harmless. To stop more piling up: *Repository → Settings → General → Pull Requests → Automatically delete head branches*.
+
+## 8. You're done when
+
+All of these are true:
+
+- [ ] The repository is in the Collaborative's GitHub organization, with two owners.
+- [ ] The website is live on the Collaborative's own domain, published from the Collaborative's own Cloudflare account, with two administrators.
+- [ ] The domain is registered in the Collaborative's account with auto-renew on.
+- [ ] You made one small change through Claude, published it, and saw it appear on the live site (section 4).
+- [ ] The Google Forms are owned by the Collaborative.
+- [ ] The Phase 7 table is filled in and kept in the password manager.
+- [ ] You've read section 6 (Safety) and set up the alert emails.
+- [ ] The developers have deleted their old Cloudflare Worker and token, and been given limited access (or removed).
+- [ ] The loose ends in section 7 are settled or written down.
+
+When every box is ticked, the Collaborative fully owns and controls the site and can keep running it with or without the developers.

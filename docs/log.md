@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-11-13 · Handover · Loose ends and a finish line for the handover plan
+- `docs/handover-plan.md` section 7 lists the open content questions (the poster and text links that differ, the signature count snapshot, missing and low-resolution photos, the unverified EPAS wording, past events, optional branch housekeeping). Section 8 is a "You're done when" checklist.
+- The prompt for the new owner's Claude now walks through sections 7 and 8 at the end and won't call the handover finished until every box is true.
+
 ## 2026-11-13 · Handover · Cloudflare ordering made explicit
 - `docs/handover-plan.md`: added a callout at the start of the steps, a reminder at the end of Phase 1 and a note on Phase 2 saying the new owners must set up their own Cloudflare **the same day** as the repository transfer. The live site stays on the developer's Cloudflare and will likely stop updating once the repository moves, so the transfer alone does not move the site. Developer cleanup (6.4) now waits for Phase 2 and Phase 3.
 - The prompt for the new owner's Claude now reminds them of this after Phase 1.
