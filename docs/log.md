@@ -13,6 +13,16 @@ Format:
 
 ---
 
+## 2026-11-13 · Marissa (edits sent as a PDF; her GitHub account is suspended) · Headshots, News & Events, Get Involved, Resource Bank, logo
+- **Headshots:** Crystal M. Hayes (Leadership) and Marissa Aitken (Members), supplied by Marissa in the edits document.
+- **Logo:** a small bumblebee now rests on the leaf sprig. The drawing is one file (`src/assets/logo.mjs`), used by the header, footer, favicon and every graphic.
+- **News & Events:** new pinned post at the top, "Payment for Placements joins as co-sponsor of our National Open Letter to CSWE", with the letter poster and a "Sign the letter" button. New event post, "Therapy and Political Power" (Tue Nov 17, 7:00 PM ET), poster above the description. New section "Political Education, Public Statements, and Action Resources" with the "Proposed 2029 EPAS: What Changed?" infographic (click to open full size; text version underneath; credit to Suzanne Pritzker). Event pages now say "This event has passed" instead of showing Register once an event is over.
+- **Get Involved:** the founding-membership message is pinned at the top, with its graphic beside it and a button to the sign-up link.
+- **Resource Bank:** a line saying the featured items are only examples from a much larger collection, and the EPAS infographic as the featured resource. The "Help Us Grow" panel and the Submit and Browse buttons from the earlier redesign were already live.
+- **Graphics recolored:** the four graphics were rebuilt in the site's colors, fonts and logo (the originals were AI-made images that couldn't be recolored). Sources and a render script are in `design-sources/`. QR codes were regenerated and scanned to confirm they open the same links as the originals.
+- **To check with Marissa:** (1) the infographic prints the current website address (`ncrj.rumeaudesign.workers.dev`), which will change when the site moves to a new owner or domain; the graphics must be re-rendered then. (2) The pinned post's "Sign here" link (lnkd.in/eDifWnKu) differs from the link and QR code on the poster (forms.gle/v6TeAWbvZZwEC5tn9); likewise the founding-member text link (lnkd.in/evfVjtbT) vs. the graphic (forms.gle/2uGy9NhCb4NzS9ur9). Both may go to the same form, but they weren't checked. (3) The "1,400+ signatures" count on the poster is a snapshot. (4) Dr. Cacciatore's photo was cut from the original poster, so it is lower resolution than Dr. Hyatt's; a better photo would help.
+- **Not done:** the Resource Bank mockup's banner photo (books and plant) wasn't supplied, so the banner is unchanged.
+
 ## 2026-11-13 · Handover · Beginner's guide for the new owner
 - Added `START-HERE.md`: a plain-language guide for the person taking over the site (what it is, what they'll own, one-time setup of GitHub, Claude Code and Cloudflare, how to make changes, what's real vs placeholder, what to do if something breaks), plus a checklist for the people handing over.
 - CLAUDE.md now assumes one owner working mainly through Claude, instead of two collaborators. The scope, privacy, photo, Sanity bandwidth and fewer-pull-requests rules are unchanged.

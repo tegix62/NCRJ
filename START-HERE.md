@@ -67,7 +67,9 @@ Do these in order. Each one takes a few minutes.
 ### Step 4: Tell Claude the new address
 Open Claude Code on the `NCRJ` repository and say:
 
-> "The website's new address is [paste it here]. Please update CLAUDE.md and anywhere else the old address appears."
+> "The website's new address is [paste it here]. Please update CLAUDE.md and anywhere else the old address appears, and re-render the graphics in design-sources so the infographic shows the new address."
+
+The last part matters: the "Proposed 2029 EPAS: What Changed?" infographic has the website address printed on it, so it needs to be redrawn (Claude knows how) whenever the address changes.
 
 That's it. You're set up.
 
@@ -107,12 +109,12 @@ If you want Claude to work differently, just tell it, and ask it to update `CLAU
 
 ## 7. What's real and what's placeholder
 
-**Real:** the homepage, About (mission, vision, tenets of reproductive justice), Leadership, Members, the Resource Bank, News & Events, and Connect.
+**Real:** the homepage, About (mission, vision, tenets of reproductive justice), Leadership, Members, the Resource Bank, News & Events (with the open-letter announcement pinned and event posters), Get Involved (with founding membership pinned), and Connect.
 
 **Placeholder or demo only:**
 - **The Archivist** shows sample entries that say they're samples, and a story submission form that is deliberately switched off.
-- **Activist School and Get Involved** say "Updates coming soon".
-- **Leadership:** one headshot is still to come.
+- **Activist School** says "Updates coming soon", and so does the "More ways to get involved" part of Get Involved.
+- **Posters and infographics** (in News & Events, Get Involved and the Resource Bank) are drawn from files in `design-sources/`, in the site's colors and logo. Ask Claude to change their text or numbers (for example the signature count on the open-letter poster), and to check the QR codes still open the right pages.
 
 ---
 
@@ -139,6 +141,8 @@ You don't need this to make changes; Claude knows where everything is.
 | Colors and fonts | `src/styles/global.css` |
 | The pages | `src/pages/` |
 | Photos | `public/images/` |
+| Poster and infographic sources | `design-sources/` |
+| The logo (leaf with a bumblebee) | `src/assets/logo.mjs` |
 
 ---
 
@@ -152,4 +156,5 @@ A checklist so nothing stays tied to your personal accounts:
 - [ ] Hand over the `ncrjisw@gmail.com` password, and remove your own phone number or email from its recovery options.
 - [ ] Sanity: invite the new owner as Administrator and leave, or delete the project if it won't be used.
 - [ ] Remove yourselves as collaborators, and remove the Claude GitHub App's access to the repository from your own accounts.
-- [ ] Let anyone who has the old website address know the new one.
+- [ ] Let anyone who has the old website address know the new one. The old address is also printed on the EPAS infographic and used for QR-free links, so the new owner should have Claude re-render the graphics (see Step 4).
+- [ ] Before handing over, ask Marissa to confirm the links flagged in `docs/log.md` (the `lnkd.in` links against the `forms.gle` links and QR codes).

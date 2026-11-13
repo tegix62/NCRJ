@@ -1,0 +1,14 @@
+{
+  "name": "design-sources",
+  "private": true,
+  "type": "module",
+  "description": "Sources and renderer for the posters and infographics. Not part of the website build.",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0",
+    "qrcode": "^1.5.4",
+    "sharp": "^0.33.5"
+  }
+}

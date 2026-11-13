@@ -1,0 +1,37 @@
+---
+// A registration link that turns into "This event has passed" once the event is over.
+// Decided when the site is built and again in the visitor's browser, so it stays
+// right between rebuilds.
+import { eventHasPassed } from '../lib/posts';
+
+interface Props {
+  url: string;
+  startsAt: Date;
+  label?: string;
+  class?: string;
+}
+const { url, startsAt, label = 'Register', class: className } = Astro.props;
+const passed = eventHasPassed(startsAt);
+---
+
+{passed ? (
+  <span class="event-past">This event has passed</span>
+) : (
+  <a class={className} href={url} data-event-start={startsAt.toISOString()}><slot>{label}</slot></a>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-event-start]').forEach((el) => {
+    const start = new Date(el.dataset.eventStart!).getTime();
+    if (Date.now() > start + 2 * 60 * 60 * 1000) {
+      const note = document.createElement('span');
+      note.className = 'event-past';
+      note.textContent = 'This event has passed';
+      el.replaceWith(note);
+    }
+  });
+</script>
+
+<style is:global>
+  .event-past { display: inline-block; margin-top: var(--space-2); font-style: italic; color: var(--color-muted); }
+</style>

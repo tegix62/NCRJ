@@ -1,20 +1,101 @@
 ---
 import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
+import Icon from '../../components/Icon.astro';
 import { PILLARS } from '../../site';
 
 const section = PILLARS[3];
+const JOIN_LINK = 'https://lnkd.in/evfVjtbT';
+const GRAPHIC = '/images/graphics/founding-member.webp';
 ---
 
 <Default title={section.title} description={section.description}>
   <PageIntro eyebrow={section.subtitle} title={section.title} lede={section.description} />
-  <div class="content">
+
+  <!-- Pinned: founding membership -->
+  <section class="container join" aria-labelledby="join-heading">
+    <div class="join-text">
+      <p class="pinned-label">Pinned</p>
+      <h2 id="join-heading">We’re building something for the long term, and I’d love for you to be part of it!</h2>
+      <p>
+        We’re excited to announce that <strong>founding membership is now open for the National Collaborative for
+        Reproductive Justice, Innovation, and Political Education in Social Work (NCRJI-SW)!</strong>
+      </p>
+      <p>
+        When we started NCRJI-SW in 2024, I wanted to create a space where social workers, students, educators,
+        scholars, organizers, and community members could come together to learn, imagine, and organize for a more just
+        profession.
+      </p>
+      <p>And look at what we’re building together!</p>
+      <p>
+        From our national organizing around the proposed 2029 EPAS to our political education programs, student
+        teach-ins, shared educational resources, and Our Social Work Future: Community Organizing Hour, we’re creating
+        something that extends far beyond any single campaign.
+      </p>
+      <p>
+        <strong>We don’t want us to have to start organizing from scratch every time our profession or communities are
+        threatened. I want us to already be organized!</strong>
+      </p>
+      <p>That’s what this next chapter is about.</p>
+      <p>
+        We’re building a national membership community rooted in Black feminist thought, reproductive justice,
+        abolition, political education, collective action, and institutional accountability.
+      </p>
+      <p>
+        And we want to be clear about something: <strong>Membership isn’t about asking people to take on more
+        work!</strong> It’s about building relationships, sharing knowledge and resources, creating opportunities to
+        participate, and sustaining the collective power we’re already developing.
+      </p>
+      <p>You can participate in ways that reflect your interests, experiences, and capacity.</p>
+      <p><strong>Membership is FREE, and you don’t have to be a social worker to join!</strong></p>
+      <p>
+        We don’t have to wait for the next crisis to organize. We can build the community, relationships, and collective
+        power we need right now.
+      </p>
+      <p>And we can have some joy, laughter, and love along the way! ♡</p>
+      <p class="join-cta">
+        <a class="button" href={JOIN_LINK}>Become a founding member of NCRJI-SW <Icon name="arrow-right" size={16} /></a>
+      </p>
+    </div>
+
+    <figure class="join-graphic">
+      <a href={GRAPHIC} aria-label="Open the full-size founding member graphic">
+        <img
+          src={GRAPHIC}
+          width="1800"
+          height="2440"
+          alt="Graphic: Become a founding member. Join the National Collaborative for Reproductive Justice, Innovation, and Political Education in Social Work. Free membership: learn together (political education), organize together (collective advocacy), build together (community and care). No required time commitment. Scan the QR code or visit forms.gle/2uGy9NhCb4NzS9ur9 to join."
+        />
+      </a>
+      <figcaption>Select the graphic to open it full size.</figcaption>
+    </figure>
+  </section>
+
+  <div class="container more">
+    <h2>More ways to get involved</h2>
     <p class="coming-soon" role="note">Updates coming soon.</p>
   </div>
 </Default>
 
 <style>
-  .content { padding-block: var(--space-5); }
+  .join { display: grid; gap: var(--space-5); padding-block: var(--space-5); align-items: start; }
+  @media (min-width: 64rem) { .join { grid-template-columns: minmax(0, 1fr) minmax(0, 24rem); gap: var(--space-6); } }
+  .pinned-label {
+    display: inline-block; margin: 0 0 var(--space-2); padding: 0.15em 0.7em; border-radius: 999px;
+    background: var(--color-green); color: #fff; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .join h2 { margin: 0 0 var(--space-3); font-weight: 700; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .join-text p { margin: 0 0 var(--space-3); max-width: 42rem; font-size: 1.05rem; line-height: 1.65; }
+  .join-cta { margin-top: var(--space-4) !important; }
+  .join-graphic { margin: 0; }
+  @media (min-width: 64rem) { .join-graphic { position: sticky; top: var(--space-4); } }
+  .join-graphic a { display: block; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--color-border); }
+  .join-graphic a:focus-visible { outline: 3px solid var(--color-rust); outline-offset: 2px; }
+  .join-graphic img { display: block; width: 100%; height: auto; }
+  .join-graphic figcaption { margin-top: var(--space-2); font-size: 0.9rem; color: var(--color-muted); }
+
+  .more { padding-block: var(--space-4) var(--space-6); }
+  .more h2 { margin: 0 0 var(--space-3); font-size: 1.4rem; }
   .coming-soon {
     display: inline-block; margin: 0; padding: var(--space-2) var(--space-3);
     background: var(--color-cream); border: 1px solid var(--color-border); border-radius: var(--radius);

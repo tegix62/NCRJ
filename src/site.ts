@@ -14,6 +14,7 @@ export const SITE = {
 // Categories = Ghost tags. Slug -> display info.
 export const CATEGORIES: Record<string, { name: string; description: string }> = {
   events: { name: 'Events', description: 'Gatherings, dialogues, and trainings from the Collaborative.' },
+  announcements: { name: 'Announcements', description: 'News and calls to action from the Collaborative.' },
 };
 
 export const NAV = [

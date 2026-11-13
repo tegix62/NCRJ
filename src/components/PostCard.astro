@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import { CATEGORIES } from '../site';
 import { formatEventTime } from '../lib/posts';
+import EventRegister from './EventRegister.astro';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -24,7 +25,7 @@ const primaryTag = tags[0];
     {event && <p class="when">{formatEventTime(event.startsAt)} · {event.location}</p>}
     <p>{excerpt}</p>
     {event?.registerUrl && (
-      <a class="register" href={event.registerUrl}>Register for this event <span aria-hidden="true">→</span></a>
+      <EventRegister class="register" url={event.registerUrl} startsAt={event.startsAt}>Register for this event <span aria-hidden="true">→</span></EventRegister>
     )}
   </div>
 </article>

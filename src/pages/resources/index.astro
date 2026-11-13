@@ -6,8 +6,10 @@ import Default from '../../layouts/Default.astro';
 import PageIntro from '../../components/PageIntro.astro';
 import VideoEmbed from '../../components/VideoEmbed.astro';
 import Icon from '../../components/Icon.astro';
+import ActionResourceCard from '../../components/ActionResourceCard.astro';
 import { PILLARS } from '../../site';
 import { VIDEOS, ARTICLES } from '../../data/resources';
+import { ACTION_RESOURCES } from '../../data/action-resources';
 
 const section = PILLARS[1];
 // The menu says "Resource Bank"; the page itself uses the full name.
@@ -95,6 +97,7 @@ const types = [
 
   <section class="container featured" id="featured" aria-labelledby="featured-heading">
     <h2 id="featured-heading">Featured Resources</h2>
+    <p class="featured-note">These are only a few examples from a much larger collection, which keeps growing through community recommendations.</p>
     <div class="featured-grid">
       <article class="card" id="videos" aria-labelledby="videos-heading">
         <h3 id="videos-heading" class="card-title">Videos</h3>
@@ -119,10 +122,7 @@ const types = [
 
       <article class="card" aria-labelledby="featured-resource-heading">
         <h3 id="featured-resource-heading" class="card-title">Featured Resource</h3>
-        <div class="coming-soon">
-          <span aria-hidden="true"><Icon name="lightbulb" size={36} strokeWidth={1.5} /></span>
-          <p>Featured resource coming soon.</p>
-        </div>
+        {ACTION_RESOURCES.map((r) => <ActionResourceCard resource={r} compact />)}
       </article>
     </div>
   </section>
@@ -193,7 +193,8 @@ const types = [
 
   /* Featured resources */
   .featured { padding-block: var(--space-6) var(--space-5); }
-  .featured h2 { margin: 0 0 var(--space-4); font-weight: 700; font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
+  .featured-note { margin: 0 0 var(--space-4); max-width: 44rem; color: var(--color-muted); }
+  .featured h2 { margin: 0 0 var(--space-3); font-weight: 700; font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
   .featured-grid { display: grid; gap: var(--space-4); }
   @media (min-width: 64rem) { .featured-grid { grid-template-columns: 1.3fr 1fr 1fr; } }
   .card {
