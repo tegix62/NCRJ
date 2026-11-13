@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-11-13 · Chris · Fewer pull requests (account protection)
+- Applied Marissa's Resource Bank layout from her patch file (her GitHub account is suspended, so she can't push; she's appealing).
+- The suspension appears to be from too many pull requests. CLAUDE.md "Workflow" now says: one branch per session or topic, one pull request per finished batch, a few pull requests a day at most, and small fixes wait for the next batch.
+
 ## 2026-11-06 · Marissa · Resource Bank: new layout
 - Rebuilt the Resource Bank page below the banner, based on a mockup from Marissa:
   - "About the Resource Bank" (the why and what-we-welcome paragraphs) with "Browse the Resource Bank" and "Submit a Resource" buttons, beside a pale green box listing what the Bank centers, each with a green check.

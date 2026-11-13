@@ -79,7 +79,12 @@ The structure deliberately mirrors a Ghost theme so the design could be ported t
 ## Workflow
 
 - Work on a branch, open a pull request into `main`, check the change with a local build (see "Links and checking changes"), then merge. Nothing goes straight to `main`, because `main` is the live site.
-- Keep PRs focused on one thing. If two people are working at once, split by area (different pages/files) to avoid merge conflicts.
+- **Batch changes; keep GitHub activity low.** One collaborator's GitHub account was suspended in November 2026 for opening too many pull requests (about 30 in three weeks, often several an hour), which GitHub's automated checks read as bot activity. To protect both accounts:
+  - Use **one working branch per session or topic** (e.g. `leadership-updates`), and put each tweak on it as a commit. Don't start a new branch for every small change.
+  - Open **one pull request when the batch is done**, not one per change. Aim for no more than a few pull requests a day across both people.
+  - Small fixes (a typo, a spacing tweak) wait for the next batch instead of getting their own pull request. If the person wants something live right away, say it will go out with the batch and offer to finish the batch now.
+  - Don't push repeatedly in quick succession; commit locally and push when a batch is ready.
+  - If two people are working at once, split by area (different pages/files) to avoid merge conflicts.
 - Run `npm run build` before pushing; it must succeed.
 
 ## Keeping sessions in sync
