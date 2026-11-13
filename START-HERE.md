@@ -156,5 +156,5 @@ A checklist so nothing stays tied to your personal accounts:
 - [ ] Hand over the `ncrjisw@gmail.com` password, and remove your own phone number or email from its recovery options.
 - [ ] Sanity: invite the new owner as Administrator and leave, or delete the project if it won't be used.
 - [ ] Remove yourselves as collaborators, and remove the Claude GitHub App's access to the repository from your own accounts.
-- [ ] Let anyone who has the old website address know the new one. The old address is also printed on the EPAS infographic and used for QR-free links, so the new owner should have Claude re-render the graphics (see Step 4).
+- [ ] Let anyone who has the old website address know the new one. The old address is also printed on the EPAS infographic, so the new owner should have Claude re-render the graphics (see Step 4).
 - [ ] Before handing over, ask Marissa to confirm the links flagged in `docs/log.md` (the `lnkd.in` links against the `forms.gle` links and QR codes).
