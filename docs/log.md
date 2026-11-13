@@ -13,6 +13,12 @@ Format:
 
 ---
 
+## 2026-11-13 · Handover · Plan for moving everything to the Collaborative's accounts
+- Added `docs/handover-plan.md`: plain-language answers to the leadership's questions (how it works, whose accounts it's in now, what moving it involves, what it really costs, what happens if the developers stop helping) and a step-by-step transfer plan in seven phases (GitHub organization, Cloudflare, domain, pointing the site at its new address, Google Forms, limited access for the developers, and a check that no account has a single owner).
+- Added `docs/prompt-for-new-owner.md`: a prompt the new owner pastes into their own Claude so it walks them through the plan one step at a time.
+- Cost summary: hosting and code storage are free; the real costs are the domain (about $10 to $15 a year) and a Claude plan (about $20 a month) for whoever edits the site. Prices are approximate and should be checked.
+- START-HERE.md points to the plan.
+
 ## 2026-11-13 · Marissa (edits sent as a PDF; her GitHub account is suspended) · Headshots, News & Events, Get Involved, Resource Bank, logo
 - **Headshots:** Crystal M. Hayes (Leadership) and Marissa Aitken (Members), supplied by Marissa in the edits document.
 - **Logo:** a small bumblebee now rests on the leaf sprig. The drawing is one file (`src/assets/logo.mjs`), used by the header, footer, favicon and every graphic.

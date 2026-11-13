@@ -6,6 +6,10 @@ You don't need to know how to code. You'll make changes by describing them in pl
 
 ---
 
+> **Moving the site to the Collaborative's own accounts?** Follow `docs/handover-plan.md`. It has the steps, who does each one, and what everything costs. `docs/prompt-for-new-owner.md` is a ready-made prompt for a Claude assistant to walk you through it.
+
+---
+
 ## 1. What this website is
 
 - **It's a mockup.** It was built to show the Collaborative's leadership what the site could be. It's not a finished product. Some pages are placeholders ("coming soon"), and some features look real but aren't connected to anything yet, like the Archivist's story submission form.
