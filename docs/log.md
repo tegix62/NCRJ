@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-11-13 · Handover · Safety section added to the handover plan
+- `docs/handover-plan.md` section 6, "Safety": what to expect for a site on this topic (abuse reports, spam, account-takeover attempts), what already protects the site, and seven actions for the new owners (guard the accounts, route alerts to both owners, keep domain details private, decide public or private repository, keep private information out of the repository, keep admin access small, review privacy before the Archivist form goes live). Also what to do if something looks wrong.
+- The prompt for the new owner's Claude now tells it to summarize section 6 at the start and the end.
+
 ## 2026-11-13 · Handover · Get Involved heading wording
 - The pinned heading on Get Involved now reads "...and we’d love for you to be part of it!" (was "I’d love"). The body text below it is unchanged.
 

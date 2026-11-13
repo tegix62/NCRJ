@@ -66,6 +66,7 @@ They are invited with limited roles, and can be removed in a minute. See Phase 6
 2. **Choose two owners** (for example the two directors). Every account below needs both.
 3. **Set up a shared password manager** (Bitwarden is free) with both owners. Store every login and every two-step recovery code here.
 4. **Turn on two-step sign-in (an authenticator app, not text messages)** on the Gmail account and on every service below. Save the recovery codes in the password manager.
+5. **Read section 6 (Safety) before you begin.** It explains what to expect and what to set up.
 
 > **Never paste passwords or codes into a chat with Claude.** Claude doesn't need them; you do the sign-ins yourself.
 
@@ -172,3 +173,31 @@ Fill in this table together and keep it in the password manager. Every row shoul
 - **The new site shows an error after deploying:** open Cloudflare → the `ncrj` Worker → *Deployments*, copy the log from the failed one, and paste it to Claude.
 - **A transfer didn't arrive:** check the spam folder of the receiving email address; GitHub transfers expire after a few days and can be started again.
 - **You're locked out of an account:** use the recovery codes in the password manager. This is why they're saved there.
+
+## 6. Safety: what to expect, and what protects you
+
+This site is about reproductive justice. Sites on this topic attract bad-faith attention, so the new owners should expect some and be set up for it. None of this is a reason to worry; it's a reason to do the basics well.
+
+**What you may see**
+- **Abuse reports.** People file false complaints with hosting companies and domain registrars to try to get a site taken down. Notices arrive at the **email address on the Cloudflare account** (and the domain's registration email). Don't ignore them: reply promptly, and ask Claude to help you draft a calm, factual response.
+- **Spam and hostile messages** to the public contact email (`ncrjisw@gmail.com`).
+- **Attempts to take over your accounts** (fake "security alert" emails, password-guessing). This is the realistic risk, much more than the website itself being hacked.
+
+**What already protects you**
+- The site is **static files**: no login, no database, no form that stores anything. There is very little for anyone to break into.
+- Cloudflare sits in front of the site and absorbs traffic spikes and most automated attacks, at no cost.
+- Every change is recorded on GitHub, so anything can be undone.
+
+**What you need to do**
+1. **Guard the accounts.** Use an authenticator app (not text messages) on Gmail, GitHub, Cloudflare and the password manager; use a different strong password on each (the password manager does this for you); save recovery codes in the vault. Treat any email asking you to "verify" or "log in" as suspicious. Go to the website yourself instead of clicking the link.
+2. **Make sure both owners get the alerts.** In Cloudflare, *Notifications* lets you send failed-deployment and security notices to more than one email. In GitHub, both owners should watch the repository. Agree who checks the Collaborative's inbox, and that it's checked at least weekly.
+3. **Keep the domain's public details private.** Cloudflare normally hides the registrant's name and contact details in the public domain lookup. After registering, look the domain up at [lookup.icann.org](https://lookup.icann.org) and confirm no personal address or phone number shows. Register with the Collaborative's email, never a personal one.
+4. **Decide whether the code repository should be public or private.** Public: anyone can read the code, and also the first names and history in it. Private: only people you invite can. Neither is unsafe, since nothing secret is stored there, but it's a choice for the Collaborative to make on purpose (*Repository → Settings → General → Danger Zone → Change visibility*).
+5. **Never put private information in the repository:** no story submissions, no contributor contact details, no passwords or tokens. Claude is told this in `CLAUDE.md`.
+6. **Keep admin access small.** Only the two owners hold owner roles. Developers get limited roles (Phase 6) and are removed when they stop helping. Review the members list on GitHub and Cloudflare every few months.
+7. **Before the Archivist's story submission form is ever switched on,** read the privacy points in `docs/future-scope.md` and `docs/archivist-schema.md` first. People may share sensitive personal stories, and where those are stored and who can see them must be decided deliberately.
+
+**If something looks wrong**
+- A notice from Cloudflare, GitHub or the registrar: read it, don't panic, and ask Claude to help you reply. Keep a copy.
+- You think an account was accessed by someone else: change its password, sign out all sessions, check the member list, and tell the other owner.
+- The site is down or showing something unexpected: ask Claude to undo the last change (every version is kept), then look at Cloudflare → the `ncrj` Worker → *Deployments*.

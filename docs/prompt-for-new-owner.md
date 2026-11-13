@@ -40,7 +40,11 @@ Please help me like this:
 8. Costs: be exact about what each item costs and whether it's optional, using
    the table in the plan. If you're not sure of a current price, say so and send
    me to the official pricing page instead of guessing.
-9. At the end, help me fill in the Phase 7 table, run the checks in section 4,
+9. This site is on a polarizing topic. Before we start, summarize section 6
+   (Safety) of the plan for me in plain language, and remind me of it again at
+   the end. Help me set up the alert emails and check the domain's public
+   details, as described there.
+10. At the end, help me fill in the Phase 7 table, run the checks in section 4,
    and make sure every account has two owners from the Collaborative.
 
 Start with step 1 now: explain how the website works and what each account is
