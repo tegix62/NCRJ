@@ -1,9 +1,17 @@
 import { getCollection } from 'astro:content';
 
-/** Published posts, newest first. */
+/** Published posts: pinned ones first, then newest first. */
 export async function getPublishedPosts() {
   const posts = await getCollection('posts', ({ data }) => !data.draft);
-  return posts.sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+  return posts.sort(
+    (a, b) =>
+      Number(b.data.pinned) - Number(a.data.pinned) || b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf(),
+  );
+}
+
+/** True once an event has started (plus a couple of hours, so the link works while it runs). */
+export function eventHasPassed(startsAt: Date, now = new Date()) {
+  return now.valueOf() > startsAt.valueOf() + 2 * 60 * 60 * 1000;
 }
 
 /** "Tuesday, October 20, 2026 · 2:00 PM Eastern" */

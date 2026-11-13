@@ -19,6 +19,7 @@ export const MEMBERS: Member[] = [
     credentials: 'Ph.D., MSW',
     role: 'Founder and Director',
     pronouns: 'she/her',
+    headshot: '/images/leadership/crystal-hayes.webp',
     featured: true,
     bio: 'Dr. Crystal M. Hayes is a Black feminist social worker, scholar, prison-based doula, and childbirth educator. Her work centers reproductive justice, carceral systems, and the liberation of Black women and communities through research, education, organizing, and collective action.',
   },
@@ -34,5 +35,5 @@ export const MEMBERS: Member[] = [
   { name: 'Simone Snyder', credentials: 'DSW, MSW', headshot: '/images/leadership/simone-snyder.webp' },
   { name: 'Jessica “Danuwoa” A Pelletier', credentials: 'LCSWR, Ph.D. Student of Social Work, Graduate Assistant' },
   { name: 'Nakita Joseph', credentials: 'LMSW, PMH-C, Doctoral Candidate in Social Work' },
-  { name: 'Marissa Aitken', credentials: 'BS, MSW Student, Research Assistant' },
+  { name: 'Marissa Aitken', credentials: 'BS, MSW Student, Research Assistant', headshot: '/images/leadership/marissa-aitken.webp' },
 ];

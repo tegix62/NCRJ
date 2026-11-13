@@ -2,6 +2,8 @@
 // Maps to Ghost's post.hbs.
 import { getEntry, render } from 'astro:content';
 import Default from '../../layouts/Default.astro';
+import EventRegister from '../../components/EventRegister.astro';
+import Icon from '../../components/Icon.astro';
 import { CATEGORIES } from '../../site';
 import { getPublishedPosts, formatEventTime } from '../../lib/posts';
 
@@ -11,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { title, subtitle, excerpt, tags, publishedAt, featureImage, featureImageAlt, event } = post.data;
+const { title, subtitle, excerpt, tags, publishedAt, featureImage, featureImageAlt, event, cta, posterFirst } = post.data;
 const author = post.data.author ? await getEntry(post.data.author) : undefined;
 const { Content } = await render(post);
 const date = publishedAt.toLocaleDateString('en-US', { dateStyle: 'long', timeZone: 'UTC' });
@@ -40,24 +42,37 @@ const date = publishedAt.toLocaleDateString('en-US', { dateStyle: 'long', timeZo
         <p class="when"><time datetime={event.startsAt.toISOString()}>{formatEventTime(event.startsAt)}</time></p>
         <p>{event.location}</p>
         {event.registerUrl
-          ? <a class="button" href={event.registerUrl}>Register</a>
+          ? <EventRegister class="button" url={event.registerUrl} startsAt={event.startsAt} />
           : <p class="note">Registration link coming soon.</p>}
       </aside>
+    )}
+
+    {featureImage && posterFirst && (
+      <figure class="poster">
+        <a href={featureImage}><img src={featureImage} alt={featureImageAlt ?? ''} /></a>
+        <figcaption>{event ? 'Event poster. ' : ''}Select to open full size.</figcaption>
+      </figure>
     )}
 
     <div class="post-body">
       <Content />
     </div>
 
-    {featureImage && (
+    {cta && (
+      <p class="cta"><a class="button" href={cta.url}>{cta.label} <Icon name="arrow-right" size={16} /></a></p>
+    )}
+
+    {featureImage && !posterFirst && (
       <figure class="poster">
         <a href={featureImage}><img src={featureImage} alt={featureImageAlt ?? ''} /></a>
-        {event && <figcaption>Event poster. Select to open full size.</figcaption>}
+        <figcaption>{event ? 'Event poster. ' : ''}Select to open full size.</figcaption>
       </figure>
     )}
 
     {event?.registerUrl && (
-      <p class="register-after"><a class="register" href={event.registerUrl}>Register for this event <span aria-hidden="true">→</span></a></p>
+      <p class="register-after">
+        <EventRegister class="register" url={event.registerUrl} startsAt={event.startsAt}>Register for this event <span aria-hidden="true">→</span></EventRegister>
+      </p>
     )}
   </article>
 </Default>
@@ -75,6 +90,7 @@ const date = publishedAt.toLocaleDateString('en-US', { dateStyle: 'long', timeZo
   .event-details .note { margin: var(--space-3) 0 0; color: var(--color-muted); font-style: italic; }
   .event-details .button { margin-top: var(--space-2); }
   .post-body { margin-top: var(--space-5); }
+  .cta { margin: var(--space-4) 0 0; }
   .poster { margin: var(--space-5) 0; }
   .poster img { display: block; width: 100%; max-width: 32rem; height: auto; border: 1px solid var(--color-border); }
   .register-after { margin: 0 0 var(--space-6); }

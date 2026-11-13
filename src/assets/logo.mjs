@@ -1,0 +1,19 @@
+// The Collaborative's mark: a leaf sprig with a small bumblebee resting on it.
+// This is the one drawing of the logo. The Logo component, the favicon and the
+// graphics in design-sources/ all use it, so a change here changes it everywhere.
+export const LOGO_VIEWBOX = '0 0 64 64';
+
+export const LOGO_INNER = `
+  <path d="M30 58 C 31 44, 32 34, 36 22" stroke="#1f3b34" stroke-width="2.5" fill="none" stroke-linecap="round" />
+  <path d="M34 30 C 26 26, 20 16, 22 4 C 32 10, 37 20, 34 30 Z" fill="#1f3b34" />
+  <path d="M36 34 C 42 24, 52 20, 62 22 C 56 32, 46 38, 36 34 Z" fill="#364638" />
+  <path d="M32 40 C 22 38, 12 30, 6 20 C 18 20, 28 28, 32 40 Z" fill="#7a5a46" />
+  <path d="M31 50 C 38 46, 48 46, 56 50 C 48 58, 38 58, 31 50 Z" fill="#c47555" />
+  <g transform="translate(51.5 26.5) rotate(-18)">
+    <ellipse cx="-1.6" cy="-3.6" rx="2.9" ry="1.7" fill="#fbf7ee" stroke="#1f3b34" stroke-width="0.5" transform="rotate(-28 -1.6 -3.6)" />
+    <ellipse cx="1.4" cy="-3.9" rx="2.9" ry="1.7" fill="#fbf7ee" stroke="#1f3b34" stroke-width="0.5" transform="rotate(14 1.4 -3.9)" />
+    <ellipse cx="0" cy="0" rx="4.6" ry="3.1" fill="#e3a92b" />
+    <path d="M-1.4 -3 L-1.4 3 M1.3 -3.1 L1.3 3.1" stroke="#2a2118" stroke-width="1.35" />
+    <circle cx="-4.9" cy="0.1" r="1.7" fill="#2a2118" />
+  </g>
+`;

@@ -24,6 +24,12 @@ const posts = defineCollection({
         registerUrl: z.string().url().optional(),
       })
       .optional(),
+    // A pinned post is shown first, in a larger block, at the top of News & Events.
+    pinned: z.boolean().default(false),
+    // Show the poster above the text instead of below it.
+    posterFirst: z.boolean().default(false),
+    // An optional main button (e.g. "Sign the letter").
+    cta: z.object({ label: z.string(), url: z.string().url() }).optional(),
     draft: z.boolean().default(false),
   }),
 });

@@ -19,6 +19,8 @@ npm run build    # static output in dist/
 | Articles | `src/content/posts/*.md` |
 | Contributors | `src/content/authors/*.md` |
 | Page templates | `src/pages/` |
+| Posters and infographics (sources, and how to re-render) | `design-sources/`, output in `public/images/graphics/` |
+| The logo | `src/assets/logo.mjs` |
 
 To add an article, copy a file in `src/content/posts/`, change the frontmatter, and write the body in Markdown.
 
