@@ -13,6 +13,9 @@ Format:
 
 ---
 
+## 2026-11-13 · Handover · Get Involved heading wording
+- The pinned heading on Get Involved now reads "...and we’d love for you to be part of it!" (was "I’d love"). The body text below it is unchanged.
+
 ## 2026-11-13 · Handover · Plan for moving everything to the Collaborative's accounts
 - Added `docs/handover-plan.md`: plain-language answers to the leadership's questions (how it works, whose accounts it's in now, what moving it involves, what it really costs, what happens if the developers stop helping) and a step-by-step transfer plan in seven phases (GitHub organization, Cloudflare, domain, pointing the site at its new address, Google Forms, limited access for the developers, and a check that no account has a single owner).
 - Added `docs/prompt-for-new-owner.md`: a prompt the new owner pastes into their own Claude so it walks them through the plan one step at a time.
