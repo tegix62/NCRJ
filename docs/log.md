@@ -13,6 +13,11 @@ Format:
 
 ---
 
+## 2026-11-13 · Handover · Beginner's guide for the new owner
+- Added `START-HERE.md`: a plain-language guide for the person taking over the site (what it is, what they'll own, one-time setup of GitHub, Claude Code and Cloudflare, how to make changes, what's real vs placeholder, what to do if something breaks), plus a checklist for the people handing over.
+- CLAUDE.md now assumes one owner working mainly through Claude, instead of two collaborators. The scope, privacy, photo, Sanity bandwidth and fewer-pull-requests rules are unchanged.
+- README points to START-HERE.md.
+
 ## 2026-11-13 · Chris · Fewer pull requests (account protection)
 - Applied Marissa's Resource Bank layout from her patch file (her GitHub account is suspended, so she can't push; she's appealing).
 - The suspension appears to be from too many pull requests. CLAUDE.md "Workflow" now says: one branch per session or topic, one pull request per finished batch, a few pull requests a day at most, and small fixes wait for the next batch.

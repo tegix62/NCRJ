@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Context for any Claude Code session working on this repo. Two people work on it; one is new to web development, so explain changes in plain language and keep them small and reviewable.
+Context for any Claude Code session working on this repo. The site is looked after by one person who is new to web development and works mainly by describing changes to Claude, so explain changes in plain language, show screenshots, and keep them reviewable. `START-HERE.md` is their beginner's guide; keep it accurate if setup or workflow changes.
 
 ## What this is
 
@@ -81,20 +81,20 @@ The structure deliberately mirrors a Ghost theme so the design could be ported t
 - Work on a branch, open a pull request into `main`, check the change with a local build (see "Links and checking changes"), then merge. Nothing goes straight to `main`, because `main` is the live site.
 - **Batch changes; keep GitHub activity low.** One collaborator's GitHub account was suspended in November 2026 for opening too many pull requests (about 30 in three weeks, often several an hour), which GitHub's automated checks read as bot activity. To protect both accounts:
   - Use **one working branch per session or topic** (e.g. `leadership-updates`), and put each tweak on it as a commit. Don't start a new branch for every small change.
-  - Open **one pull request when the batch is done**, not one per change. Aim for no more than a few pull requests a day across both people.
+  - Open **one pull request when the batch is done**, not one per change. Aim for no more than a few pull requests a day.
   - Small fixes (a typo, a spacing tweak) wait for the next batch instead of getting their own pull request. If the person wants something live right away, say it will go out with the batch and offer to finish the batch now.
   - Don't push repeatedly in quick succession; commit locally and push when a batch is ready.
-  - If two people are working at once, split by area (different pages/files) to avoid merge conflicts.
+  - If more than one person works on the site at once, split by area (different pages/files) to avoid merge conflicts.
 - Run `npm run build` before pushing; it must succeed.
 
 ## Keeping sessions in sync
 
-Both people work mostly through separate Claude chats, which can't see each other. The repo is the only shared memory, so Claude keeps it current **without being asked**:
+Claude chats can't see each other, so the repo is the only memory between sessions (and between whoever works on the site over time). Claude keeps it current **without being asked**:
 
 - **At the start of a session:** a hook prints the latest commits on `main` and the top of `docs/log.md`. Briefly tell the person, in plain language, what's changed since their last session (especially the other person's work). Ask who you're working with if it isn't clear; commits are all authored by "Claude", so names only appear in the log.
-- **Before editing:** run `git fetch origin main` and make sure your branch includes the latest `main` (rebase or merge it in). If the other person's open branch touches the same files, say so before starting.
+- **Before editing:** run `git fetch origin main` and make sure your branch includes the latest `main` (rebase or merge it in). If someone else's open branch touches the same files, say so before starting.
 - **After each chunk of work, before pushing:** add an entry to the top of `docs/log.md` (date, who, what changed, decisions, what's unfinished). If the "Current state and next steps" section below is now out of date, update it in the same commit. If a decision is a lasting rule, add it to Rules.
-- **Long sessions:** fetch `main` again before pushing; the other person may have merged something.
+- **Long sessions:** fetch `main` again before pushing; someone else may have merged something.
 - **Merge conflicts in `docs/log.md` or this file:** keep both people's entries, in date order. Never drop someone else's notes.
 
 ## Current state and next steps

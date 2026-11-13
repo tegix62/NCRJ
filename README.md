@@ -1,5 +1,7 @@
 # rj-site
 
+**New here? Read [START-HERE.md](START-HERE.md) first.** It's a plain-language guide to looking after this site.
+
 Prototype site built with [Astro](https://astro.build). Separate from the RDC site.
 
 ## Run it
