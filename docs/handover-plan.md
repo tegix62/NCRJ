@@ -29,7 +29,7 @@ There is no database and no server to look after. That's why running it is cheap
 ### Can it be transferred? What does that look like?
 Yes, with no downtime if done in the right order.
 - **The code (GitHub):** GitHub has a built-in "Transfer ownership" button. The whole history moves with it.
-- **The live site (Cloudflare):** a Cloudflare site can't be moved between accounts. Instead, the Collaborative's Cloudflare account is connected to the (now transferred) repository and publishes its own copy. Once that works, the old one is switched off. Nothing about the website itself changes except its address, which becomes your own domain.
+- **The live site (Cloudflare):** a Cloudflare site can't be moved between accounts. Instead, the Collaborative's Cloudflare account is connected to the (now transferred) repository and publishes its own copy. **The Collaborative must do this itself right after the repository transfer** (Phase 2); the transfer alone doesn't move the site. Once the new one works, the old one is switched off. Nothing about the website itself changes except its address, which becomes your own domain.
 - **The domain:** bought fresh in the Collaborative's name.
 
 ### What does it cost?
@@ -74,6 +74,9 @@ They are invited with limited roles, and can be removed in a minute. See Phase 6
 
 ## 3. The steps
 
+> **Important: set up Cloudflare right after the repository is transferred.**
+> The live site currently runs on the developer's Cloudflare account, and that account is connected to the code through the developer's own GitHub login. Once the repository moves to the Collaborative's organization, **the old site keeps showing the last version it published, but it will most likely stop picking up new changes.** Nothing breaks, but no edits go live until the Collaborative's own Cloudflare (Phase 2) is running. So do Phase 2 **the same day** as the transfer in step 1.4, and leave the old site alone until yours works.
+
 Each step says **who** does it, **how long** it takes, and **what to tell Claude when it's done**.
 
 ### Phase 1: GitHub (the code)  ·  about 20 minutes
@@ -89,9 +92,13 @@ Each step says **who** does it, **how long** it takes, and **what to tell Claude
 
 Decide whether the repository should be **public** (anyone can read the code) or **private**. Nothing secret is in it, and Cloudflare works either way. *Repository → Settings → General → Danger Zone → Change visibility.*
 
+**Next, go straight to Phase 2 (Cloudflare).** The transfer by itself does not move the live site, and until Phase 2 is finished new changes won't appear on it.
+
 Tell Claude: *"Phase 1 is done. The repository is now at [new address]."* (Claude sessions may need to be restarted on the new address.)
 
 ### Phase 2: Cloudflare (publishes the site)  ·  about 30 minutes
+
+*This is the step that makes the Collaborative's own copy of the site go live. It must be done after the repository transfer, and ideally the same day.*
 
 | # | Who | What |
 |---|---|---|
@@ -141,7 +148,7 @@ Then you check the new domain on a phone and a laptop.
 | 6.1 | Owner 1 | **GitHub:** *Repository → Settings → Collaborators → Add people*, with the **Write** role (they can propose and publish changes but can't delete the repository or change ownership). Remove them whenever you like. |
 | 6.2 | Owner 1 | **Cloudflare:** *Manage Account → Members → Invite*, with a role limited to Workers (not billing and not domains). Optional; they can work through GitHub alone, since publishing happens automatically from there. |
 | 6.3 | Owner 1 | **Keep** the domain registration, billing, and ownership with the two owners only. |
-| 6.4 | Developer | **Only after the new address works and the domain is connected:** delete the old Worker and its API token in the personal Cloudflare account, and remove the old GitHub app connection. The old `rumeaudesign.workers.dev` address then stops working, so tell anyone who has it. |
+| 6.4 | Developer | **Only after the Collaborative's own Cloudflare site (Phase 2) works, and the domain is connected (Phase 3):** delete the old Worker and its API token in the personal Cloudflare account, and remove the old GitHub app connection. The old `rumeaudesign.workers.dev` address then stops working, so tell anyone who has it. |
 | 6.5 | Developer with the Sanity account | Delete the Sanity project (it is unused), or invite an owner as Administrator first. |
 
 ### Phase 7: Make sure nothing depends on one person  ·  10 minutes

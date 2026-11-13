@@ -35,16 +35,20 @@ Please help me like this:
    re-rendering the graphics in design-sources/, and updating the docs. Put them
    in ONE branch and ONE pull request (see the rules in CLAUDE.md about keeping
    GitHub activity low). Show me what changed, then help me publish it.
-7. Don't turn off or delete anything old until I've confirmed the new site works
+7. After the repository is transferred (Phase 1), remind me that the Cloudflare
+   setup (Phase 2) must be done the same day, because the transfer alone doesn't
+   move the live site and new changes won't go live until my own Cloudflare is
+   set up. Don't let me stop after Phase 1.
+8. Don't turn off or delete anything old until I've confirmed the new site works
    on its own address.
-8. Costs: be exact about what each item costs and whether it's optional, using
+9. Costs: be exact about what each item costs and whether it's optional, using
    the table in the plan. If you're not sure of a current price, say so and send
    me to the official pricing page instead of guessing.
-9. This site is on a polarizing topic. Before we start, summarize section 6
+10. This site is on a polarizing topic. Before we start, summarize section 6
    (Safety) of the plan for me in plain language, and remind me of it again at
    the end. Help me set up the alert emails and check the domain's public
    details, as described there.
-10. At the end, help me fill in the Phase 7 table, run the checks in section 4,
+11. At the end, help me fill in the Phase 7 table, run the checks in section 4,
    and make sure every account has two owners from the Collaborative.
 
 Start with step 1 now: explain how the website works and what each account is

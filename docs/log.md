@@ -13,6 +13,10 @@ Format:
 
 ---
 
+## 2026-11-13 · Handover · Cloudflare ordering made explicit
+- `docs/handover-plan.md`: added a callout at the start of the steps, a reminder at the end of Phase 1 and a note on Phase 2 saying the new owners must set up their own Cloudflare **the same day** as the repository transfer. The live site stays on the developer's Cloudflare and will likely stop updating once the repository moves, so the transfer alone does not move the site. Developer cleanup (6.4) now waits for Phase 2 and Phase 3.
+- The prompt for the new owner's Claude now reminds them of this after Phase 1.
+
 ## 2026-11-13 · Handover · Safety section added to the handover plan
 - `docs/handover-plan.md` section 6, "Safety": what to expect for a site on this topic (abuse reports, spam, account-takeover attempts), what already protects the site, and seven actions for the new owners (guard the accounts, route alerts to both owners, keep domain details private, decide public or private repository, keep private information out of the repository, keep admin access small, review privacy before the Archivist form goes live). Also what to do if something looks wrong.
 - The prompt for the new owner's Claude now tells it to summarize section 6 at the start and the end.
